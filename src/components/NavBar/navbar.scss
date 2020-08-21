@@ -1,0 +1,111 @@
+.navbar {
+    background-color: #000;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 50;
+
+    ul {
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        list-style: none;
+        padding: 1.25em;
+        
+        li {
+
+            a {
+            color: #fff;
+            text-decoration: none;
+
+                h1 { // shophender
+                    font-family: 'Pacifico', cursive;
+                    background-color: #fff;
+                    color: #000;
+                    padding: 0 20px;
+                    font-weight: lighter;
+                    clip-path: polygon(100% 0, 80% 100%, 0 100%, 20% 0);
+                }
+            }
+        }
+    }
+
+    img {
+        height: 2em;
+        width: 2em;
+        cursor: pointer;
+    }
+
+    .products-category-items {
+            display: block;
+            font-weight: 900;
+            letter-spacing: .5em;
+            padding: 1.25em;
+            position: absolute;
+            background-color: #000;
+            left: 0;
+            width: 100%;
+            
+            li {
+                padding-top: 1em;
+            }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .navbar {
+        height: 100px;
+
+        .shophender {
+            position: fixed;
+            background: none;
+            color: #fff;
+            font-size: 2em;
+            padding: 20px;
+            width: 450px;
+            top: 0;
+            right: 2vw;
+            text-shadow:0 0 10px #fff,
+                        0 0 40px #fff,
+                        0 0 80px #fff,
+                        0 0 20px #fff,
+                        0 0 120px#fff;
+
+                &:hover {
+                    transition: .5s text-shadow ease-out;
+                    text-shadow:    0 0 10px hsl(163, 100%, 62%),
+                                    0 0 40px hsl(163, 100%, 62%),
+                                    0 0 80px hsl(163, 100%, 62%),
+                                    0 0 20px hsl(163, 100%, 62%),
+                                    0 0 120px hsl(163, 100%, 62%);
+                }
+            }
+    }
+
+    .menu-icon-img {
+        display: none;
+    }
+
+    .cart-icon-img {
+        padding-right: 1.5em;
+    }
+
+    .navbar .products-category-items {
+        background-color: transparent;  
+        font-size: .9em;
+        display: flex;
+        position: static;
+        
+        li {
+            padding-right: 4em;
+            padding-top: 0;
+            
+            a:hover {
+                transition: .1s all ease-in;
+                color: hsl(163, 100%, 62%);
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::selection {
+    color: #000;
+    background: hsl(163, 100%, 62%);;
+  }
+}
+
+.margin-t {
+  margin-top: 11vh;
+}
+
+@media screen and (min-width: 767px) {
+  .margin-t {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .margin-t {
+      margin-top: 100px;
+  }
+}
