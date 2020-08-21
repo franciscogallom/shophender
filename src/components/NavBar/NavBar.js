@@ -4,34 +4,35 @@ import { NavLink } from "react-router-dom";
 
 import "./navbar.scss";
 
-import cartIcon from '../../assets/img/cart.svg'
 import menuIcon from '../../assets/img/menu.svg'
+
+import CartIcon from '../CartIcon/CartIcon'
 
 const NavBar = () => {
 
-    const [open, setOpen] = useState(!(window.screen.width < 1024))
+    const isMobileOrTablet = window.screen.width < 1024;
+
+    const [open, setOpen] = useState(!(isMobileOrTablet))
     // En version mobile y tablet, el valor inicial de open es false. Por lo tanto el menu iniciara cerrado.
-    // En version desktop, open es true, y esto me permite mostrar los items del menu.
+    // En version desktop, open es true, y esto me permite mostrar los items del menu en el NavBar.
 
     return (
+        // En los onClick, setOpen() solo se tiene que ejecutar en version mobile y tablet.
+
         <nav className='navbar'>
             <ul>
                 <li>
                     <img 
                         className='menu-icon-img'
-                        onClick={() => {
-                            // Esta funcion solo se tiene que ejecutar en version mobile y tablet.
-                            window.screen.width < 1024 && setOpen(!open)}} 
+                        onClick={() => {isMobileOrTablet && setOpen(!open)}} 
                         src={menuIcon} 
                         alt="Menu"
                     />
                     {   
-                        // Si open es true, muestro las cateogiras de productos.
+                        // Si open es true, muestro las cateogiras de productos. (Funcionalidad para mobile y tablet)
                         open &&
                             <ul 
-                                onClick={() => {
-                                    // Esta funcion solo se tiene que ejecutar en version mobile y tablet.
-                                    window.screen.width < 1024 && setOpen(!open)}} 
+                                onClick={() => {isMobileOrTablet && setOpen(!open)}} 
                                 className='products-category-items'
                             >
                                 <li><NavLink to='/products'>HOMBRE</NavLink></li>
@@ -43,10 +44,8 @@ const NavBar = () => {
                 <li>
                     <NavLink 
                         to="/" 
-                        onClick={() => {
-                            // Esta funcion solo se tiene que ejecutar en version mobile y tablet.
-                            // No puede abrir el menu, pero si cerrarlo.
-                            window.screen.width < 1024 && setOpen(open && false)}}
+                        // No puede abrir el menu, pero si cerrarlo.
+                        onClick={() => {isMobileOrTablet && setOpen(open && false)}}
                     >
                         <h1 className='shophender'>shophender</h1>
                     </NavLink>
@@ -57,7 +56,7 @@ const NavBar = () => {
                         className='cart-icon-img' 
                         activeClassName="activeLink"
                     >
-                        <img src={cartIcon} alt="Cart"/>
+                        <CartIcon />
                     </NavLink>
                 </li>
             </ul>
