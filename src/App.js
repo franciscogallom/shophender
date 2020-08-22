@@ -7,6 +7,7 @@ import Home from "./components/Home/Home";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
 import Footer from "./components/Footer/Footer";
+import NoMatch from "./components/NoMatch/NoMatch";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/products" component={Products} />
           <Route path="/cart" component={Cart} />
+          <Route path="/*" component={NoMatch} />
         </Switch>
       </Router>
       <Footer />

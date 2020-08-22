@@ -8,7 +8,7 @@ const HomeBanner = (props) => {
     return (
         <section>
             <Link 
-                to='/products' 
+                to={`/products/${props.bannerGender}`} 
                 className={`${props.bannerClass} ${props.bannerPosition}`}
             >
                 {props.bannerText}
