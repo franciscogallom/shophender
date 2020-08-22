@@ -38,7 +38,7 @@
         cursor: pointer;
     }
 
-    .products-category-items {
+    .products-gender {
             display: block;
             font-weight: 900;
             letter-spacing: .5em;
@@ -50,7 +50,18 @@
             
             li {
                 padding-top: 1em;
+                cursor: pointer;
             }
+    }
+
+    li .true {
+        background-color: hsl(163, 100%, 62%);
+        color: #000;
+        transition: 1.5s color ease-out, .25s background-color ease-in;
+    
+        &:hover {
+            color: #000;
+        }
     }
 }
 
@@ -92,7 +103,7 @@
         padding-right: 1.5em;
     }
 
-    .navbar .products-category-items {
+    .navbar .products-gender {
         background-color: transparent;  
         font-size: .9em;
         display: flex;
@@ -101,11 +112,6 @@
         li {
             padding-right: 4em;
             padding-top: 0;
-            
-            a:hover {
-                transition: .1s all ease-in;
-                color: hsl(163, 100%, 62%);
-            }
         }
     }
 }

@@ -1,0 +1,36 @@
+ul .container-type-product {
+    background-color: #000;
+    list-style: none;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    border-radius: 25px;
+    width: 100%;
+
+    li {
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    ul .container-type-product {
+        border-radius: 10px;
+        font-size: 1em;
+        letter-spacing: 0;
+        width: 68%;
+        z-index: -1;
+        top: 75px;
+        height: 200px;
+        flex-direction: row;
+        justify-content: start;
+        padding-left: 2.75vw;
+
+        a:hover {
+            transition: .2s all ease-in;
+            color: rgb(255, 133, 154);
+        }
+    }
+}
