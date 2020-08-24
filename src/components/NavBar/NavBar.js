@@ -17,10 +17,21 @@ const NavBar = () => {
     // En version desktop, openMenu es true, y esto me permite mostrar los items del menu en el NavBar.
     const [openMenu, setOpenMenu] = useState(!(isMobileOrTablet))
 
-    // Manejo las aperturas y cierres de los tipos de productos de Hombre, Mujer, y Ver Todo. En todas las pantallas debe aparecer cerrado
+    // Manejo el estado para abrir y cerrar el menu.
+    const setOpenMenuFunction = () => setOpenMenu((previousMenu) => !previousMenu)
+
+    // Manejo el estado solo para abrir el menu.
+    const setOnlyOpenMenuFunction = () => setOpenMenu((previousMenu) => previousMenu && false)
+
+    // Manejo las aperturas y cierres de los tipos de productos de Hombre, Mujer, y Ver Todo. En todas las pantallas debe aparecer cerrado.
     const [listCategoriesMen, setListCategoriesMen] = useState(false)
     const [listCategoriesWomen, setListCategoriesWomen] = useState(false)
     const [listCategoriesAll, setListCategoriesAll] = useState(false)
+
+    // Al igual que con setOpenMenu, esta es la mejor forma de usar el estado anterior para obtener el siguiente.
+    const setListCategoriesMenFunction = () => setListCategoriesMen((previousCategory) => !previousCategory) 
+    const setListCategoriesWomenFunction = () => setListCategoriesWomen((previousCategory) => !previousCategory) 
+    const setListCategoriesAllFunction = () => setListCategoriesAll((previousCategory) => !previousCategory) 
 
     // Al hacer click en el menu, en shopender, o en cart, cierro todos los <TypeComponent /> para que luego al abrir el menu no aparezcan ya abiertas las distintas categorias.
     const CloseAllListCategories = () => {
@@ -29,7 +40,7 @@ const NavBar = () => {
         setListCategoriesAll(false)
     }
 
-    // Al hacer click en un tipo de producto, cierro todos lo del NavBar
+    // Al hacer click en un tipo de producto, cierro todos lo del NavBar.
     const CloseAllListCategoriesAndMenu = () => {
         CloseAllListCategories();
         setOpenMenu(false);
@@ -42,7 +53,7 @@ const NavBar = () => {
 
     return (
         // En los onClick, setOpenMenu() solo se tiene que ejecutar en version mobile y tablet.
-        // Para que no me queden abiertos dos o mas <TypeComponent/> a la vez, al hacer click en uno, cierro los otros dos, poniendo el state en false
+        // Para que no me queden abiertos dos o mas <TypeComponent/> a la vez, al hacer click en uno, cierro los otros dos, poniendo el state en false.
 
         <nav className='navbar'>
             <ul>
@@ -51,19 +62,19 @@ const NavBar = () => {
                     <img 
                         className='menu-icon-img'
                         onClick={() => {isMobileOrTablet && 
-                                setOpenMenu(!openMenu)
+                                setOpenMenuFunction()
                                 CloseAllListCategories()}} 
                         src={menuIcon} 
                         alt="Menu"
                     />
                     {   
-                        // Si openMenu es true, muestro las cateogiras de productos. (Funcionalidad para mobile y tablet)
+                        // Si openMenu es true, muestro las cateogiras de productos. (Funcionalidad para mobile y tablet).
                         openMenu &&
                             <ul className='products-gender'>
 
                                 <li 
                                     onClick={() => {
-                                        setListCategoriesMen(!listCategoriesMen)
+                                        setListCategoriesMenFunction()
                                         setListCategoriesWomen(false)
                                         setListCategoriesAll(false)}
                                     }
@@ -76,7 +87,7 @@ const NavBar = () => {
                                 
                                 <li 
                                     onClick={() => {
-                                        setListCategoriesWomen(!listCategoriesWomen)
+                                        setListCategoriesWomenFunction()
                                         setListCategoriesMen(false)
                                         setListCategoriesAll(false)}}
                                         className={`${listCategoriesWomen}`}
@@ -88,7 +99,7 @@ const NavBar = () => {
                                 
                                 <li 
                                     onClick={() => {
-                                        setListCategoriesAll(!listCategoriesAll)
+                                        setListCategoriesAllFunction()
                                         setListCategoriesMen(false)
                                         setListCategoriesWomen(false)}}
                                         className={`${listCategoriesAll}`}
@@ -107,7 +118,7 @@ const NavBar = () => {
                         to="/" 
                         // No puede abrir el menu, pero si cerrarlo.
                         onClick={() => {isMobileOrTablet && 
-                                setOpenMenu(openMenu && false)
+                                setOnlyOpenMenuFunction();
                                 CloseAllListCategories()}}
                     >
                         <h1 className='shophender'>shophender</h1>
@@ -120,7 +131,7 @@ const NavBar = () => {
                         className='cart-icon-img' 
                         // No puede abrir el menu, pero si cerrarlo.
                         onClick={() => {isMobileOrTablet && 
-                                setOpenMenu(openMenu && false)
+                                setOnlyOpenMenuFunction();
                                 CloseAllListCategories()}}
                     >
                         <CartIcon />
