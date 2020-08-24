@@ -1,0 +1,13 @@
+.container-list-items {
+    padding: 10vh 10px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+}
+
+@media screen and (min-width: 760px) {
+    .container-list-items {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

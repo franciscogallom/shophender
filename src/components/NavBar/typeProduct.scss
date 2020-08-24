@@ -23,16 +23,10 @@ ul .container-type-product {
         font-size: 1em;
         letter-spacing: 0;
         width: 68%;
-        z-index: -1;
         top: 75px;
         height: 200px;
         flex-direction: row;
         justify-content: start;
         padding-left: 2.75vw;
-
-        a:hover {
-            transition: .2s all ease-in;
-            color: $fourthColor;
-        }
     }
 }

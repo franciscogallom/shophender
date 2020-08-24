@@ -1,0 +1,58 @@
+@import '../../../assets/colors.scss';
+
+.item-list {
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+
+    img {
+        width: 75%;
+    }
+
+    p, span {
+        padding: 0 .25em;
+        margin: .25em;
+    }
+
+    p {
+        background: $tertiaryColor;
+        font-style: italic;
+        display: inline-block;
+    }
+
+    span {
+        letter-spacing: .15em;
+        background: $primaryColor;
+        color: $tertiaryColor;
+        position: relative;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .item-list {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            position: absolute;
+            background-color: $tertiaryColor;
+            top: 0;
+            right: 100%;
+            height: .2em;
+            width: 100%;
+            transition: .5s right;
+        }
+
+        &:hover {
+            box-shadow: 0 10px 10px #eee;
+            transition: .5s box-shadow;
+
+            &:before {
+                right: 0;
+            }
+        }
+    }
+}

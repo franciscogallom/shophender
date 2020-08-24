@@ -1,20 +1,18 @@
 @import '../../assets/colors.scss';
 
-
 .home-container {
     display: grid;
-    grid-template-rows: repeat(4, 90vh);
+    grid-template-rows: 90vh auto 90vh auto 90vh auto 90vh;
+    grid-template-columns: 100%;
 }
 
 @media screen and (min-width: 1024px) {
     .home-container {
-        grid-template-columns: 50%;
-        grid-template-rows: repeat(4, 90vh);
-
         h1 {
             padding-left: 50vw;
             -webkit-text-stroke: 3px $tertiaryColor;
             position: relative;
+            width: 50%;
 
             &::before{
                 content: 'shophender';
@@ -24,14 +22,14 @@
                 font-style: italic;
             }
         }
-
+        
         .bannerLeft, .bannerRight {
             -webkit-text-stroke: 3px $primaryColor;
 
             &::before {
                 content: '';
-                height: 75px;
-                width: 1000px;
+                height: .5em;
+                width: 75vw;
                 position: absolute;
                 top: 50%;
                 z-index: -1;
@@ -42,6 +40,7 @@
         .bannerLeft {
             padding-left: 50vw;
             position: relative;
+            width: 50%;
         }
 
         .bannerRight {
