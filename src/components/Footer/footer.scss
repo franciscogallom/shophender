@@ -1,3 +1,5 @@
+@import '../../assets/colors.scss';
+
 .footer-container {
     height: 100px;
     background:hsl(163, 100%, 62%);
@@ -12,10 +14,10 @@
     }
 
     .developed-by {
-        color: rgb(255, 133, 154);
+        color: $fourthColor;
 
         a {
-            color: rgb(255, 133, 154);
+            color: $fourthColor;
         }
     }
 }

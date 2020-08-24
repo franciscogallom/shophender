@@ -1,5 +1,7 @@
+@import '../../assets/colors.scss';
+
 ul .container-type-product {
-    background-color: #000;
+    background-color: $primaryColor;
     list-style: none;
     position: absolute;
     display: flex;
@@ -30,7 +32,7 @@ ul .container-type-product {
 
         a:hover {
             transition: .2s all ease-in;
-            color: rgb(255, 133, 154);
+            color: $fourthColor;
         }
     }
 }

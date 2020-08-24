@@ -1,3 +1,6 @@
+@import '../../assets/colors.scss';
+
+
 .home-container {
     display: grid;
     grid-template-rows: repeat(4, 90vh);
@@ -10,20 +13,20 @@
 
         h1 {
             padding-left: 50vw;
-            -webkit-text-stroke: 3px hsl(163, 100%, 62%);
+            -webkit-text-stroke: 3px $tertiaryColor;
             position: relative;
 
             &::before{
                 content: 'shophender';
                 position: absolute;
-                color: #000;
+                color: $primaryColor;
                 z-index: -1;
                 font-style: italic;
             }
         }
 
         .bannerLeft, .bannerRight {
-            -webkit-text-stroke: 3px #000;
+            -webkit-text-stroke: 3px $primaryColor;
 
             &::before {
                 content: '';

@@ -1,3 +1,5 @@
+@import '../../assets/colors.scss';
+
 .nomatch-container {
     display: flex;
     flex-direction: column;
@@ -21,8 +23,8 @@
     p {
         position: absolute;
         text-align: center;
-        background: hsl(163, 100%, 62%);
-        color: #000;
+        background: $tertiaryColor;
+        color: $primaryColor;
         top: 37.5vh;
         right: 0;
         font-size: 5vw;
@@ -55,7 +57,7 @@
             width: 50%;
             top: 5vh;
             line-height: .9em;
-            color: hsl(163, 100%, 62%);
+            color: $tertiaryColor;
 
             img {
                 display: inline-block;

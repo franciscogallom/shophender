@@ -1,5 +1,7 @@
+@import '../../assets/colors.scss';
+
 .navbar {
-    background-color: #000;
+    background-color: $primaryColor;
     position: fixed;
     width: 100%;
     top: 0;
@@ -10,20 +12,20 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: #fff;
+        color: $secondaryColor;
         list-style: none;
         padding: 1.25em;
         
         li {
 
             a {
-            color: #fff;
+            color: $secondaryColor;
             text-decoration: none;
 
                 h1 { // shophender
                     font-family: 'Pacifico', cursive;
-                    background-color: #fff;
-                    color: #000;
+                    background-color: $secondaryColor;
+                    color: $primaryColor;
                     padding: 0 20px;
                     font-weight: lighter;
                     clip-path: polygon(100% 0, 80% 100%, 0 100%, 20% 0);
@@ -44,7 +46,7 @@
             letter-spacing: .5em;
             padding: 1.25em;
             position: absolute;
-            background-color: #000;
+            background-color: $primaryColor;
             left: 0;
             width: 100%;
             
@@ -55,12 +57,12 @@
     }
 
     li .true {
-        background-color: hsl(163, 100%, 62%);
-        color: #000;
+        background-color: $tertiaryColor;
+        color: $primaryColor;
         transition: 1.5s color ease-out, .25s background-color ease-in;
     
         &:hover {
-            color: #000;
+            color: $primaryColor;
         }
     }
 }
@@ -72,25 +74,25 @@
         .shophender {
             position: fixed;
             background: none;
-            color: #fff;
+            color: $secondaryColor;
             font-size: 2em;
             padding: 20px;
             width: 450px;
             top: 0;
             right: 2vw;
-            text-shadow:0 0 10px #fff,
-                        0 0 40px #fff,
-                        0 0 80px #fff,
-                        0 0 20px #fff,
-                        0 0 120px#fff;
+            text-shadow:0 0 10px $secondaryColor,
+                        0 0 40px $secondaryColor,
+                        0 0 80px $secondaryColor,
+                        0 0 20px $secondaryColor,
+                        0 0 120px$secondaryColor;
 
                 &:hover {
                     transition: .5s text-shadow ease-out;
-                    text-shadow:    0 0 10px hsl(163, 100%, 62%),
-                                    0 0 40px hsl(163, 100%, 62%),
-                                    0 0 80px hsl(163, 100%, 62%),
-                                    0 0 20px hsl(163, 100%, 62%),
-                                    0 0 120px hsl(163, 100%, 62%);
+                    text-shadow:    0 0 10px $tertiaryColor,
+                                    0 0 40px $tertiaryColor,
+                                    0 0 80px $tertiaryColor,
+                                    0 0 20px $tertiaryColor,
+                                    0 0 120px $tertiaryColor;
                 }
             }
     }

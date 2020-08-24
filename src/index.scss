@@ -1,3 +1,5 @@
+@import './assets/colors.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -9,8 +11,8 @@
   }
 
   &::selection {
-    color: #000;
-    background: hsl(163, 100%, 62%);
+    color: $primaryColor;
+    background: $tertiaryColor;
   }
 }
 

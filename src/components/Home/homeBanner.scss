@@ -1,9 +1,11 @@
+@import '../../assets/colors.scss';
+
 .home-container a, .home-container h1 {
     background-image: url('../../assets/img/home-gif.gif');
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 12.5vw;
-    -webkit-text-stroke: 2px hsl(163, 100%, 62%);
+    -webkit-text-stroke: 2px $tertiaryColor;
     color: transparent;
     display: flex;
     justify-content: center;
@@ -18,7 +20,7 @@
 
 section {
     .banner-all, .banner-men, .banner-women {
-        -webkit-text-stroke: 2px #fff
+        -webkit-text-stroke: 2px $primaryColor;
     }
 
     .banner-men {
