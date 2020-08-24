@@ -8,7 +8,7 @@
 
 @media screen and (min-width: 1024px) {
     .home-container {
-        h1 {
+        header h1 {
             padding-left: 50vw;
             -webkit-text-stroke: 3px $tertiaryColor;
             position: relative;
@@ -22,33 +22,36 @@
                 font-style: italic;
             }
         }
+
+        section {
         
-        .bannerLeft, .bannerRight {
-            -webkit-text-stroke: 3px $primaryColor;
-
-            &::before {
-                content: '';
-                height: .5em;
-                width: 75vw;
-                position: absolute;
-                top: 50%;
-                z-index: -1;
-                background: -webkit-linear-gradient(360deg,#fff, hsl(163, 100%, 62%),#fff);
+            .bannerLeft, .bannerRight {
+                -webkit-text-stroke: 3px $primaryColor;
+            
+                &::before {
+                    content: '';
+                    height: .5em;
+                    width: 75vw;
+                    position: absolute;
+                    top: 50%;
+                    z-index: -1;
+                    background: -webkit-linear-gradient(360deg,#fff, hsl(163, 100%, 62%),#fff);
+                }
             }
-        }
-
-        .bannerLeft {
-            padding-left: 50vw;
-            position: relative;
-            width: 50%;
-        }
-
-        .bannerRight {
-            padding-right: 50vw;
-            position: absolute;
-            width: 50%;
-            height: 90%;
-            right: 0;
+        
+            .bannerLeft {
+                padding-left: 50vw;
+                position: relative;
+                width: 50%;
+            }
+        
+            .bannerRight {
+                padding-right: 50vw;
+                position: absolute;
+                width: 50%;
+                height: 90%;
+                right: 0;
+            }
         }
     }
 }

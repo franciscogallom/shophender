@@ -19,13 +19,13 @@
         background: $tertiaryColor;
         font-style: italic;
         display: inline-block;
+        color: $primaryColor;
     }
 
     span {
         letter-spacing: .15em;
         background: $primaryColor;
         color: $tertiaryColor;
-        position: relative;
     }
 }
 

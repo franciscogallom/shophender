@@ -20,27 +20,45 @@ const Home = () => {
 
             {/* Cambio los backgrounds y las posiciones con las distintas clases que paso por las props  */}
             
-            <ListItems imgProduct={imgPrueba} nameProduct='Zapatillas Nike Air Zoom' priceProduct='10480' />
+            <ListItems 
+                imgProduct={imgPrueba} 
+                nameProduct='Zapatillas Nike Air Zoom' 
+                priceProduct='10480' 
+                genderProduct='women'
+                categoryProduct='shoes'
+            />
 
-            <HomeBanner 
+            <HomeBanner  
                 bannerText = 'hombres' 
                 bannerClass='banner-men' 
                 bannerPosition='bannerRight'
                 bannerGender = 'men'
             />
 
-            <ListItems imgProduct={imgPruebaHombre} nameProduct='Buzo Nike HR40' priceProduct='5670' />
+            <ListItems 
+                imgProduct={imgPruebaHombre} 
+                nameProduct='Buzo Nike HR40' 
+                priceProduct='5670' 
+                genderProduct='men'
+                categoryProduct='coats'
+            />
 
-            <HomeBanner 
+            <HomeBanner  
                 bannerText = 'mujeres' 
                 bannerClass='banner-women' 
                 bannerPosition='bannerLeft'
                 bannerGender = 'women'
             />
 
-            <ListItems imgProduct={imgPruebaMujer} nameProduct='Buzo Top Adidas' priceProduct='4950' />
+            <ListItems 
+                imgProduct={imgPruebaMujer} 
+                nameProduct='Buzo Top Adidas' 
+                priceProduct='4950'
+                genderProduct='women'
+                categoryProduct='coats'
+            />
 
-            <HomeBanner 
+            <HomeBanner  
                 bannerText = 'ver.todo' 
                 bannerClass='banner-all' 
                 bannerPosition='bannerRight'

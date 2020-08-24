@@ -7,9 +7,9 @@ import './homeBanner.scss'
 const HomeBanner = (props) => {
     return (
         <section>
-            <Link 
+            <Link
                 to={`/products/${props.bannerGender}`} 
-                className={`${props.bannerClass} ${props.bannerPosition}`}
+                className={`home-banner ${props.bannerClass} ${props.bannerPosition}`}
             >
                 {props.bannerText}
             </Link>

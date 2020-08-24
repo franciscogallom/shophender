@@ -83,7 +83,7 @@
                         0 0 120px$secondaryColor;
 
                 &:hover {
-                    transition: .5s text-shadow ease-out;
+                    transition: .5s text-shadow;
                     text-shadow:    0 0 10px $tertiaryColor,
                                     0 0 40px $tertiaryColor,
                                     0 0 80px $tertiaryColor,

@@ -1,0 +1,100 @@
+@import '../../assets/colors.scss';
+
+.container-item-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 5vw;
+
+    img {
+        width: 90%;
+    }
+
+    h1, span, button {
+        padding: 0 .25em;
+        margin: .25em auto;
+    }
+
+    h1 {
+        background: $tertiaryColor;
+        font-style: italic;
+        width: 75%;
+        color: $primaryColor;
+    }
+
+    span {
+        letter-spacing: .25em;
+        font-weight: bold;
+        background: $primaryColor;
+        color: $tertiaryColor;
+    }
+
+    button {
+        width: 90%;
+        background: $tertiaryColor;
+        color: $primaryColor;
+        padding: 1em .5em;
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: .5em;
+        border: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            height: 2em;
+            width: 2em;
+        }
+    }
+
+    p {
+        margin-top: 1em;
+        font-weight: bold;
+        position: relative;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container-item-detail {
+        flex-direction: row;
+        justify-content: center;
+
+        img {
+            width: 40%;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50%;
+            font-size: 1.25em;
+
+            p {
+                font-weight: 500;
+                font-size: .9em;
+            }
+
+            button {
+                cursor: pointer;
+                transition: .5s all;
+
+                &:hover {
+                    box-shadow: 5px 5px 10px #eee,
+                                -5px -5px 10px #eee,
+                                5px -5px 10px #eee,
+                                -5px 5px 10px #eee;
+                    scale: 1.02;
+                    letter-spacing: 1em;
+
+                    img {
+                        transition: .5s transform;
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+        }
+    }
+}
