@@ -1,0 +1,57 @@
+@import '../../../../assets/colors.scss';
+
+.item-quantity-selector {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    span {
+        background: $tertiaryColor;
+        font-size: 2.5vw !important;
+    }
+    
+    div button {
+        border: none;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        padding: 0;
+        font-weight: 900;
+        margin-left: 2.5vw;
+    }
+    
+    .btn-minus {
+        background: $primaryColor;
+        color: $tertiaryColor;
+    }
+    
+    .btn-plus {
+        color: $primaryColor;
+        background: $tertiaryColor;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .item-quantity-selector {
+        span {
+            font-size: 1.5vw !important;
+        }
+
+        div button {
+            margin-left: 1vw;
+            cursor: pointer;
+            transition: .2s scale;
+
+            &:hover {
+                scale: 1.2;
+                box-shadow: 0 5px 10px #ddd;
+            }
+
+            &:active {
+                transition: .1s scale;
+                scale: 1.5;
+            }
+        }
+    }
+}

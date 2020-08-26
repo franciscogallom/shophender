@@ -1,0 +1,75 @@
+@import '../../../assets/colors.scss';
+
+.container-cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5vw;
+
+    .imgProduct {
+        width: 40vw;
+    }
+
+    div {
+        text-align: end;
+
+        > * {
+            margin: .75vw 0;
+        }
+
+        p {
+            font-size: 4vw;
+            padding: 0 .5em;
+            font-weight: bold;
+            background: $primaryColor;
+            color: $tertiaryColor;
+            font-style: italic;
+        }
+
+        span {
+            font-weight: bold;
+            font-size: 4vw;
+        }
+
+        img {
+            width: 7.5vw;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container-cart-item {
+        justify-content: space-around;
+
+        .imgProduct {
+            width: 20vw;
+        }
+
+        div {
+
+            > * {
+                margin: .5vw 0;
+            }
+
+            p {
+            font-size: 1.5em;
+            }
+
+            span {
+                font-size: 1.5em;
+            }
+
+            img {
+                width: 3vw;
+                cursor: pointer;
+                transition: .25s all;
+                
+                &:hover {
+                    border-radius: 50%;
+                    background: $fourthColor;
+                    scale: 1.075;
+                }
+            }
+        }
+    }
+}
