@@ -38,7 +38,11 @@ const CartItem = (props) => {
                 <p>{props.nameProduct} x {quantity}</p>
                 <span>${price}</span>
                 <ItemQuantitySelector quantity={quantity} onClickPlus={addQuantity} onClickMinus={subtractQuantity} />
-                <img src={deleteProduct} alt='Delete product.' />
+                <img 
+                    src={deleteProduct} 
+                    // onClick={props.deleteItem}
+                    alt='Delete product.' 
+                />
             </div>
         </article>
     )
