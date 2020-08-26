@@ -20,7 +20,8 @@ const CartItem = (props) => {
     const addQuantity = () => {
         if (quantity<25) { 
             setQuantity((prevQuantity) => prevQuantity + 1)
-            setPrice((prevPrice) => prevPrice + unitPrice)}
+            setPrice((prevPrice) => prevPrice + unitPrice)
+        }
     }
 
     const subtractQuantity = () => {

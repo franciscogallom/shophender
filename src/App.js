@@ -9,6 +9,8 @@ import Cart from "./components/Cart/Cart";
 import Footer from "./components/Footer/Footer";
 import NoMatch from "./components/NoMatch/NoMatch";
 
+import ItemDetail from "./components/ItemDetail/ItemDetail"; // LUEGO BORRAR
+
 function App() {
   return (
     <>
@@ -16,9 +18,15 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/products" component={Products} />
+          <Route exact path="/products" component={Products} />
           <Route path="/cart" component={Cart} />
+
+          {/* Ruta de prueba, BORRAR LUEGO. */}
+          <Route path="/products/men/coats/abc123" component={ItemDetail} />
+
           <Route path="/*" component={NoMatch} />
+
+
         </Switch>
       </Router>
       <Footer />

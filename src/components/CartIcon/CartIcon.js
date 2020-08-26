@@ -2,9 +2,14 @@ import React from 'react'
 
 import cartIcon from '../../assets/img/cart.svg'
 
-const CartIcon = () => {
+import './cartIcon.scss'
+
+const CartIcon = (props) => {
     return (
-        <img src={cartIcon} alt="Cart"/>
+        <div className='cart-icon'>
+            <img src={cartIcon} alt="Cart"/>
+            {(props.quantity > 0) && <span>{props.quantity}</span>}
+        </div>
     )
 }
 

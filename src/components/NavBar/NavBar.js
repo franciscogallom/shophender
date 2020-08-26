@@ -53,7 +53,7 @@ const NavBar = () => {
 
     return (
         // En los onClick, setOpenMenu() solo se tiene que ejecutar en version mobile y tablet.
-        // Para que no me queden abiertos dos o mas <TypeComponent/> a la vez, al hacer click en uno, cierro los otros dos, poniendo el state en false.
+        // Para que no me queden abiertos dos o mas <TypeProduct /> a la vez, al hacer click en uno, cierro los otros dos, poniendo el state en false.
 
         <nav className='navbar'>
             <ul>
@@ -134,7 +134,7 @@ const NavBar = () => {
                                 setOnlyOpenMenuFunction();
                                 CloseAllListCategories()}}
                     >
-                        <CartIcon />
+                        <CartIcon quantity={1} />
                     </NavLink>
                 </li>
 

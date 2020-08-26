@@ -1,0 +1,17 @@
+@import '../../assets/colors.scss';
+
+.cart-icon {
+    position: relative;
+
+    span {
+        position: absolute;
+        top: -25%;
+        right: -25%;
+        background: $tertiaryColor;
+        color: $primaryColor;
+        border-radius: 50%;
+        height: 1.5em;
+        width: 1.5em;
+        font-weight: bold;
+    }
+}
