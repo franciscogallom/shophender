@@ -10,6 +10,7 @@ const ListItem = (props) => {
         <section className='container-list-items'>
             <ItemList
                 imgProduct={props.imgProduct} 
+                imgProductH={props.imgProductH} 
                 nameProduct={props.nameProduct} 
                 priceProduct={props.priceProduct}
                 genderProduct={props.genderProduct}
@@ -17,6 +18,7 @@ const ListItem = (props) => {
             />
             <ItemList
                 imgProduct={props.imgProduct} 
+                imgProductH={props.imgProductH}
                 nameProduct={props.nameProduct} 
                 priceProduct={props.priceProduct}
                 genderProduct={props.genderProduct}
@@ -24,6 +26,7 @@ const ListItem = (props) => {
             />
             <ItemList
                 imgProduct={props.imgProduct} 
+                imgProductH={props.imgProductH}
                 nameProduct={props.nameProduct} 
                 priceProduct={props.priceProduct}
                 genderProduct={props.genderProduct}
@@ -31,6 +34,7 @@ const ListItem = (props) => {
             />
             <ItemList
                 imgProduct={props.imgProduct} 
+                imgProductH={props.imgProductH}
                 nameProduct={props.nameProduct} 
                 priceProduct={props.priceProduct}
                 genderProduct={props.genderProduct}

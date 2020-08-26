@@ -3,7 +3,7 @@ import React from 'react'
 import CartItem from './CartItem/CartItem'
 
 // IMAGEN DE PRUEBA. BORRAR DESPUES.
-import imgProduct from '../../assets/img/img-prueba-hombre.jpg'
+import imgProduct from '../../assets/img/h-buzo-1.jpg'
 
 const Cart = () => {
     // Tendría que recibir las caracterisitcas del producto por props.

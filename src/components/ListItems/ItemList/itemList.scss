@@ -46,12 +46,40 @@
             transition: .5s right;
         }
 
+        .container-img {
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            width: 250px;
+        }
+
+        .img-hover {
+            opacity: 0;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: .75s opacity;
+            height: 100%;
+            width: 100%;
+        }
+
         &:hover {
             box-shadow: 0 10px 10px #eee;
             transition: .5s box-shadow;
 
             &:before {
                 right: 0;
+            }
+
+            img {
+                opacity: 0;
+            }
+
+            .img-hover {
+                opacity: 1;
             }
         }
     }

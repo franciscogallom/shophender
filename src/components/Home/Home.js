@@ -6,9 +6,12 @@ import ListItems from '../ListItems/ListItems'
 import './home.scss'
 
 // DELETE
-import imgPruebaHombre from '../../assets/img/img-prueba-hombre.jpg'
-import imgPruebaMujer from '../../assets/img/img-prueba-mujer.webp'
-import imgPrueba from '../../assets/img/img-prueba.webp'
+import imgPruebaHombre from '../../assets/img/h-buzo-1.jpg'
+import imgPruebaHombreH from '../../assets/img/h-buzo-1-h.png'
+import imgPruebaMujer from '../../assets/img/m-buzo-1.webp'
+import imgPruebaMujerH from '../../assets/img/m-buzo-1-h.webp'
+import imgPrueba from '../../assets/img/m-zap-1.webp'
+import imgPruebaH from '../../assets/img/m-zap-1-h.webp'
 // DELETE
 
 const Home = () => {
@@ -22,6 +25,7 @@ const Home = () => {
             
             <ListItems 
                 imgProduct={imgPrueba} 
+                imgProductH={imgPruebaH} 
                 nameProduct='Zapatillas Nike Air Zoom' 
                 priceProduct='10480' 
                 genderProduct='women'
@@ -37,6 +41,7 @@ const Home = () => {
 
             <ListItems 
                 imgProduct={imgPruebaHombre} 
+                imgProductH={imgPruebaHombreH} 
                 nameProduct='Buzo Nike HR40' 
                 priceProduct='5670' 
                 genderProduct='men'
@@ -52,6 +57,7 @@ const Home = () => {
 
             <ListItems 
                 imgProduct={imgPruebaMujer} 
+                imgProductH={imgPruebaMujerH} 
                 nameProduct='Buzo Top Adidas' 
                 priceProduct='4950'
                 genderProduct='women'
