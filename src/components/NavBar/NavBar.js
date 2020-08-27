@@ -7,7 +7,7 @@ import "./navbar.scss";
 import menuIcon from '../../assets/img/menu.svg'
 
 import CartIcon from '../CartIcon/CartIcon'
-import TypeProduct from "./TypeProduct";
+import TypeProduct from "../TypeProduct/TypeProduct";
 
 const NavBar = () => {
 

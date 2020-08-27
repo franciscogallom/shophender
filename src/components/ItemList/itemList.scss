@@ -1,4 +1,4 @@
-@import '../../../assets/colors.scss';
+@import '../../assets/colors.scss';
 
 .item-list {
     padding: 5px;
@@ -8,6 +8,10 @@
 
     img {
         width: 75%;
+    }
+
+    .img-hover {
+        display: none;
     }
 
     p, span {
@@ -54,6 +58,7 @@
         }
 
         .img-hover {
+            display: initial;
             opacity: 0;
         }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ItemList from './ItemList/ItemList'
+import ItemList from '../ItemList/ItemList'
 
 import'./listItems.scss';
 

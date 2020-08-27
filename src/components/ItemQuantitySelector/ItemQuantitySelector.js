@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import './itemQuantitySelector.scss'
 
 // Importo Context para manejar la cantidad de items en el carrito.
-import ItemsQuantityContext from '../../../../context/ItemsQuantityProvider'
+import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
 
 const ItemQuantitySelector = (props) => {
 
@@ -25,15 +25,16 @@ const ItemQuantitySelector = (props) => {
         <div className='item-quantity-selector'>
             <span>Cantidad</span>
             <div>
+                
                 <button 
                     className='btn-minus' 
-                    onClick={setItemsSubtractQuantityFunction} 
+                    onClick={props.quantity>1 ? setItemsSubtractQuantityFunction : undefined} 
                 >-
                 </button>
                 
                 <button 
                     className='btn-plus' 
-                    onClick={setItemsAddQuantityFunction} 
+                    onClick={props.quantity<25 ? setItemsAddQuantityFunction : undefined} 
                 >+
                 </button>
 

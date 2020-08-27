@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import ItemQuantitySelector from './ItemQuantitySelector/ItemQuantitySelector'
+import ItemQuantitySelector from '../ItemQuantitySelector/ItemQuantitySelector'
 
-import deleteProduct from '../../../assets/img/cart-delete.svg'
+import deleteProduct from '../../assets/img/cart-delete.svg'
 
 import './cartItem.scss'
 

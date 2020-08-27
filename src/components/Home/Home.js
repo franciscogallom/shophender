@@ -1,6 +1,6 @@
 import React from 'react'
 
-import HomeBanner from './HomeBanner'
+import HomeBanner from '../HomeBanner/HomeBanner'
 import ListItems from '../ListItems/ListItems'
 
 import './home.scss'
