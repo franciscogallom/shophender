@@ -25,12 +25,6 @@ const Cart = () => {
                 priceProduct: 5675,
                 key: 2
             },
-            {
-                nameProduct: 'Buzo Nike HR40', 
-                imgProduct: imgProduct, 
-                priceProduct: 5675,
-                key: 3
-            },
         ]
 
         // IMPLEMENTAR deleteItem
