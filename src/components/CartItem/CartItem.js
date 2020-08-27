@@ -8,10 +8,10 @@ import './cartItem.scss'
 
 const CartItem = (props) => {
     
-    // Estado para manejar la cantidad de items.
+    // Estado para manejar la cantidad de un producto.
     const [quantity, setQuantity] = useState(1)
 
-    // Estado para manejar el valor total.
+    // Estado para manejar el valor total de un producto.
     const[price, setPrice] = useState(props.priceProduct)
 
     // Precio por unidad
