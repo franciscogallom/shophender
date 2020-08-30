@@ -13,27 +13,30 @@ import ItemDetail from "./components/ItemDetail/ItemDetail"; // LUEGO BORRAR
 
 // Importo el Context
 import { ItemsQuantityContext } from './context/ItemsQuantityProvider'
+import { PopUpCartContext } from './context/PopUpCartProvider'
 
 function App() {
 
   return (
     <>
       <ItemsQuantityContext>
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/products" component={Products} /> {/*SACAR EXACT*/}
-            <Route path="/cart" component={Cart} />
+        <PopUpCartContext>
+          <Router>
+            <NavBar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/products" component={Products} /> {/*SACAR EXACT*/}
+              <Route path="/cart" component={Cart} />
 
-            {/* Ruta de prueba, BORRAR LUEGO. */}
-            <Route path="/products/men/coats/abc123" component={ItemDetail} />
+              {/* Ruta de prueba, BORRAR LUEGO. */}
+              <Route path="/products/men/coats/abc123" component={ItemDetail} />
 
-            <Route path="/*" component={NoMatch} />
+              <Route path="/*" component={NoMatch} />
 
 
-          </Switch>
-        </Router>
+            </Switch>
+          </Router>
+        </PopUpCartContext>
       </ItemsQuantityContext>
       <Footer />
     </>

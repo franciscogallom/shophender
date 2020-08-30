@@ -5,18 +5,18 @@ import cartIcon from '../../assets/img/cart.svg'
 import './cartIcon.scss'
 
 // Importo el Context
-import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
+import PopUpCartContext from '../../context/PopUpCartProvider'
 
 const CartIcon = (props) => {
 
-    const contextItems = useContext(ItemsQuantityContext)
+    const contextPopUp = useContext(PopUpCartContext)
 
-    const {itemsQuantity} = contextItems
+    const {popUpCart} = contextPopUp
 
     return (
         <div className='cart-icon'>
             <img src={cartIcon} alt="Cart"/>
-            {(itemsQuantity > 0) && <span>{itemsQuantity}</span>}
+            {(popUpCart > 0) && <span>{popUpCart}</span>}
         </div>
     )
 }

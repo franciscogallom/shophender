@@ -4,11 +4,11 @@ const Context = React.createContext({})
 
 export function ItemsQuantityContext ({children}) {
 
-    const [itemsQuantity, setItemsQuantity] = useState(0)
+    const [itemsQuantity, setItemsQuantity] = useState([])
 
-    return <Context.Provider value={{itemsQuantity, setItemsQuantity}}>
-        {children}
-    </Context.Provider>
+    return  <Context.Provider value={{itemsQuantity, setItemsQuantity}}>
+                {children}
+            </Context.Provider>
 
 }
 

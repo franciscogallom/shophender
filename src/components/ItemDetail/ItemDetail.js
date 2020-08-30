@@ -6,6 +6,7 @@ import addToCart from '../../assets/img/cart-add.svg'
 
 // Importo Context para manejar el carrito
 import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
+import PopUpCartContext from '../../context/PopUpCartProvider'
 
 // Enviar datos por props!!!! props.imgProduct props.nameProduct rops.detailProduct
 
@@ -13,10 +14,26 @@ const ItemDetail = (props) => {
 
     const contextItems = useContext(ItemsQuantityContext)
 
-    const {setItemsQuantity} = contextItems
+    const {itemsQuantity, setItemsQuantity} = contextItems
 
-    const setItemsQuantityFunction = () => setItemsQuantity((prevQuantity) => prevQuantity = prevQuantity + 1)
-    
+    //.------------------------------------------------
+
+    const contextPopUp = useContext(PopUpCartContext)
+
+    const {setPopUpCart} = contextPopUp
+
+    // -----------------------------------------------
+
+    const setItemsQuantityFunction = () => {
+        setItemsQuantity([...itemsQuantity, {
+            nameProduct: 'ItemDetail', 
+            imgProduct: 'imagen', 
+            priceProduct: 5675,
+            key: 123
+        }])
+        setPopUpCart((prevPopUp) => prevPopUp + 1)
+    }
+
     return (
         <section className='container-item-detail margin-t'>
             <img src={require('../../assets/img/h-buzo-1.jpg')} alt={props.nameProduct} />
