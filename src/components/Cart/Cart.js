@@ -6,15 +6,19 @@ import CartItem from '../CartItem/CartItem'
 import NoMatch from '../NoMatch/NoMatch'
 import TotalToPay from '../TotalToPay/TotalToPay'
 
-// Importo Context para manejar la cantidad de items en el carrito.
+// Context para manejar el array de productos del carrito.
 import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
 
 const Cart = () => {
-    // Las keys de cada item tiene que ser el ID del producto
 
     const contextItems = useContext(ItemsQuantityContext)
 
-    const { itemsQuantity } = contextItems
+    const { itemsQuantity, setItemsQuantity } = contextItems
+
+    // Recibe un ID  de CartItem y elimina el producto correspondiente.
+    const deleteItem = (id) => {
+        setItemsQuantity((prevItems) => prevItems.filter(item => item.id !== id))
+    }
 
     return (
             <section className='cart-container margin-t'>
@@ -32,6 +36,8 @@ const Cart = () => {
                                                 imgProduct= {item.imgProduct} 
                                                 priceProduct= {item.priceProduct} 
                                                 key= {item.key}
+                                                id= {item.key}
+                                                deleteItem={deleteItem}
                                             />
                                             )
                                         })

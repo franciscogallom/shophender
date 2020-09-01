@@ -4,7 +4,7 @@ import cartIcon from '../../assets/img/cart.svg'
 
 import './cartIcon.scss'
 
-// Importo el Context
+// Context para mostrar el pop up en el carrito con la cantidad de productos.
 import PopUpCartContext from '../../context/PopUpCartProvider'
 
 const CartIcon = (props) => {

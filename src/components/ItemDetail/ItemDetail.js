@@ -4,7 +4,7 @@ import './itemDetail.scss'
 
 import addToCart from '../../assets/img/cart-add.svg'
 
-// Importo Context para manejar el carrito
+// Contexts
 import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
 import PopUpCartContext from '../../context/PopUpCartProvider'
 
@@ -16,20 +16,17 @@ const ItemDetail = (props) => {
 
     const {itemsQuantity, setItemsQuantity} = contextItems
 
-    //.------------------------------------------------
-
     const contextPopUp = useContext(PopUpCartContext)
 
     const {setPopUpCart} = contextPopUp
-
-    // -----------------------------------------------
 
     const setItemsQuantityFunction = () => {
         setItemsQuantity([...itemsQuantity, {
             nameProduct: 'ItemDetail', 
             imgProduct: 'imagen', 
             priceProduct: 5675,
-            key: 123
+            key: 123,
+            id: 123
         }])
         setPopUpCart((prevPopUp) => prevPopUp + 1)
     }

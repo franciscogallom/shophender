@@ -2,11 +2,11 @@ import React, { useState, useContext } from 'react'
 
 import ItemQuantitySelector from '../ItemQuantitySelector/ItemQuantitySelector'
 
-import deleteProduct from '../../assets/img/cart-delete.svg'
+import deleteProductIcon from '../../assets/img/cart-delete.svg'
 
 import './cartItem.scss'
 
-import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
+// Context para el pop up del carrito.
 import PopUpCartContext from '../../context/PopUpCartProvider'
 
 const CartItem = (props) => {
@@ -34,19 +34,16 @@ const CartItem = (props) => {
         }
     }
 
-    // ------------------
-
-    const contextItems = useContext(ItemsQuantityContext)
-
-    const { setItemsQuantity } = contextItems
+    // Handler para borrar productos del Cart
 
     const contextPopUp = useContext(PopUpCartContext)
 
     const {setPopUpCart} = contextPopUp
 
-    const deleteItem = () => { // IMPLEMENTADO ASI ME BORRA TODOS.
-        setItemsQuantity((prevItems) => prevItems.filter(item => item.nameProduct =! props.nameProduct))
-        setPopUpCart((prevPopUp) => prevPopUp - quantity) // Descuento del popUp la cantidad de items que se habían seleccionado del producto.
+    const onClickDelete = () => {
+        props.deleteItem(props.id)
+        // Descuento del popUp la cantidad de items que se habían seleccionado del producto.
+        setPopUpCart((prevPopUp) => prevPopUp - quantity)
     }
 
     return (
@@ -61,8 +58,8 @@ const CartItem = (props) => {
                     onClickMinus={subtractQuantity} 
                 />
                 <img 
-                    src={deleteProduct} 
-                    onClick={deleteItem}
+                    src={deleteProductIcon} 
+                    onClick={onClickDelete}
                     alt='Delete' 
                 />
             </div>
