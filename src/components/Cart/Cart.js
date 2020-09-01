@@ -32,17 +32,17 @@ const Cart = () => {
                                     itemsQuantity.map(item => {
                                         return (
                                             <CartItem 
-                                                nameProduct= {item.nameProduct} 
-                                                imgProduct= {item.imgProduct} 
-                                                priceProduct= {item.priceProduct} 
-                                                key= {item.key}
-                                                id= {item.key}
-                                                deleteItem={deleteItem}
+                                                nameProduct = {item.nameProduct} 
+                                                imgProduct = {item.imgProduct} 
+                                                priceProduct = {item.priceProduct} 
+                                                key = {item.key}
+                                                id = {item.key}
+                                                deleteItem = {deleteItem}
                                             />
                                             )
                                         })
                                 }
-                            <TotalToPay />
+                                <TotalToPay />
                             </section>
 
                         :

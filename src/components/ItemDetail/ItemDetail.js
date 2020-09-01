@@ -14,14 +14,14 @@ const ItemDetail = (props) => {
 
     const contextItems = useContext(ItemsQuantityContext)
 
-    const {itemsQuantity, setItemsQuantity} = contextItems
+    const { setItemsQuantity } = contextItems
 
     const contextPopUp = useContext(PopUpCartContext)
 
     const {setPopUpCart} = contextPopUp
 
     const setItemsQuantityFunction = () => {
-        setItemsQuantity([...itemsQuantity, {
+        setItemsQuantity((prevItems) => [...prevItems, {
             nameProduct: 'ItemDetail', 
             imgProduct: 'imagen', 
             priceProduct: 5675,
