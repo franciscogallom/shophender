@@ -6,6 +6,7 @@ import'./listItems.scss';
 
 const ListItem = (props) => {
 
+    // DELETE
     const itemListArray = 
         [
             {
@@ -45,6 +46,7 @@ const ListItem = (props) => {
                 key: 400
             },
         ]
+    // DELETE
 
     return (
         <section className='container-list-items'>

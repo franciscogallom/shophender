@@ -134,7 +134,7 @@ const NavBar = () => {
                                 setOnlyOpenMenuFunction();
                                 CloseAllListCategories()}}
                     >
-                        <CartIcon quantity={1} />
+                        <CartIcon />
                     </NavLink>
                 </li>
 

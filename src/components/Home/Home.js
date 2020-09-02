@@ -20,8 +20,6 @@ const Home = () => {
             <header>
                 <h1>shophender</h1>
             </header>
-
-            {/* Cambio los backgrounds y las posiciones con las distintas clases que paso por las props  */}
             
             <ListItems 
                 imgProduct={imgPrueba} 

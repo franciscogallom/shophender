@@ -2,13 +2,11 @@ import React, { useContext } from 'react'
 
 import './itemQuantitySelector.scss'
 
-// Context para manejar el pop up del carrito con la cantidad de productos seleccionados.
 import PopUpCartContext from '../../context/PopUpCartProvider'
 
 const ItemQuantitySelector = (props) => {
 
     const contextPopUp = useContext(PopUpCartContext)
-
     const {setPopUpCart} = contextPopUp
 
     const setItemsAddQuantityFunction = () => {
@@ -25,19 +23,16 @@ const ItemQuantitySelector = (props) => {
         <div className='item-quantity-selector'>
             <span>Cantidad</span>
             <div>
-                
                 <button 
                     className='btn-minus' 
                     onClick={props.quantity > 1 ? setItemsSubtractQuantityFunction : undefined} 
                 >-
                 </button>
-                
                 <button 
                     className='btn-plus' 
                     onClick={props.quantity < 25 ? setItemsAddQuantityFunction : undefined} 
                 >+
                 </button>
-
             </div>
         </div>
     )

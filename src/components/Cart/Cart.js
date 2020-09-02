@@ -6,13 +6,11 @@ import CartItem from '../CartItem/CartItem'
 import NoMatch from '../NoMatch/NoMatch'
 import TotalToPay from '../TotalToPay/TotalToPay'
 
-// Context para manejar el array de productos del carrito.
 import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
 
 const Cart = () => {
 
     const contextItems = useContext(ItemsQuantityContext)
-
     const { itemsQuantity, setItemsQuantity } = contextItems
 
     // Recibe un ID  de CartItem y elimina el producto correspondiente.
@@ -23,7 +21,7 @@ const Cart = () => {
     return (
             <section className='cart-container margin-t'>
                 {
-                    itemsQuantity
+                    itemsQuantity[0]
                         ?
                         
                             <section>
@@ -46,9 +44,7 @@ const Cart = () => {
                                 }
                                 <TotalToPay />
                             </section>
-
                         :
-                        
                             <NoMatch text='Aún no has agregado productos al carrito, ¿que esperas?' />
                 }
             </section>

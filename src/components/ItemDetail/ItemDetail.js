@@ -4,24 +4,26 @@ import './itemDetail.scss'
 
 import addToCart from '../../assets/img/cart-add.svg'
 
-// Contexts
 import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
 import PopUpCartContext from '../../context/PopUpCartProvider'
+import TotalToPayContext from '../../context/TotalToPayProvider'
 
-// Enviar datos por props!!!! props.imgProduct props.nameProduct rops.detailProduct
+// ENVIAR DATOS POR PROPS! (props.imgProduct, props.nameProduct, props.priceProduct).
 
 const ItemDetail = (props) => {
 
     const contextItems = useContext(ItemsQuantityContext)
-
     const { setItemsQuantity } = contextItems
 
     const contextPopUp = useContext(PopUpCartContext)
+    const { setPopUpCart } = contextPopUp
 
-    const {setPopUpCart} = contextPopUp
+    const contextTotalToPay = useContext(TotalToPayContext)
+    const { setTotalToPay } = contextTotalToPay
 
     const setItemsQuantityFunction = () => {
         setItemsQuantity((prevItems) => [...prevItems, {
+            // Cuando utilice props, cambiar datos estaticos por props.
             nameProduct: 'ItemDetail', 
             imgProduct: 'imagen', 
             priceProduct: 5675,
@@ -30,10 +32,12 @@ const ItemDetail = (props) => {
             quantity: 1
         }])
         setPopUpCart((prevPopUp) => prevPopUp + 1)
+        setTotalToPay((prevTotal) => prevTotal + 5675) // Cuando utilice props, cambiar 5675 por props.priceProduct
     }
 
     return (
         <section className='container-item-detail margin-t'>
+            {/* Cuando utilice props, cambiar datos estaticos por props.*/}
             <img src={require('../../assets/img/h-buzo-1.jpg')} alt={props.nameProduct} />
             <div>
                 <h1>Buzo Nike HR40</h1>
