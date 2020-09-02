@@ -28,13 +28,13 @@ const ItemQuantitySelector = (props) => {
                 
                 <button 
                     className='btn-minus' 
-                    onClick={props.quantity>1 ? setItemsSubtractQuantityFunction : undefined} 
+                    onClick={props.quantity > 1 ? setItemsSubtractQuantityFunction : undefined} 
                 >-
                 </button>
                 
                 <button 
                     className='btn-plus' 
-                    onClick={props.quantity<25 ? setItemsAddQuantityFunction : undefined} 
+                    onClick={props.quantity < 25 ? setItemsAddQuantityFunction : undefined} 
                 >+
                 </button>
 

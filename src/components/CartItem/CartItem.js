@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 
 import ItemQuantitySelector from '../ItemQuantitySelector/ItemQuantitySelector'
 
@@ -8,52 +8,53 @@ import './cartItem.scss'
 
 // Context para el pop up del carrito.
 import PopUpCartContext from '../../context/PopUpCartProvider'
+import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
 
-const CartItem = (props) => {
-    
-    // Estado para manejar la cantidad de un producto.
-    const [quantity, setQuantity] = useState(1)
-
-    // Estado para manejar el valor total de un producto.
-    const[price, setPrice] = useState(props.priceProduct)
+const CartItem = ({ nameProduct, imgProduct, priceProduct, key, id, quantity, index, deleteItem }) => {
 
     // Precio por unidad
-    const unitPrice = props.priceProduct
+    const unitPrice = priceProduct
+
+    const contextItems = useContext(ItemsQuantityContext)
+    
+    const {itemsQuantity, setItemsQuantity} = contextItems
 
     const addQuantity = () => {
-        if (quantity<25) { 
-            setQuantity((prevQuantity) => prevQuantity + 1)
-            setPrice((prevPrice) => prevPrice + unitPrice)
+        if (itemsQuantity[index].quantity < 25) {
+            const temporal = itemsQuantity
+            temporal[index].quantity = temporal[index].quantity + 1 
+            temporal[index].priceProduct = temporal[index].priceProduct + unitPrice 
+            setItemsQuantity(temporal)
         }
     }
 
     const subtractQuantity = () => {
-        if (quantity>1) { 
-            setQuantity((prevQuantity) => prevQuantity - 1)
-            setPrice((prevPrice) => prevPrice - unitPrice)
+        if (itemsQuantity[index].quantity > 1) {
+            const temporal = itemsQuantity
+            temporal[index].quantity = temporal[index].quantity - 1 
+            temporal[index].priceProduct = temporal[index].priceProduct - unitPrice 
+            setItemsQuantity(temporal)
         }
     }
 
     // Handler para borrar productos del Cart
-
     const contextPopUp = useContext(PopUpCartContext)
-
     const {setPopUpCart} = contextPopUp
 
     const onClickDelete = () => {
-        props.deleteItem(props.id)
+        deleteItem(id)
         // Descuento del popUp la cantidad de items que se habían seleccionado del producto.
-        setPopUpCart((prevPopUp) => prevPopUp - quantity)
+        setPopUpCart((prevPopUp) => prevPopUp - itemsQuantity[index].quantity)
     }
 
     return (
         <article className='container-cart-item'>
-            <img className='imgProduct' src={props.imgProduct} alt={props.nameProduct}/>
+            <img className='imgProduct' src={imgProduct} alt={nameProduct}/>
             <div>
-                <p>{props.nameProduct} x {quantity}</p>
-                <span>${price}</span>
+                <p>{nameProduct} x {itemsQuantity[index].quantity}</p>
+                <span>${itemsQuantity[index].priceProduct}</span>
                 <ItemQuantitySelector 
-                    quantity={quantity} 
+                    quantity={itemsQuantity[index].quantity} 
                     onClickPlus={addQuantity} 
                     onClickMinus={subtractQuantity} 
                 />

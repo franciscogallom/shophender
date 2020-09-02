@@ -23,13 +23,13 @@ const Cart = () => {
     return (
             <section className='cart-container margin-t'>
                 {
-                    itemsQuantity[0] 
+                    itemsQuantity
                         ?
                         
                             <section>
                                 <h1>CARRITO</h1>
                                 {
-                                    itemsQuantity.map(item => {
+                                    itemsQuantity.map((item, index) => {
                                         return (
                                             <CartItem 
                                                 nameProduct = {item.nameProduct} 
@@ -37,6 +37,8 @@ const Cart = () => {
                                                 priceProduct = {item.priceProduct} 
                                                 key = {item.key}
                                                 id = {item.key}
+                                                quantity = {item.quantity}
+                                                index = {index}
                                                 deleteItem = {deleteItem}
                                             />
                                             )

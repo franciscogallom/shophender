@@ -26,7 +26,8 @@ const ItemDetail = (props) => {
             imgProduct: 'imagen', 
             priceProduct: 5675,
             key: 123,
-            id: 123
+            id: 123,
+            quantity: 1
         }])
         setPopUpCart((prevPopUp) => prevPopUp + 1)
     }
