@@ -14,7 +14,7 @@
         align-items: center;
         color: $secondaryColor;
         list-style: none;
-        padding: 1.25em;
+        padding: 1em;
         
         li {
 
@@ -22,22 +22,15 @@
             color: $secondaryColor;
             text-decoration: none;
 
-                h1 { // shophender
-                    font-family: 'Pacifico', cursive;
-                    background-color: $secondaryColor;
-                    color: $primaryColor;
-                    padding: 0 20px;
-                    font-weight: lighter;
-                    clip-path: polygon(100% 0, 80% 100%, 0 100%, 20% 0);
+                .shophender {
+                    width: 35vw;
                 }
             }
         }
     }
 
     img {
-        height: 2em;
-        width: 2em;
-        cursor: pointer;
+        width: 8.5vw;
     }
 
     .products-gender {
@@ -65,40 +58,28 @@
 
 @media screen and (min-width: 1024px) {
     .navbar {
-        height: 100px;
+        height: 90px;
 
-        .shophender {
-            position: fixed;
-            background: none;
-            color: $secondaryColor;
-            font-size: 2em;
-            padding: 20px;
-            width: 450px;
-            top: 0;
-            right: 2vw;
-            text-shadow:0 0 10px $secondaryColor,
-                        0 0 40px $secondaryColor,
-                        0 0 80px $secondaryColor,
-                        0 0 20px $secondaryColor,
-                        0 0 120px$secondaryColor;
+        ul li a .shophender {
+            width: 12.5vw;
+            position: absolute;
+            top: 15px;
+            right: 200px;
+            transition: .5s scale;
 
-                &:hover {
-                    transition: .5s text-shadow;
-                    text-shadow:    0 0 10px $tertiaryColor,
-                                    0 0 40px $tertiaryColor,
-                                    0 0 80px $tertiaryColor,
-                                    0 0 20px $tertiaryColor,
-                                    0 0 120px $tertiaryColor;
-                }
+            &:hover {
+                scale: 1.1;
             }
+        }
+
+        img {
+            cursor: pointer;
+            width: 2.5vw;
+        }
     }
 
     .menu-icon-img {
         display: none;
-    }
-
-    .cart-icon-img {
-        padding-right: 1.5em;
     }
 
     .navbar .products-gender {

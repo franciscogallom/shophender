@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import "./navbar.scss";
 
 import menuIcon from '../../assets/img/menu.svg'
+import shophenderNav from '../../assets/img/shophender-nav.png'
 
 import CartIcon from '../CartIcon/CartIcon'
 import TypeProduct from "../TypeProduct/TypeProduct";
@@ -121,14 +122,13 @@ const NavBar = () => {
                                 setOnlyOpenMenuFunction();
                                 CloseAllListCategories()}}
                     >
-                        <h1 className='shophender'>shophender</h1>
+                        <img className='shophender' src={shophenderNav} alt="shophender"/>
                     </NavLink>
                 </li>
 
                 <li>
                     <NavLink 
                         to="/cart"
-                        className='cart-icon-img' 
                         // No puede abrir el menu, pero si cerrarlo.
                         onClick={() => {isMobileOrTablet && 
                                 setOnlyOpenMenuFunction();
