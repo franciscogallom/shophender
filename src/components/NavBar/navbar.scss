@@ -65,10 +65,12 @@
             position: absolute;
             top: 15px;
             right: 200px;
-            transition: .5s scale;
+            transition: .5s scale, .5s filter;
+            filter: grayscale(20%);
 
             &:hover {
                 scale: 1.1;
+                filter: grayscale(0);
             }
         }
 
