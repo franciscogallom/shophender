@@ -17,10 +17,12 @@
         padding: 1em;
         
         li {
+            letter-spacing: 10px;
 
             a {
-            color: $secondaryColor;
-            text-decoration: none;
+                letter-spacing: initial;
+                color: $secondaryColor;
+                text-decoration: none;
 
                 .shophender {
                     width: 35vw;
@@ -58,10 +60,9 @@
 
 @media screen and (min-width: 1024px) {
     .navbar {
-        height: 90px;
 
         ul li a .shophender {
-            width: 12.5vw;
+            width: 10vw;
             position: absolute;
             top: 15px;
             right: 200px;
