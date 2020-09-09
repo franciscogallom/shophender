@@ -60,18 +60,13 @@ const ListItem = (props) => {
         <section className='container-list-items'>
             {
                 itemListArray.map(item => {
-                        return (
-                            <ItemList 
-                                imgProduct= {item.imgProduct} 
-                                imgProductH= {item.imgProductH} 
-                                nameProduct= {item.nameProduct}
-                                priceProduct= {item.priceProduct}
-                                genderProduct= {item.genderProduct}
-                                categoryProduct= {item.categoryProduct}
-                                key= {item.key}
-                            />
-                        )
-                    })
+                    return (
+                        <ItemList 
+                            product = {item}
+                            key = {item.key}
+                        />
+                    )
+                })
             }
         </section>
     )

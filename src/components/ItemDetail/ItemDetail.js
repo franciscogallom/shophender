@@ -21,6 +21,7 @@ const ItemDetail = (props) => {
     const contextTotalToPay = useContext(TotalToPayContext)
     const { setTotalToPay } = contextTotalToPay
 
+    // Agrego un producto al carrito, actualizo el pop up del Cart y la cantidad a pagar.
     const setItemsQuantityFunction = () => {
         setItemsQuantity((prevItems) => [...prevItems, {
             // Cuando utilice props, cambiar datos estaticos por props.

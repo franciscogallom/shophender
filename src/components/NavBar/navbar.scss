@@ -60,12 +60,12 @@
 
 @media screen and (min-width: 1024px) {
     .navbar {
-
+        
         ul li a .shophender {
-            width: 10vw;
+            width: 9em;
             position: absolute;
             top: 15px;
-            right: 200px;
+            right: 150px;
             transition: .5s scale, .5s filter;
             filter: grayscale(20%);
 
@@ -77,7 +77,7 @@
 
         img {
             cursor: pointer;
-            width: 2.5vw;
+            width: 2em;
         }
     }
 
