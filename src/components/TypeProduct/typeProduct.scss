@@ -19,14 +19,16 @@ ul .container-type-product {
 
 @media screen and (min-width: 1024px) {
     ul .container-type-product {
-        border-radius: 10px;
-        font-size: 1em;
-        letter-spacing: 0;
-        width: 68%;
-        top: 75px;
+        background: linear-gradient($primaryColor, transparent);
+        border-radius: 0;
+        font-size: .85em;
+        top: 50px;
         height: 200px;
         flex-direction: row;
-        justify-content: start;
-        padding-left: 2.75vw;
+        padding-left: 3em;
+
+        li a {
+            letter-spacing: .25em;
+        }
     }
 }
