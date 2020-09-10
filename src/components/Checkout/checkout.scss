@@ -1,0 +1,74 @@
+@import '../../assets/colors.scss';
+
+.checkout {
+    text-align: center;
+    margin-bottom: 3em;
+
+    h1 {
+        border-bottom: 1px solid #eee;
+        letter-spacing: 1em;
+        font-style: italic;
+        padding: 2.5vh;
+    }
+
+    article {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: bold;
+        border-bottom: 1px solid #eee;
+        padding: 2em;
+
+        span {
+            color: $tertiaryColor;
+            background: $primaryColor;
+        }
+    }
+
+    .checkout-total {
+        margin: 2em;
+        padding: .5em;
+        font-weight: 800;
+        color: $tertiaryColor;
+        background: $primaryColor;
+        clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
+    }
+}
+
+@media screen and (min-width: 1023px){
+    .checkout {
+        position: relative;
+        overflow: hidden;
+
+        &::before{
+            content: 'CHECKOUT';
+            position: absolute;
+            top: -125px;
+            left: 0;
+            right: 0;
+            font-size: 15em;
+            font-weight: 900;
+            font-style: italic;
+            opacity: .025;
+            width: 100vw;
+        }
+
+        .checkout-total {
+            clip-path: none;
+            background: none;
+            margin: 0;
+            position: absolute;
+            right: 0;
+            bottom: 2.5em;
+            width: 60%;
+            font-size: 5em;
+            font-style: italic;
+            font-weight: 900;
+            line-height: .75em;
+            text-align: end;
+            background: -webkit-linear-gradient($secondaryColor,$tertiaryColor);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}

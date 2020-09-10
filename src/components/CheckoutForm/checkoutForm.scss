@@ -1,0 +1,24 @@
+@import '../../assets/colors.scss';
+
+.checkout-form {
+    margin-bottom: 1em;
+    
+    input {
+        width: 90%;
+        padding: .75em;
+        margin: .6em;
+        font-weight: bold;
+        border: 1px solid $tertiaryColor;
+    }
+}
+
+@media screen and (min-width: 1023px){
+    .checkout-form {
+        margin: 4em 2em;
+        
+        input {
+            width: 40%;
+            display: block;
+        }
+    }
+}
