@@ -1,0 +1,60 @@
+@import '../../assets/colors.scss';
+
+.btn-cta {
+    background: transparent;
+    width: 90%;
+    border: none;
+    border-radius: 5px;
+    padding: 2vw;
+    letter-spacing: .75em;
+    margin-top: 2vh;
+    transition: 1s background-color;
+    animation: beat infinite 2s;
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 900;
+        text-decoration: none;
+        color: $primaryColor;
+
+        img {
+            margin-left: 1em;
+            width: 2em;
+        }
+    }
+}
+
+@keyframes beat {
+    0% {
+        scale: 1;
+    }
+    
+    50% {
+        scale: 1.05;
+        box-shadow: 0 0 10px $tertiaryColor;
+        background-color: $tertiaryColor;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .btn-cta {
+        width: 80%;
+        transition: .5s background-color;
+        cursor: pointer;           
+        
+        a {
+            font-size: 1.5em;
+            letter-spacing: 2em;
+        }
+        
+        &:hover {
+            background-color: $tertiaryColor;
+        }
+    }
+}
