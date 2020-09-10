@@ -4,7 +4,7 @@ import './totalToPay.scss'
 
 import payImg from '../../assets/img/pay.png'
 
-import { Link } from 'react-router-dom'
+import ButtonCallToAction from '../ButtonCallToAction/ButtonCallToAction'
 
 import TotalToPayContext from '../../context/TotalToPayProvider'
 
@@ -16,9 +16,7 @@ const TotalToPay = () => {
     return (
         <div className='total-to-pay'>
             <p>TOTAL A PAGAR: <span>${totalToPay}</span></p>
-            <button>
-                <Link to='/'>REALIZAR COMPRA <img src={payImg} alt="Pay"/></Link>
-            </button>
+            <ButtonCallToAction text='REALIZAR COMPRA ' imgBtn={payImg} alt="Realizar compra." />
         </div>
     )
 }

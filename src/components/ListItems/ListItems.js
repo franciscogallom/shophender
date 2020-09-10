@@ -51,7 +51,7 @@ const ListItem = (props) => {
                         }
                     ]
                 )
-        }, 2000)
+        }, 500)
     })
 
     getItemListArray.then((res) => setItemsListArray(res))

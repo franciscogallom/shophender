@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
+import Checkout from "./components/Checkout/Checkout";
 import Footer from "./components/Footer/Footer";
 import NoMatch from "./components/NoMatch/NoMatch";
 
@@ -28,6 +29,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/products" component={Products} /> {/*SACAR EXACT*/}
                 <Route path="/cart" component={Cart} />
+                <Route path="/checkout" component={Checkout} />
 
                 {/* Ruta de prueba, BORRAR LUEGO. */}
                 <Route path="/products/men/coats/abc123" component={ItemDetail} />
