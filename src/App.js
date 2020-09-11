@@ -27,16 +27,11 @@ function App() {
               <NavBar />
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/products" component={Products} /> {/*SACAR EXACT*/}
+                <Route exact path="/products" component={Products} />
+                <Route path="/products/:sex/:category/:id" component={ItemDetail} />
                 <Route path="/cart" component={Cart} />
                 <Route path="/checkout" component={Checkout} />
-
-                {/* Ruta de prueba, BORRAR LUEGO. */}
-                <Route path="/products/men/coats/abc123" component={ItemDetail} />
-
                 <Route path="/*" component={NoMatch} />
-
-
               </Switch>
             </Router>
           </TotalToPayContext>
