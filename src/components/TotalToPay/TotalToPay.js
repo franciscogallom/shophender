@@ -16,7 +16,12 @@ const TotalToPay = () => {
     return (
         <div className='total-to-pay'>
             <p>TOTAL A PAGAR: <span>${totalToPay}</span></p>
-            <ButtonCallToAction text='REALIZAR COMPRA ' imgBtn={payImg} alt="Realizar compra." />
+            <ButtonCallToAction 
+                link = '/checkout'
+                text='REALIZAR COMPRA ' 
+                imgBtn={payImg} 
+                alt="Realizar compra." 
+            />
         </div>
     )
 }

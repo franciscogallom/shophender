@@ -31,7 +31,12 @@ const Checkout = () => {
             }
             <p className='checkout-total'>TOTAL A PAGAR: ${totalToPay}</p>
             <CheckoutForm />
-            <ButtonCallToAction text='CONFIRMAR COMPRA ' imgBtn={checkPay} alt='Confirmar compra.' />
+            <ButtonCallToAction 
+                link = '/'
+                text = 'CONFIRMAR COMPRA ' 
+                imgBtn = {checkPay} 
+                alt = 'Confirmar compra.' 
+            />
         </section>
     )
 }
