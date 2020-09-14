@@ -25,43 +25,38 @@ const Cart = () => {
     }
 
     return (
-            <section className='cart-container margin-t'>
-                {
-                    itemsQuantity[0]
-                        ?
-                        
-                            <div>
-                                <h1>CARRITO</h1>
-                                {
-                                    itemsQuantity.map((item, index) => {
-                                        return (
-                                            <CartItem 
-                                                nameProduct = {item.nameProduct} 
-                                                imgProduct = {item.imgProduct} 
-                                                priceProduct = {item.priceProduct} 
-                                                key = {item.key}
-                                                id = {item.key}
-                                                quantity = {item.quantity}
-                                                index = {index}
-                                                deleteItem = {deleteItem}
-                                            />
-                                            )
-                                        })
-                                }
-                                <div className='total-to-pay'>
-                                    <p>TOTAL A PAGAR: <span>${totalToPay}</span></p>
-                                    <ButtonCallToAction 
-                                        link = '/checkout'
-                                        text='REALIZAR COMPRA ' 
-                                        imgBtn={payImg} 
-                                        alt="Realizar compra." 
-                                    />
-                                </div>
-                            </div>
-                        :
-                            <NoMatch text='Aún no has agregado productos al carrito, ¿que esperas?' />
-                }
-            </section>
+        itemsQuantity[0]
+            ?
+                <section className='cart-container margin-t'>
+                    <h1>CARRITO</h1>
+                    {
+                        itemsQuantity.map((item, index) => {
+                            return (
+                                <CartItem 
+                                    nameProduct = {item.nameProduct} 
+                                    imgProduct = {item.imgProduct} 
+                                    priceProduct = {item.priceProduct} 
+                                    key = {item.key}
+                                    id = {item.key}
+                                    quantity = {item.quantity}
+                                    index = {index}
+                                    deleteItem = {deleteItem}
+                                />
+                                )
+                            })
+                    }
+                    <div className='total-to-pay'>
+                        <p>TOTAL A PAGAR: <span>${totalToPay}</span></p>
+                        <ButtonCallToAction 
+                            link = '/checkout'
+                            text='REALIZAR COMPRA ' 
+                            imgBtn={payImg} 
+                            alt="Realizar compra." 
+                        />
+                    </div>
+                </section>
+            :
+                <NoMatch text='Aún no has agregado productos al carrito, ¿que esperas?' />
     )
 }
 

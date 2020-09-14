@@ -27,7 +27,7 @@ function App() {
               <NavBar />
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/products" component={Products} />
+                <Route exact path="/products/:sex/:category" component={Products} />
                 <Route path="/products/:sex/:category/:id" component={ItemDetail} />
                 <Route path="/cart" component={Cart} />
                 <Route path="/checkout" component={Checkout} />
