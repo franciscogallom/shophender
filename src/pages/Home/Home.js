@@ -1,7 +1,7 @@
 import React from 'react'
 
-import HomeBanner from '../HomeBanner/HomeBanner'
-import ListItems from '../ListItems/ListItems'
+import HomeBanner from '../../components/HomeBanner/HomeBanner'
+import ListItems from '../../components/ListItems/ListItems'
 
 import './home.scss'
 

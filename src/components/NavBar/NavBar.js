@@ -8,7 +8,7 @@ import menuIcon from '../../assets/img/menu.svg'
 import shophenderNav from '../../assets/img/shophender-nav.png'
 
 import CartIcon from '../CartIcon/CartIcon'
-import TypeProduct from "../TypeProduct/TypeProduct";
+import DropDownMenu from "../DropDownMenu/DropDownMenu";
 
 const NavBar = () => {
 
@@ -93,7 +93,7 @@ const NavBar = () => {
                                     HOMBRE
                                 </li>
                                 {listCategoriesMen && 
-                                    <TypeProduct onMouseLeave={!isMobileOrTablet && setListCategoriesMenFunction} closeAll={closeChoice} sex='men' />}
+                                    <DropDownMenu onMouseLeave={!isMobileOrTablet && setListCategoriesMenFunction} closeAll={closeChoice} sex='men' />}
                                 
                                 <li 
                                     onMouseEnter={() => {
@@ -115,7 +115,7 @@ const NavBar = () => {
                                     MUJER
                                 </li>
                                 {listCategoriesWomen && 
-                                    <TypeProduct onMouseLeave={!isMobileOrTablet && setListCategoriesWomenFunction} closeAll={closeChoice} sex='women' />}
+                                    <DropDownMenu onMouseLeave={!isMobileOrTablet && setListCategoriesWomenFunction} closeAll={closeChoice} sex='women' />}
                                 
                                 <li 
                                     onMouseEnter={() => {
@@ -137,7 +137,7 @@ const NavBar = () => {
                                     VER TODO
                                 </li>
                                 {listCategoriesAll && 
-                                    <TypeProduct onMouseLeave={!isMobileOrTablet && setListCategoriesAllFunction} closeAll={closeChoice} sex='all' />}
+                                    <DropDownMenu onMouseLeave={!isMobileOrTablet && setListCategoriesAllFunction} closeAll={closeChoice} sex='all' />}
 
                             </ul>
                     }   

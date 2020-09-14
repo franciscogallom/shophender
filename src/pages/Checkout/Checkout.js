@@ -1,14 +1,13 @@
 import React, { useContext } from 'react'
 
-import CheckoutForm from '../CheckoutForm/CheckoutForm'
-
 import './checkout.scss'
 
 import checkPay from '../../assets/img/check.svg'
 
+import CheckoutForm from '../../components/CheckoutForm/CheckoutForm'
 import TotalToPayContext from '../../context/TotalToPayProvider'
 import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
-import ButtonCallToAction from '../ButtonCallToAction/ButtonCallToAction'
+import ButtonCallToAction from '../../components/ButtonCallToAction/ButtonCallToAction'
 
 const Checkout = () => {
 

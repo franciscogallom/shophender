@@ -3,18 +3,18 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar/NavBar";
-import Home from "./components/Home/Home";
-import Products from "./components/Products/Products";
-import Cart from "./components/Cart/Cart";
-import Checkout from "./components/Checkout/Checkout";
+import Home from "./pages/Home/Home";
+import Products from "./pages/Products/Products";
+import Cart from "./pages/Cart/Cart";
+import Checkout from "./pages/Checkout/Checkout";
 import Footer from "./components/Footer/Footer";
-import NoMatch from "./components/NoMatch/NoMatch";
+import NoMatch from "./pages/NoMatch/NoMatch";
 
 import { ItemsQuantityContext } from './context/ItemsQuantityProvider'
 import { PopUpCartContext } from './context/PopUpCartProvider'
 import { TotalToPayContext } from './context/TotalToPayProvider'
 
-import ItemDetail from "./components/ItemDetail/ItemDetail"; // LUEGO BORRAR
+import ItemDetail from "./pages/ItemDetail/ItemDetail"; // LUEGO BORRAR
 
 function App() {
 

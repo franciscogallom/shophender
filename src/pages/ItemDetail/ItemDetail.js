@@ -25,7 +25,7 @@ const ItemDetail = (props) => {
     const setItemsQuantityFunction = () => {
         setItemsQuantity((prevItems) => [...prevItems, {
             // Cuando utilice props, cambiar datos estaticos por props.
-            nameProduct: 'ItemDetail', 
+            nameProduct: 'Buzo Nike HR40', 
             imgProduct: 'imagen', 
             priceProduct: 5675,
             key: 123,

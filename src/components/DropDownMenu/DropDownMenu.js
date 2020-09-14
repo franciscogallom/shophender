@@ -2,9 +2,9 @@ import React from 'react'
 
 import { NavLink } from 'react-router-dom'
 
-import './typeProduct.scss'
+import './dropDownMenu.scss'
 
-const TypeProduct = (props) => {
+const DropDownMenu = (props) => {
     return (
         <ul onMouseLeave={props.onMouseLeave} className='container-type-product'>
             <li><NavLink onClick={props.closeAll} to={`/products/${props.sex}/tshirts`}>- REMERAS -</NavLink></li>
@@ -17,4 +17,4 @@ const TypeProduct = (props) => {
     )
 }
 
-export default TypeProduct
+export default DropDownMenu

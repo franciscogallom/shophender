@@ -2,13 +2,19 @@ import React, { useContext } from 'react'
 
 import './cart.scss'
 
-import CartItem from '../CartItem/CartItem'
+import CartItem from '../../components/CartItem/CartItem'
 import NoMatch from '../NoMatch/NoMatch'
-import TotalToPay from '../TotalToPay/TotalToPay'
+import ButtonCallToAction from '../../components/ButtonCallToAction/ButtonCallToAction'
 
+import payImg from '../../assets/img/pay.png'
+
+import TotalToPayContext from '../../context/TotalToPayProvider'
 import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
 
 const Cart = () => {
+
+    const contextTotalToPay = useContext(TotalToPayContext)
+    const { totalToPay } = contextTotalToPay
 
     const contextItems = useContext(ItemsQuantityContext)
     const { itemsQuantity, setItemsQuantity } = contextItems
@@ -24,7 +30,7 @@ const Cart = () => {
                     itemsQuantity[0]
                         ?
                         
-                            <section>
+                            <div>
                                 <h1>CARRITO</h1>
                                 {
                                     itemsQuantity.map((item, index) => {
@@ -42,8 +48,16 @@ const Cart = () => {
                                             )
                                         })
                                 }
-                                <TotalToPay />
-                            </section>
+                                <div className='total-to-pay'>
+                                    <p>TOTAL A PAGAR: <span>${totalToPay}</span></p>
+                                    <ButtonCallToAction 
+                                        link = '/checkout'
+                                        text='REALIZAR COMPRA ' 
+                                        imgBtn={payImg} 
+                                        alt="Realizar compra." 
+                                    />
+                                </div>
+                            </div>
                         :
                             <NoMatch text='Aún no has agregado productos al carrito, ¿que esperas?' />
                 }
