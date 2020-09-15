@@ -17,7 +17,8 @@ const ListItem = (props) => {
                             imgProduct: props.imgProduct, 
                             imgProductH: props.imgProductH, 
                             nameProduct: props.nameProduct,
-                            priceProduct: props.priceProduct,
+                            pricePerQuantity: props.pricePerQuantity,
+                            unitPrice: props.unitPrice,
                             genderProduct: props.genderProduct,
                             categoryProduct: props.categoryProduct,
                             key: 100
@@ -26,7 +27,8 @@ const ListItem = (props) => {
                             imgProduct: props.imgProduct, 
                             imgProductH: props.imgProductH, 
                             nameProduct: props.nameProduct,
-                            priceProduct: props.priceProduct,
+                            pricePerQuantity: props.pricePerQuantity,
+                            unitPrice: props.unitPrice,
                             genderProduct: props.genderProduct,
                             categoryProduct: props.categoryProduct,
                             key: 200
@@ -35,7 +37,8 @@ const ListItem = (props) => {
                             imgProduct: props.imgProduct, 
                             imgProductH: props.imgProductH, 
                             nameProduct: props.nameProduct,
-                            priceProduct: props.priceProduct,
+                            pricePerQuantity: props.pricePerQuantity,
+                            unitPrice: props.unitPrice,
                             genderProduct: props.genderProduct,
                             categoryProduct: props.categoryProduct,
                             key: 300
@@ -44,7 +47,8 @@ const ListItem = (props) => {
                             imgProduct: props.imgProduct, 
                             imgProductH: props.imgProductH, 
                             nameProduct: props.nameProduct,
-                            priceProduct: props.priceProduct,
+                            pricePerQuantity: props.pricePerQuantity,
+                            unitPrice: props.unitPrice,
                             genderProduct: props.genderProduct,
                             categoryProduct: props.categoryProduct,
                             key: 400

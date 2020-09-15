@@ -35,7 +35,8 @@ const Cart = () => {
                                 <CartItem 
                                     nameProduct = {item.nameProduct} 
                                     imgProduct = {item.imgProduct} 
-                                    priceProduct = {item.priceProduct} 
+                                    pricePerQuantity = {item.pricePerQuantity} 
+                                    unitPrice = {item.unitPrice}
                                     key = {item.key}
                                     id = {item.key}
                                     quantity = {item.quantity}

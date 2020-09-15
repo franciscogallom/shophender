@@ -8,7 +8,7 @@ import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
 import PopUpCartContext from '../../context/PopUpCartProvider'
 import TotalToPayContext from '../../context/TotalToPayProvider'
 
-// ENVIAR DATOS POR PROPS! (props.imgProduct, props.nameProduct, props.priceProduct).
+// ENVIAR DATOS POR PROPS! (props.imgProduct, props.nameProduct, props.pricePerQuantity).
 
 const ItemDetail = (props) => {
 
@@ -27,13 +27,14 @@ const ItemDetail = (props) => {
             // Cuando utilice props, cambiar datos estaticos por props.
             nameProduct: 'Buzo Nike HR40', 
             imgProduct: 'imagen', 
-            priceProduct: 5675,
+            pricePerQuantity: 5670,
+            unitPrice: 5670,
             key: 123,
             id: 123,
             quantity: 1
         }])
         setPopUpCart((prevPopUp) => prevPopUp + 1)
-        setTotalToPay((prevTotal) => prevTotal + 5675) // Cuando utilice props, cambiar 5675 por props.priceProduct
+        setTotalToPay((prevTotal) => prevTotal + 5675) // Cuando utilice props, cambiar 5675 por props.pricePerQuantity
     }
 
     return (

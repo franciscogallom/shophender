@@ -13,7 +13,7 @@ const ItemList = ({ product }) => {
                     <img className='img-hover' src={product.imgProductH} alt="Product"/>
                 </div>
                 <p>{product.nameProduct}</p><br/>
-                <span>${product.priceProduct}</span>
+                <span>${product.pricePerQuantity}</span>
             </Link>
         </article>
     )

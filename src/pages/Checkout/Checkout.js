@@ -27,7 +27,7 @@ const Checkout = () => {
                         itemsQuantity.map(item => {
                             return  <article key={item.key}>
                                         <p>{item.nameProduct} x {item.quantity}</p>
-                                        <span>${item.priceProduct}</span>
+                                        <span>${item.pricePerQuantity}</span>
                                     </article>
                         })
                     }

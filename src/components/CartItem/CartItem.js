@@ -10,10 +10,7 @@ import PopUpCartContext from '../../context/PopUpCartProvider'
 import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
 import TotalToPayContext from '../../context/TotalToPayProvider'
 
-const CartItem = ({ nameProduct, imgProduct, priceProduct, key, id, quantity, index, deleteItem }) => {
-
-    // Precio por unidad.
-    const unitPrice = priceProduct
+const CartItem = ({ nameProduct, imgProduct, pricePerQuantity, unitPrice, id, quantity, index, deleteItem }) => {
 
     const contextItems = useContext(ItemsQuantityContext)
     const {itemsQuantity, setItemsQuantity} = contextItems
@@ -27,8 +24,8 @@ const CartItem = ({ nameProduct, imgProduct, priceProduct, key, id, quantity, in
     const addQuantity = () => {
         if (itemsQuantity[index].quantity < 25) {
             const temporal = itemsQuantity
-            temporal[index].quantity = temporal[index].quantity + 1 
-            temporal[index].priceProduct = temporal[index].priceProduct + unitPrice 
+            temporal[index].quantity++ 
+            temporal[index].pricePerQuantity += temporal[index].unitPrice 
             setItemsQuantity(temporal)
             setTotalToPay((prevTotal) => prevTotal += unitPrice)
         }
@@ -37,8 +34,8 @@ const CartItem = ({ nameProduct, imgProduct, priceProduct, key, id, quantity, in
     const subtractQuantity = () => {
         if (itemsQuantity[index].quantity > 1) {
             const temporal = itemsQuantity
-            temporal[index].quantity = temporal[index].quantity - 1 
-            temporal[index].priceProduct = temporal[index].priceProduct - unitPrice 
+            temporal[index].quantity--
+            temporal[index].pricePerQuantity -= temporal[index].unitPrice 
             setItemsQuantity(temporal)
             setTotalToPay((prevTotal) => prevTotal -= unitPrice)
         }
@@ -47,7 +44,7 @@ const CartItem = ({ nameProduct, imgProduct, priceProduct, key, id, quantity, in
     const onClickDelete = () => {
         deleteItem(id)
         setPopUpCart((prevPopUp) => prevPopUp - itemsQuantity[index].quantity)
-        setTotalToPay((prevTotal) => prevTotal -= itemsQuantity[index].priceProduct )
+        setTotalToPay((prevTotal) => prevTotal -= itemsQuantity[index].pricePerQuantity )
     }
 
     return (
@@ -55,7 +52,7 @@ const CartItem = ({ nameProduct, imgProduct, priceProduct, key, id, quantity, in
             <img className='imgProduct' src={imgProduct} alt={nameProduct}/>
             <div>
                 <p>{nameProduct} x {itemsQuantity[index].quantity}</p>
-                <span>${itemsQuantity[index].priceProduct}</span>
+                <span>${itemsQuantity[index].pricePerQuantity}</span>
                 <ItemQuantitySelector 
                     quantity={itemsQuantity[index].quantity} 
                     onClickPlus={addQuantity} 

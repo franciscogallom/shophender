@@ -25,7 +25,8 @@ const Home = () => {
                 imgProduct={imgPrueba} 
                 imgProductH={imgPruebaH} 
                 nameProduct='Zapatillas Nike Air Zoom' 
-                priceProduct='10480' 
+                pricePerQuantity='10480'
+                unitPrice='10480' 
                 genderProduct='women'
                 categoryProduct='shoes'
             />
@@ -41,7 +42,8 @@ const Home = () => {
                 imgProduct={imgPruebaHombre} 
                 imgProductH={imgPruebaHombreH} 
                 nameProduct='Buzo Nike HR40' 
-                priceProduct='5670' 
+                pricePerQuantity='5670'
+                unitPrice='5670' 
                 genderProduct='men'
                 categoryProduct='coats'
             />
@@ -57,7 +59,8 @@ const Home = () => {
                 imgProduct={imgPruebaMujer} 
                 imgProductH={imgPruebaMujerH} 
                 nameProduct='Buzo Top Adidas' 
-                priceProduct='4950'
+                pricePerQuantity='4950'
+                unitPrice='4950'
                 genderProduct='women'
                 categoryProduct='coats'
             />
