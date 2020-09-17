@@ -3,10 +3,12 @@ import React, { useContext } from 'react'
 import './itemDetail.scss'
 
 import addToCart from '../../assets/img/cart-add.svg'
+import payPng from '../../assets/img/pay2.png'
 
 import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
 import PopUpCartContext from '../../context/PopUpCartProvider'
 import TotalToPayContext from '../../context/TotalToPayProvider'
+import ButtonItemDetail from '../../components/ButtonItemDetail/ButtonItemDetail'
 
 // ENVIAR DATOS POR PROPS! (props.imgProduct, props.nameProduct, props.pricePerQuantity).
 
@@ -44,7 +46,21 @@ const ItemDetail = (props) => {
             <div>
                 <h1>Buzo Nike HR40</h1>
                 <span>$5670</span>
-                <button onClick={setItemsQuantityFunction}>Añadir al carrito<img src={addToCart} alt="Add to cart."/></button>
+                <ButtonItemDetail 
+                    handleClick = {setItemsQuantityFunction} 
+                    text = 'Anadir al carrito'
+                    svg = {addToCart}
+                    alt = 'Add to cart.'
+                    // link = null
+                />
+                <ButtonItemDetail 
+                    handleClick = {setItemsQuantityFunction} 
+                    text = 'Comprar ahora'
+                    svg = {payPng}
+                    alt = 'Buy now.'
+                    classN = 'buy-now'
+                    link = '/checkout'
+                />
                 <p>COMODIDAD CLÁSICA. ESTILO COMBINADO. Te presentamos el buzo Nike PO FT con un logotipo Nike en colores contrastantes y un ajuste un poco más grande, el buzo con capucha Nike Sportswear NSW ofrece comodidad clásica y un estilo urbano audaz. Ajuste extragrande
                     El ajuste ligeramente más grande y los hombros caídos te dan un estilo urbano y relajado.
                     Comodidad y suavidad. La tela de felpa francesa es suave y cómoda para el uso diario.

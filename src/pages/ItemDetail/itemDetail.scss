@@ -11,7 +11,7 @@
         width: 90%;
     }
 
-    h1, span, button {
+    h1, span {
         padding: 0 .25em;
         margin: .25em auto;
     }
@@ -28,25 +28,6 @@
         font-weight: bold;
         background: $primaryColor;
         color: $tertiaryColor;
-    }
-
-    button {
-        width: 90%;
-        background: $tertiaryColor;
-        color: $primaryColor;
-        padding: 1em .5em;
-        text-transform: uppercase;
-        font-weight: 900;
-        letter-spacing: .5em;
-        border: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        img {
-            height: 2em;
-            width: 2em;
-        }
     }
 
     p {
@@ -75,25 +56,6 @@
             p {
                 font-weight: 500;
                 font-size: .9em;
-            }
-
-            button {
-                cursor: pointer;
-                transition: .5s all;
-
-                &:hover {
-                    box-shadow: 5px 5px 10px #eee,
-                                -5px -5px 10px #eee,
-                                5px -5px 10px #eee,
-                                -5px 5px 10px #eee;
-                    scale: 1.02;
-                    letter-spacing: 1em;
-
-                    img {
-                        transition: .5s transform;
-                        transform: rotate(360deg);
-                    }
-                }
             }
         }
     }

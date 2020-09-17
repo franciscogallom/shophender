@@ -1,0 +1,56 @@
+@import '../../assets/colors.scss';
+
+.link-item-detail {
+    text-decoration: none;
+}
+
+.btn-item-detail {
+    width: 90%;
+    background: $tertiaryColor;
+    color: $primaryColor;
+    padding: 1em .5em;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: .5em;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em auto;
+
+    img {
+        height: 2em;
+        width: 2em;
+    }
+}
+
+.buy-now {
+    background: $primaryColor;
+    color: $tertiaryColor;
+
+    img {
+        margin-left: .5em;
+    }
+}
+
+@media screen and (min-width: 1023px){
+    .btn-item-detail {
+        cursor: pointer;
+        transition: .5s all;
+        margin: .5em auto;
+
+        &:hover {
+            box-shadow: 5px 5px 10px #eee,
+                        -5px -5px 10px #eee,
+                        5px -5px 10px #eee,
+                        -5px 5px 10px #eee;
+            scale: 1.02;
+            letter-spacing: 1em;
+
+            img {
+                transition: .5s transform;
+                transform: rotate(360deg);
+            }
+        }
+    }
+}

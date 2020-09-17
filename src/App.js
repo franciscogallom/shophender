@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./pages/Home/Home";
 import Products from "./pages/Products/Products";
+import ItemDetail from "./pages/ItemDetail/ItemDetail";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import Footer from "./components/Footer/Footer";
@@ -13,8 +14,6 @@ import NoMatch from "./pages/NoMatch/NoMatch";
 import { ItemsQuantityContext } from './context/ItemsQuantityProvider'
 import { PopUpCartContext } from './context/PopUpCartProvider'
 import { TotalToPayContext } from './context/TotalToPayProvider'
-
-import ItemDetail from "./pages/ItemDetail/ItemDetail"; // LUEGO BORRAR
 
 function App() {
 
