@@ -5,7 +5,7 @@ import './itemDetail.scss'
 import addToCart from '../../assets/img/cart-add.svg'
 import payPng from '../../assets/img/pay2.png'
 
-import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
+import ProductsInCartContext from '../../context/ProductsInCartProvider'
 import PopUpCartContext from '../../context/PopUpCartProvider'
 import TotalToPayContext from '../../context/TotalToPayProvider'
 import ButtonItemDetail from '../../components/ButtonItemDetail/ButtonItemDetail'
@@ -14,8 +14,8 @@ import ButtonItemDetail from '../../components/ButtonItemDetail/ButtonItemDetail
 
 const ItemDetail = (props) => {
 
-    const contextItems = useContext(ItemsQuantityContext)
-    const { setItemsQuantity } = contextItems
+    const contextItems = useContext(ProductsInCartContext)
+    const { setProductsInCart } = contextItems
 
     const contextPopUp = useContext(PopUpCartContext)
     const { setPopUpCart } = contextPopUp
@@ -24,8 +24,8 @@ const ItemDetail = (props) => {
     const { setTotalToPay } = contextTotalToPay
 
     // Agrego un producto al carrito, actualizo el pop up del Cart y la cantidad a pagar.
-    const setItemsQuantityFunction = () => {
-        setItemsQuantity((prevItems) => [...prevItems, {
+    const setProductsInCartFunction = () => {
+        setProductsInCart((prevItems) => [...prevItems, {
             // Cuando utilice props, cambiar datos estaticos por props.
             nameProduct: 'Buzo Nike HR40', 
             imgProduct: 'imagen', 
@@ -47,14 +47,14 @@ const ItemDetail = (props) => {
                 <h1>Buzo Nike HR40</h1>
                 <span>$5670</span>
                 <ButtonItemDetail 
-                    handleClick = {setItemsQuantityFunction} 
+                    handleClick = {setProductsInCartFunction} 
                     text = 'Anadir al carrito'
                     svg = {addToCart}
                     alt = 'Add to cart.'
                     // link = null
                 />
                 <ButtonItemDetail 
-                    handleClick = {setItemsQuantityFunction} 
+                    handleClick = {setProductsInCartFunction} 
                     text = 'Comprar ahora'
                     svg = {payPng}
                     alt = 'Buy now.'

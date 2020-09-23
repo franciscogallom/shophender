@@ -11,7 +11,7 @@ import Checkout from "./pages/Checkout/Checkout";
 import Footer from "./components/Footer/Footer";
 import NoMatch from "./pages/NoMatch/NoMatch";
 
-import { ItemsQuantityContext } from './context/ItemsQuantityProvider'
+import { ProductsInCartContext } from './context/ProductsInCartProvider'
 import { PopUpCartContext } from './context/PopUpCartProvider'
 import { TotalToPayContext } from './context/TotalToPayProvider'
 
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <ItemsQuantityContext>
+      <ProductsInCartContext>
         <PopUpCartContext>
           <TotalToPayContext>
             <Router>
@@ -35,7 +35,7 @@ function App() {
             </Router>
           </TotalToPayContext>
         </PopUpCartContext>
-      </ItemsQuantityContext>
+      </ProductsInCartContext>
       <Footer />
     </>
   );

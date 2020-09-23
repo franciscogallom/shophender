@@ -9,28 +9,28 @@ import ButtonCallToAction from '../../components/ButtonCallToAction/ButtonCallTo
 import payImg from '../../assets/img/pay.png'
 
 import TotalToPayContext from '../../context/TotalToPayProvider'
-import ItemsQuantityContext from '../../context/ItemsQuantityProvider'
+import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 const Cart = () => {
 
     const contextTotalToPay = useContext(TotalToPayContext)
     const { totalToPay } = contextTotalToPay
 
-    const contextItems = useContext(ItemsQuantityContext)
-    const { itemsQuantity, setItemsQuantity } = contextItems
+    const contextItems = useContext(ProductsInCartContext)
+    const { ProductsInCart, setProductsInCart } = contextItems
 
     // Recibe un ID  de CartItem y elimina el producto correspondiente.
     const deleteItem = (id) => {
-        setItemsQuantity((prevItems) => prevItems.filter(item => item.id !== id))
+        setProductsInCart((prevItems) => prevItems.filter(item => item.id !== id))
     }
 
     return (
-        itemsQuantity[0]
+        ProductsInCart[0]
             ?
                 <section className='cart-container margin-t'>
                     <h1>CARRITO</h1>
                     {
-                        itemsQuantity.map((item, index) => {
+                        ProductsInCart.map((item, index) => {
                             return (
                                 <CartItem 
                                     nameProduct = {item.nameProduct} 
