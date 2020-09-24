@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
 import './cart.scss'
 
@@ -8,16 +8,20 @@ import ButtonCallToAction from '../../components/ButtonCallToAction/ButtonCallTo
 
 import payImg from '../../assets/img/pay.png'
 
-import TotalToPayContext from '../../context/TotalToPayProvider'
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 const Cart = () => {
 
-    const contextTotalToPay = useContext(TotalToPayContext)
-    const { totalToPay } = contextTotalToPay
-
     const contextItems = useContext(ProductsInCartContext)
-    const { ProductsInCart, setProductsInCart } = contextItems
+    const { productsInCart, setProductsInCart } = contextItems
+
+    const [totalToPay, setTotalToPay] = useState(0);
+    useEffect(() => {
+        productsInCart.forEach(product => {
+            setTotalToPay(prevTotal => prevTotal + (product.unitPrice * product.quantity)); 
+        });
+    }, [productsInCart])
+
 
     // Recibe un ID  de CartItem y elimina el producto correspondiente.
     const deleteItem = (id) => {
@@ -25,12 +29,12 @@ const Cart = () => {
     }
 
     return (
-        ProductsInCart[0]
+        productsInCart[0]
             ?
                 <section className='cart-container margin-t'>
                     <h1>CARRITO</h1>
                     {
-                        ProductsInCart.map((item, index) => {
+                        productsInCart.map((item, index) => {
                             return (
                                 <CartItem 
                                     nameProduct = {item.nameProduct} 

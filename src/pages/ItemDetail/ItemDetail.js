@@ -6,25 +6,15 @@ import addToCart from '../../assets/img/cart-add.svg'
 import payPng from '../../assets/img/pay2.png'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
-import PopUpCartContext from '../../context/PopUpCartProvider'
-import TotalToPayContext from '../../context/TotalToPayProvider'
 import ButtonItemDetail from '../../components/ButtonItemDetail/ButtonItemDetail'
-
-// ENVIAR DATOS POR PROPS! (props.imgProduct, props.nameProduct, props.pricePerQuantity).
 
 const ItemDetail = (props) => {
 
     const contextItems = useContext(ProductsInCartContext)
     const { setProductsInCart } = contextItems
 
-    const contextPopUp = useContext(PopUpCartContext)
-    const { setPopUpCart } = contextPopUp
-
-    const contextTotalToPay = useContext(TotalToPayContext)
-    const { setTotalToPay } = contextTotalToPay
-
     // Agrego un producto al carrito, actualizo el pop up del Cart y la cantidad a pagar.
-    const setProductsInCartFunction = () => {
+    const setproductsInCartFunction = () => {
         setProductsInCart((prevItems) => [...prevItems, {
             // Cuando utilice props, cambiar datos estaticos por props.
             nameProduct: 'Buzo Nike HR40', 
@@ -35,8 +25,6 @@ const ItemDetail = (props) => {
             id: 123,
             quantity: 1
         }])
-        setPopUpCart((prevPopUp) => prevPopUp + 1)
-        setTotalToPay((prevTotal) => prevTotal + 5675) // Cuando utilice props, cambiar 5675 por props.pricePerQuantity
     }
 
     return (
@@ -47,14 +35,14 @@ const ItemDetail = (props) => {
                 <h1>Buzo Nike HR40</h1>
                 <span>$5670</span>
                 <ButtonItemDetail 
-                    handleClick = {setProductsInCartFunction} 
+                    handleClick = {setproductsInCartFunction} 
                     text = 'Anadir al carrito'
                     svg = {addToCart}
                     alt = 'Add to cart.'
                     // link = null
                 />
                 <ButtonItemDetail 
-                    handleClick = {setProductsInCartFunction} 
+                    handleClick = {setproductsInCartFunction} 
                     text = 'Comprar ahora'
                     svg = {payPng}
                     alt = 'Buy now.'

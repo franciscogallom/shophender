@@ -12,16 +12,12 @@ import Footer from "./components/Footer/Footer";
 import NoMatch from "./pages/NoMatch/NoMatch";
 
 import { ProductsInCartContext } from './context/ProductsInCartProvider'
-import { PopUpCartContext } from './context/PopUpCartProvider'
-import { TotalToPayContext } from './context/TotalToPayProvider'
 
 function App() {
 
   return (
     <>
       <ProductsInCartContext>
-        <PopUpCartContext>
-          <TotalToPayContext>
             <Router>
               <NavBar />
               <Switch>
@@ -33,8 +29,6 @@ function App() {
                 <Route path="/*" component={NoMatch} />
               </Switch>
             </Router>
-          </TotalToPayContext>
-        </PopUpCartContext>
       </ProductsInCartContext>
       <Footer />
     </>

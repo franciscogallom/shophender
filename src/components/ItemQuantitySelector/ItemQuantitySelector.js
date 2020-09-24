@@ -1,23 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
 import './itemQuantitySelector.scss'
 
-import PopUpCartContext from '../../context/PopUpCartProvider'
-
 const ItemQuantitySelector = (props) => {
-
-    const contextPopUp = useContext(PopUpCartContext)
-    const {setPopUpCart} = contextPopUp
-
-    const setItemsAddQuantityFunction = () => {
-        props.onClickPlus();
-        setPopUpCart((prevPopUp) => prevPopUp + 1)
-    }
-
-    const setItemsSubtractQuantityFunction = () => {
-        props.onClickMinus();
-        setPopUpCart((prevPopUp) => prevPopUp - 1)
-    }
 
     return (
         <div className='item-quantity-selector'>
@@ -25,12 +10,12 @@ const ItemQuantitySelector = (props) => {
             <div>
                 <button 
                     className='btn-minus' 
-                    onClick={props.quantity > 1 ? setItemsSubtractQuantityFunction : undefined} 
+                    onClick = {props.quantity > 1 ? props.onClickMinus : undefined} 
                 >-
                 </button>
                 <button 
                     className='btn-plus' 
-                    onClick={props.quantity < 25 ? setItemsAddQuantityFunction : undefined} 
+                    onClick = {props.quantity < 25 ? props.onClickPlus : undefined} 
                 >+
                 </button>
             </div>

@@ -1,30 +1,34 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
 import './checkout.scss'
 
 import checkPay from '../../assets/img/check.svg'
 
 import CheckoutForm from '../../components/CheckoutForm/CheckoutForm'
-import TotalToPayContext from '../../context/TotalToPayProvider'
-import ProductsInCartContext from '../../context/ProductsInCartProvider'
 import ButtonCallToAction from '../../components/ButtonCallToAction/ButtonCallToAction'
 import NoMatch from '../NoMatch/NoMatch'
 
+import ProductsInCartContext from '../../context/ProductsInCartProvider'
+
 const Checkout = () => {
 
-    const contextTotalToPay = useContext(TotalToPayContext)
-    const {totalToPay} = contextTotalToPay
-
     const contextItems = useContext(ProductsInCartContext)
-    const { ProductsInCart } = contextItems
+    const { productsInCart } = contextItems
+
+    const [totalToPay, setTotalToPay] = useState(0);
+    useEffect(() => {
+        productsInCart.forEach(product => {
+            setTotalToPay(prevTotal => prevTotal + (product.unitPrice * product.quantity)); 
+        });
+    }, [productsInCart])
 
     return (
-        ProductsInCart[0]
+        productsInCart[0]
             ?
                 <section className='checkout margin-t'>
                     <h1>CHECKOUT</h1>
                     {
-                        ProductsInCart.map(item => {
+                        productsInCart.map(item => {
                             return  <article key={item.key}>
                                         <p>{item.nameProduct} x {item.quantity}</p>
                                         <span>${item.pricePerQuantity}</span>

@@ -4,9 +4,9 @@ const Context = React.createContext({})
 
 export function ProductsInCartContext ({children}) {
 
-    const [ProductsInCart, setProductsInCart] = useState([])
+    const [productsInCart, setProductsInCart] = useState([])
 
-    return  <Context.Provider value={{ProductsInCart, setProductsInCart}}>
+    return  <Context.Provider value={{productsInCart, setProductsInCart}}>
                 {children}
             </Context.Provider>
 
