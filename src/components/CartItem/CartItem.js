@@ -18,29 +18,21 @@ const CartItem = ({ nameProduct, imgProduct, pricePerQuantity, unitPrice, id, in
     const [quantity, setQuantity] = useState(productsInCart[index].quantity);
 
     const addQuantity = () => {
-        if (productsInCart[index].quantity < 25) {
-            const temporal = productsInCart
-            temporal[index].quantity++ 
-            temporal[index].pricePerQuantity += temporal[index].unitPrice 
-            setProductsInCart(temporal)
-            setPrice(productsInCart[index].pricePerQuantity)
-            setQuantity(productsInCart[index].quantity)
-        }
+        const temporal = [...productsInCart]
+        temporal[index].quantity++ 
+        temporal[index].pricePerQuantity += temporal[index].unitPrice 
+        setProductsInCart(temporal)
+        setPrice(productsInCart[index].pricePerQuantity)
+        setQuantity(productsInCart[index].quantity)
     }
 
     const subtractQuantity = () => {
-        if (productsInCart[index].quantity > 1) {
-            const temporal = productsInCart
-            temporal[index].quantity--
-            temporal[index].pricePerQuantity -= temporal[index].unitPrice 
-            setProductsInCart(temporal)
-            setPrice(productsInCart[index].pricePerQuantity)
-            setQuantity(productsInCart[index].quantity)
-        }
-    }
-
-    const onClickDelete = () => {
-        deleteItem(id)
+        const temporal = [...productsInCart]
+        temporal[index].quantity--
+        temporal[index].pricePerQuantity -= temporal[index].unitPrice 
+        setProductsInCart(temporal)
+        setPrice(productsInCart[index].pricePerQuantity)
+        setQuantity(productsInCart[index].quantity)
     }
 
     return (
@@ -50,13 +42,13 @@ const CartItem = ({ nameProduct, imgProduct, pricePerQuantity, unitPrice, id, in
                 <p>{nameProduct} x {quantity}</p>
                 <span>${price}</span>
                 <ItemQuantitySelector 
-                    quantity={productsInCart[index].quantity} 
-                    onClickPlus={addQuantity} 
-                    onClickMinus={subtractQuantity} 
+                    quantity = {productsInCart[index].quantity} 
+                    addQuantity = {addQuantity} 
+                    subtractQuantity = {subtractQuantity} 
                 />
                 <img 
                     src={deleteProductIcon} 
-                    onClick={onClickDelete}
+                    onClick={() => deleteItem(id)}
                     alt='Delete' 
                 />
             </div>

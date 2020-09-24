@@ -15,12 +15,12 @@ const Cart = () => {
     const contextItems = useContext(ProductsInCartContext)
     const { productsInCart, setProductsInCart } = contextItems
 
-    const [totalToPay, setTotalToPay] = useState(0);
-    useEffect(() => {
-        productsInCart.forEach(product => {
-            setTotalToPay(prevTotal => prevTotal + (product.unitPrice * product.quantity)); 
-        });
-    }, [productsInCart])
+    // const [totalToPay, setTotalToPay] = useState(0);
+    // useEffect(() => {
+    //     productsInCart.forEach(product => {
+    //         setTotalToPay(prevTotal => prevTotal + (product.unitPrice * product.quantity)); 
+    //     });
+    // }, [productsInCart])
 
 
     // Recibe un ID  de CartItem y elimina el producto correspondiente.
@@ -51,7 +51,7 @@ const Cart = () => {
                             })
                     }
                     <div className='total-to-pay'>
-                        <p>TOTAL A PAGAR: <span>${totalToPay}</span></p>
+                        <p>TOTAL A PAGAR: <span>${productsInCart.reduce((acc, current) => acc + current.pricePerQuantity, 0)}</span></p>
                         <ButtonCallToAction 
                             link = '/checkout'
                             text='REALIZAR COMPRA ' 

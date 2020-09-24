@@ -10,12 +10,12 @@ const ItemQuantitySelector = (props) => {
             <div>
                 <button 
                     className='btn-minus' 
-                    onClick = {props.quantity > 1 ? props.onClickMinus : undefined} 
+                    onClick = {props.quantity > 1 ? props.subtractQuantity : undefined} 
                 >-
                 </button>
                 <button 
                     className='btn-plus' 
-                    onClick = {props.quantity < 25 ? props.onClickPlus : undefined} 
+                    onClick = {props.quantity < 25 ? props.addQuantity : undefined} 
                 >+
                 </button>
             </div>
