@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom'
 const ItemList = ({ product }) => {
     return (
         <article className='item-list'>
-            <Link to={`/products/${product.genderProduct}/${product.categoryProduct}/${product.key}`}>
+            <Link to={`/products/${product.sex}/${product.category}/${product.id}`}>
                 <div className='container-img'>
-                    <img src={product.imgProduct} alt="Product"/>
-                    <img className='img-hover' src={product.imgProductH} alt="Product"/>
+                    <img src={'/images/' + product.img1} alt={product.nameProduct} />
+                    <img className='img-hover' src={'/images/' + product.img2} alt="Product"/>
                 </div>
                 <p>{product.nameProduct}</p><br/>
-                <span>${product.pricePerQuantity}</span>
+                <span>${product.unitPrice}</span>
             </Link>
         </article>
     )

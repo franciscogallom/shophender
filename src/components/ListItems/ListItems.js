@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
+import { getFirestore } from '../../firebase'
 
 import'./listItems.scss';
 
@@ -6,68 +8,35 @@ import ItemList from '../ItemList/ItemList'
 
 const ListItem = (props) => {
 
-    const [itemListArray, setItemsListArray] = useState([])
+    const [items, setItems] = useState({})
 
-    const getItemListArray = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve
-                (
-                    [
-                        {
-                            imgProduct: props.imgProduct, 
-                            imgProductH: props.imgProductH, 
-                            nameProduct: props.nameProduct,
-                            pricePerQuantity: props.pricePerQuantity,
-                            unitPrice: props.unitPrice,
-                            genderProduct: props.genderProduct,
-                            categoryProduct: props.categoryProduct,
-                            key: 100
-                        },
-                        {
-                            imgProduct: props.imgProduct, 
-                            imgProductH: props.imgProductH, 
-                            nameProduct: props.nameProduct,
-                            pricePerQuantity: props.pricePerQuantity,
-                            unitPrice: props.unitPrice,
-                            genderProduct: props.genderProduct,
-                            categoryProduct: props.categoryProduct,
-                            key: 200
-                        },
-                        {
-                            imgProduct: props.imgProduct, 
-                            imgProductH: props.imgProductH, 
-                            nameProduct: props.nameProduct,
-                            pricePerQuantity: props.pricePerQuantity,
-                            unitPrice: props.unitPrice,
-                            genderProduct: props.genderProduct,
-                            categoryProduct: props.categoryProduct,
-                            key: 300
-                        },
-                        {
-                            imgProduct: props.imgProduct, 
-                            imgProductH: props.imgProductH, 
-                            nameProduct: props.nameProduct,
-                            pricePerQuantity: props.pricePerQuantity,
-                            unitPrice: props.unitPrice,
-                            genderProduct: props.genderProduct,
-                            categoryProduct: props.categoryProduct,
-                            key: 400
-                        }
-                    ]
-                )
-        }, 500)
-    })
+    useEffect(() => {
+        const db = getFirestore()
+        const itemCollection = db.collection("items")
+        const filter = itemCollection.where('sex', '==', `${props.filterSex}`).limit(4)
 
-    getItemListArray.then((res) => setItemsListArray(res))
+        filter.get().then((querySnapshot) => {
+            if(querySnapshot.size === 0) {
+                props.history.push('/404')
+                return
+            }
+            setItems(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
+        }).catch((error) => {
+            console.log('Error to find the item. Error: ', error)
+            props.history.push('/404')
+        })
+        // eslint-disable-next-line 
+    }, [])
 
     return (
+        Object.keys(items).length !== 0 &&
         <section className='container-list-items'>
             {
-                itemListArray.map(item => {
+                items.map(item => {
                     return (
                         <ItemList 
                             product = {item}
-                            key = {item.key}
+                            key = {item.id}
                         />
                     )
                 })

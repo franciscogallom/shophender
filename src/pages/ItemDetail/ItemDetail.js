@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { getFirestore } from '../../firebase'
 
@@ -16,50 +16,61 @@ import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 const ItemDetail = (props) => {
 
+    const { id } = useParams()
+
     const [loader, setLoader] = useState(true)
 
     const [item, setItem] = useState({})
 
     useEffect(() => {
         const db = getFirestore()
-
         const itemCollection = db.collection("items")
-        const item = itemCollection.doc('6zESWLOpcNChYLIroDXX')
+        const item = itemCollection.doc(`${id}`)
 
         item.get().then((doc) => {
             if(!doc.exists) {
-                console.log('No existe el item')
+                props.history.push('/404')
                 return
             }
-            console.log('Encontramos el item')
             setItem({ id: doc.id, ...doc.data() })
         }).catch((error) => {
-            console.log('Error buscando el item', error)
+            console.log('Error to find the item. Error: ', error)
+            props.history.push('/404')
         }).finally(() => {
             setLoader(false)
         })
+        // eslint-disable-next-line 
     }, [])
 
     const contextItems = useContext(ProductsInCartContext)
-    const { setProductsInCart } = contextItems
+    const { productsInCart, setProductsInCart } = contextItems
 
     const setproductsInCartFunction = () => {
-        setProductsInCart((prevItems) => [...prevItems, {
-            nameProduct: item.nameProduct, 
-            imgProduct: item.img1,
-            imgProduct2: item.img2, 
-            pricePerQuantity: item.unitPrice,
-            unitPrice: item.unitPrice,
-            key: item.id,
-            id: item.id,
-            quantity: 1
-        }])
+        let isInTheCart = false;
+        productsInCart.forEach(product => {
+            if (product.id === item.id) {
+                product.quantity++
+                product.pricePerQuantity += product.unitPrice
+                isInTheCart = true;
+            }
+        })
+        !isInTheCart && 
+            setProductsInCart((prevItems) => [...prevItems, {
+                nameProduct: item.nameProduct, 
+                imgProduct: item.img1,
+                imgProduct2: item.img2, 
+                pricePerQuantity: item.unitPrice,
+                unitPrice: item.unitPrice,
+                key: item.id,
+                id: item.id,
+                quantity: 1
+            }])
     }
 
     return (
         loader ? <Loader/> :
         <section className='container-item-detail margin-t'>
-            <img src={'../../assets/img/' + item.img1} alt={item.nameProduct} />
+            <img src={'/images/' + item.img1} alt={item.nameProduct} />
             <div>
                 <h1>{item.nameProduct}</h1>
                 <span>${item.unitPrice}</span>

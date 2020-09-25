@@ -28,7 +28,7 @@ const Cart = () => {
                     {
                         productsInCart.map((item, index) => {
                             return (
-                                <CartItem 
+                                <CartItem
                                     nameProduct = {item.nameProduct} 
                                     imgProduct = {item.imgProduct} 
                                     pricePerQuantity = {item.pricePerQuantity} 
