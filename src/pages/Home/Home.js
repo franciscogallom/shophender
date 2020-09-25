@@ -15,6 +15,7 @@ import imgPruebaH from '../../assets/img/m-zap-1-h.webp'
 // DELETE
 
 const Home = () => {
+
     return (
         <section className='home-container margin-t'>
             <header>

@@ -1,39 +1,68 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 
 import { Link } from 'react-router-dom'
+
+import { getFirestore } from '../../firebase'
 
 import './itemDetail.scss'
 
 import addToCart from '../../assets/img/cart-add.svg'
 import payPng from '../../assets/img/pay2.png'
 
+import ButtonItemDetail from '../../components/ButtonItemDetail/ButtonItemDetail'
+import Loader from '../../components/Loader/Loader'
+
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
-import ButtonItemDetail from '../../components/ButtonItemDetail/ButtonItemDetail'
-
 const ItemDetail = (props) => {
+
+    const [loader, setLoader] = useState(true)
+
+    const [item, setItem] = useState({})
+
+    useEffect(() => {
+        const db = getFirestore()
+
+        const itemCollection = db.collection("items")
+        const item = itemCollection.doc('6zESWLOpcNChYLIroDXX')
+
+        item.get().then((doc) => {
+            if(!doc.exists) {
+                console.log('No existe el item')
+                return
+            }
+            console.log('Encontramos el item')
+            setItem({ id: doc.id, ...doc.data() })
+        }).catch((error) => {
+            console.log('Error buscando el item', error)
+        }).finally(() => {
+            setLoader(false)
+        })
+    }, [])
 
     const contextItems = useContext(ProductsInCartContext)
     const { setProductsInCart } = contextItems
 
     const setproductsInCartFunction = () => {
         setProductsInCart((prevItems) => [...prevItems, {
-            nameProduct: 'Buzo Nike HR40', 
-            imgProduct: 'imagen', 
-            pricePerQuantity: 5670,
-            unitPrice: 5670,
-            key: 123,
-            id: 123,
+            nameProduct: item.nameProduct, 
+            imgProduct: item.img1,
+            imgProduct2: item.img2, 
+            pricePerQuantity: item.unitPrice,
+            unitPrice: item.unitPrice,
+            key: item.id,
+            id: item.id,
             quantity: 1
         }])
     }
 
     return (
+        loader ? <Loader/> :
         <section className='container-item-detail margin-t'>
-            <img src={require('../../assets/img/h-buzo-1.jpg')} alt={props.nameProduct} />
+            <img src={'../../assets/img/' + item.img1} alt={item.nameProduct} />
             <div>
-                <h1>Buzo Nike HR40</h1>
-                <span>$5670</span>
+                <h1>{item.nameProduct}</h1>
+                <span>${item.unitPrice}</span>
                 <ButtonItemDetail 
                     handleClick = {setproductsInCartFunction} 
                     text = 'Anadir al carrito'
@@ -48,10 +77,7 @@ const ItemDetail = (props) => {
                         classN = 'buy-now'
                     />
                 </Link>
-                <p>COMODIDAD CLÁSICA. ESTILO COMBINADO. Te presentamos el buzo Nike PO FT con un logotipo Nike en colores contrastantes y un ajuste un poco más grande, el buzo con capucha Nike Sportswear NSW ofrece comodidad clásica y un estilo urbano audaz. Ajuste extragrande
-                    El ajuste ligeramente más grande y los hombros caídos te dan un estilo urbano y relajado.
-                    Comodidad y suavidad. La tela de felpa francesa es suave y cómoda para el uso diario.
-                </p>
+                <p>{item.description}</p>
             </div>
         </section>
     )
