@@ -1,9 +1,9 @@
 import React from 'react'
 
+import './noMatch.scss'
+
 import noMatchGif from '../../assets/img/404.gif'
 import sadSvg from '../../assets/img/sad.svg'
-
-import './noMatch.scss'
 
 const NoMatch = ({ text = 'Lo sentimos! No hemos encontrado lo que estas buscando. '}) => {
     return (
@@ -15,4 +15,4 @@ const NoMatch = ({ text = 'Lo sentimos! No hemos encontrado lo que estas buscand
     )
 }
 
-export default NoMatch;
+export default NoMatch

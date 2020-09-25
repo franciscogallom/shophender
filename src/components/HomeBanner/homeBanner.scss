@@ -41,3 +41,11 @@
         }
     }
 }
+
+@media screen and (min-width: 1023px){
+    .home-container section {
+        .banner-all, .banner-men, .banner-women {
+            -webkit-text-stroke: 2.5px $primaryColor;
+        }
+    }
+}

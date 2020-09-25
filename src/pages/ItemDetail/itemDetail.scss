@@ -35,6 +35,10 @@
         font-weight: bold;
         position: relative;
     }
+
+    a {
+        text-decoration: none;
+    }
 }
 
 @media screen and (min-width: 1024px) {

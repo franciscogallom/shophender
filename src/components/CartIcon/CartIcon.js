@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 
-import cartIcon from '../../assets/img/cart.svg'
-
 import './cartIcon.scss'
+
+import cartIcon from '../../assets/img/cart.svg'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
@@ -14,9 +14,9 @@ const CartIcon = () => {
     return (
         <div className='cart-icon'>
             <img src={cartIcon} alt="Cart"/>
-            {productsInCart[0] && <span>{productsInCart.reduce((acc, current) => acc + current.quantity, 0)}</span>}
+            {productsInCart[0] && <span>{productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0)}</span>}
         </div>
     )
 }
 
-export default CartIcon;
+export default CartIcon

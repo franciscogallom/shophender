@@ -1,50 +1,27 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 
-import ItemQuantitySelector from '../ItemQuantitySelector/ItemQuantitySelector'
+import './cartItem.scss'
 
 import deleteProductIcon from '../../assets/img/cart-delete.svg'
 
-import './cartItem.scss'
+import ItemQuantitySelector from '../ItemQuantitySelector/ItemQuantitySelector'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 const CartItem = ({ nameProduct, imgProduct, pricePerQuantity, unitPrice, id, index, deleteItem }) => {
 
     const contextItems = useContext(ProductsInCartContext)
-    const {productsInCart, setProductsInCart} = contextItems
-
-    const [price, setPrice] = useState(productsInCart[index].pricePerQuantity);
-
-    const [quantity, setQuantity] = useState(productsInCart[index].quantity);
-
-    const addQuantity = () => {
-        const temporal = [...productsInCart]
-        temporal[index].quantity++ 
-        temporal[index].pricePerQuantity += temporal[index].unitPrice 
-        setProductsInCart(temporal)
-        setPrice(productsInCart[index].pricePerQuantity)
-        setQuantity(productsInCart[index].quantity)
-    }
-
-    const subtractQuantity = () => {
-        const temporal = [...productsInCart]
-        temporal[index].quantity--
-        temporal[index].pricePerQuantity -= temporal[index].unitPrice 
-        setProductsInCart(temporal)
-        setPrice(productsInCart[index].pricePerQuantity)
-        setQuantity(productsInCart[index].quantity)
-    }
+    const { productsInCart } = contextItems
 
     return (
         <article className='container-cart-item'>
             <img className='imgProduct' src={imgProduct} alt={nameProduct}/>
             <div>
-                <p>{nameProduct} x {quantity}</p>
-                <span>${price}</span>
+                <p>{nameProduct} x {productsInCart[index].quantity}</p>
+                <span>${productsInCart[index].pricePerQuantity}</span>
                 <ItemQuantitySelector 
                     quantity = {productsInCart[index].quantity} 
-                    addQuantity = {addQuantity} 
-                    subtractQuantity = {subtractQuantity} 
+                    index = {index}
                 />
                 <img 
                     src={deleteProductIcon} 

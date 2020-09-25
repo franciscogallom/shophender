@@ -1,9 +1,9 @@
 import React from 'react'
 
+import './home.scss'
+
 import HomeBanner from '../../components/HomeBanner/HomeBanner'
 import ListItems from '../../components/ListItems/ListItems'
-
-import './home.scss'
 
 // DELETE
 import imgPruebaHombre from '../../assets/img/h-buzo-1.jpg'
@@ -75,4 +75,4 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default Home

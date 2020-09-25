@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import ItemList from '../ItemList/ItemList'
-
 import'./listItems.scss';
+
+import ItemList from '../ItemList/ItemList'
 
 const ListItem = (props) => {
 
@@ -76,4 +76,4 @@ const ListItem = (props) => {
     )
 }
 
-export default ListItem;
+export default ListItem

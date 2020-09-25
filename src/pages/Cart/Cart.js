@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 
 import './cart.scss'
+
+import payImg from '../../assets/img/pay.png'
 
 import CartItem from '../../components/CartItem/CartItem'
 import NoMatch from '../NoMatch/NoMatch'
 import ButtonCallToAction from '../../components/ButtonCallToAction/ButtonCallToAction'
-
-import payImg from '../../assets/img/pay.png'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
@@ -14,14 +14,6 @@ const Cart = () => {
 
     const contextItems = useContext(ProductsInCartContext)
     const { productsInCart, setProductsInCart } = contextItems
-
-    // const [totalToPay, setTotalToPay] = useState(0);
-    // useEffect(() => {
-    //     productsInCart.forEach(product => {
-    //         setTotalToPay(prevTotal => prevTotal + (product.unitPrice * product.quantity)); 
-    //     });
-    // }, [productsInCart])
-
 
     // Recibe un ID  de CartItem y elimina el producto correspondiente.
     const deleteItem = (id) => {
@@ -51,12 +43,11 @@ const Cart = () => {
                             })
                     }
                     <div className='total-to-pay'>
-                        <p>TOTAL A PAGAR: <span>${productsInCart.reduce((acc, current) => acc + current.pricePerQuantity, 0)}</span></p>
+                        <p>TOTAL A PAGAR: <span>${productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)}</span></p>
                         <ButtonCallToAction 
                             link = '/checkout'
                             text='REALIZAR COMPRA ' 
                             imgBtn={payImg} 
-                            alt="Realizar compra." 
                         />
                     </div>
                 </section>
@@ -65,4 +56,4 @@ const Cart = () => {
     )
 }
 
-export default Cart;
+export default Cart

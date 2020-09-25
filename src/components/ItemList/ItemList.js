@@ -2,7 +2,7 @@ import React from 'react'
 
 import './itemList.scss'
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const ItemList = ({ product }) => {
     return (
@@ -19,4 +19,4 @@ const ItemList = ({ product }) => {
     )
 }
 
-export default ItemList;
+export default ItemList

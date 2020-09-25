@@ -7,9 +7,9 @@ import './buttonCallToAction.scss'
 const ButtonCallToAction = (props) => {
     return(
         <button className='btn-cta'>
-            <Link to={props.link}>{props.text} <img src={props.imgBtn} alt={props.alt} /></Link>
+            <Link to={props.link}>{props.text} <img src={props.imgBtn} alt={props.text} /></Link>
         </button>
     )
 }
 
-export default ButtonCallToAction;
+export default ButtonCallToAction

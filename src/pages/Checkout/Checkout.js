@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 
 import './checkout.scss'
 
@@ -15,13 +15,6 @@ const Checkout = () => {
     const contextItems = useContext(ProductsInCartContext)
     const { productsInCart } = contextItems
 
-    const [totalToPay, setTotalToPay] = useState(0);
-    useEffect(() => {
-        productsInCart.forEach(product => {
-            setTotalToPay(prevTotal => prevTotal + (product.unitPrice * product.quantity)); 
-        });
-    }, [productsInCart])
-
     return (
         productsInCart[0]
             ?
@@ -35,13 +28,12 @@ const Checkout = () => {
                                     </article>
                         })
                     }
-                    <p className='checkout-total'>TOTAL A PAGAR: ${totalToPay}</p>
+                    <p className='checkout-total'>TOTAL A PAGAR: ${productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)}</p>
                     <CheckoutForm />
                     <ButtonCallToAction 
                         link = '/'
                         text = 'CONFIRMAR COMPRA ' 
                         imgBtn = {checkPay} 
-                        alt = 'Confirmar compra.' 
                     />
                 </section>
             :
@@ -49,4 +41,4 @@ const Checkout = () => {
     )
 }
 
-export default Checkout;
+export default Checkout

@@ -1,8 +1,28 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
 import './itemQuantitySelector.scss'
 
-const ItemQuantitySelector = (props) => {
+import ProductsInCartContext from '../../context/ProductsInCartProvider'
+
+const ItemQuantitySelector = ({ index, quantity}) => {
+    
+        const contextItems = useContext(ProductsInCartContext)
+        const {productsInCart, setProductsInCart} = contextItems
+    
+        const addQuantity = () => {
+            const temporal = [...productsInCart]
+            temporal[index].quantity++ 
+            temporal[index].pricePerQuantity += temporal[index].unitPrice 
+            setProductsInCart(temporal)
+        }
+    
+        const subtractQuantity = () => {
+            const temporal = [...productsInCart]
+            temporal[index].quantity--
+            temporal[index].pricePerQuantity -= temporal[index].unitPrice 
+            setProductsInCart(temporal)
+        }
+
 
     return (
         <div className='item-quantity-selector'>
@@ -10,12 +30,12 @@ const ItemQuantitySelector = (props) => {
             <div>
                 <button 
                     className='btn-minus' 
-                    onClick = {props.quantity > 1 ? props.subtractQuantity : undefined} 
+                    onClick = {quantity > 1 ? subtractQuantity : undefined} 
                 >-
                 </button>
                 <button 
                     className='btn-plus' 
-                    onClick = {props.quantity < 25 ? props.addQuantity : undefined} 
+                    onClick = {quantity < 25 ? addQuantity : undefined} 
                 >+
                 </button>
             </div>

@@ -17,4 +17,4 @@ const HomeBanner = (props) => {
     )
 }
 
-export default HomeBanner;
+export default HomeBanner
