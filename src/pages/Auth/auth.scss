@@ -1,0 +1,65 @@
+@import '../../assets/colors.scss';
+
+.auth-container {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    background: $primaryColor;
+
+    p {
+        color: $tertiaryColor;
+        text-align: center;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    h1 {
+        color: $tertiaryColor;
+        margin-top: 7.5em;
+        padding: 1em;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 7.5em;
+        width: 75%;
+        
+        & > *{
+            margin: .5em;
+            padding: .5em;
+        }
+
+        input {
+            border: 1px solid $tertiaryColor;
+            background: $primaryColor;
+            color: $tertiaryColor;
+            font-weight: bold;
+        }
+
+        button {
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            
+            img {
+                margin-left: .5em;
+                width: 1.5em;
+            }
+        }
+
+        .sign-in {
+            background: $tertiaryColor;
+            color: $primaryColor;
+            border: none;
+        }
+
+        .log-in {
+            color: $tertiaryColor;
+            background: $primaryColor;
+            border: 1px solid $tertiaryColor;
+        }
+    }
+}

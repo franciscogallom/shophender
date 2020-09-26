@@ -11,9 +11,10 @@ import payPng from '../../assets/img/pay2.png'
 
 import ButtonItemDetail from '../../components/ButtonItemDetail/ButtonItemDetail'
 import Loader from '../../components/Loader/Loader'
+import ListItem from '../../components/ListItems/ListItems'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
-import ListItem from '../../components/ListItems/ListItems'
+
 
 const ItemDetail = (props) => {
 
