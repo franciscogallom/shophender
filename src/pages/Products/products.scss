@@ -17,4 +17,14 @@
     .container-list-items .container-item-list {
         padding: 1em;
     }
+
+    .search {
+        background: none;
+        color: $primaryColor;
+        opacity: .05;
+        font-size: 5em;
+        padding: 0;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
 }
