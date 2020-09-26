@@ -9,6 +9,7 @@
         letter-spacing: 1em;
         font-style: italic;
         padding: 2.5vh;
+        text-transform: uppercase;
     }
 
     article {
@@ -19,7 +20,11 @@
         border-bottom: 1px solid #eee;
         padding: 2em;
 
-        span {
+        p span {
+            text-transform: uppercase;
+        }
+
+        .price-per-quantity {
             color: $tertiaryColor;
             background: $primaryColor;
         }

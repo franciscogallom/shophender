@@ -23,8 +23,8 @@ const Checkout = () => {
                     {
                         productsInCart.map(item => {
                             return  <article key={item.key}>
-                                        <p>{item.nameProduct} x {item.quantity}</p>
-                                        <span>${item.pricePerQuantity}</span>
+                                        <p><span>{item.nameProduct}</span> x {item.quantity}</p>
+                                        <span className='price-per-quantity'>${item.pricePerQuantity}</span>
                                     </article>
                         })
                     }
