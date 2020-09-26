@@ -93,6 +93,15 @@
         form {
             width: 35%;
             margin-top: 10vh;
+        
+            button {
+                cursor: pointer;
+                transition: .5s scale;
+                
+                &:hover {
+                    scale: 1.1;
+                }
+            }
         }
 
         h1 {
