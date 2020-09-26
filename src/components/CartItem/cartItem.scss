@@ -26,6 +26,10 @@
             color: $tertiaryColor;
             font-style: italic;
             text-transform: uppercase;
+
+            strong {
+                text-transform: lowercase;
+            }
         }
 
         span {

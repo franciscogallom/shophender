@@ -17,8 +17,8 @@ const CartItem = ({ nameProduct, imgProduct, pricePerQuantity, unitPrice, id, in
         <article className='container-cart-item'>
             <img className='imgProduct' src={'/images/' + imgProduct} alt={nameProduct}/>
             <div>
-                <p>{nameProduct} x {productsInCart[index].quantity}</p>
-                <span>${productsInCart[index].pricePerQuantity}</span>
+                <p>{nameProduct} <strong>x</strong> {productsInCart[index].quantity}</p>
+                <span className='price-per'>${productsInCart[index].pricePerQuantity}</span>
                 <ItemQuantitySelector 
                     quantity = {productsInCart[index].quantity} 
                     index = {index}

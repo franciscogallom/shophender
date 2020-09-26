@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom'
 
 import { getFirestore } from '../../firebase'
 
+import './products.scss'
+
 import ItemList from '../../components/ItemList/ItemList'
 import Loader from '../../components/Loader/Loader'
 
@@ -35,25 +37,29 @@ const Products = (props) => {
             props.history.push('/404')
         }).finally(() => {
             setLoader(false)
-            //props.handleLoader()
         })
         // eslint-disable-next-line 
     }, [sex, category])
 
     return (
         loader ? <Loader/> :
-        <section className='container-list-items margin-t'>
-            {
-                items.map(item => {
-                    return (
-                        <ItemList 
-                            product = {item}
-                            key = {item.id}
-                        />
-                    )
-                })
-            }
-        </section>
+        <>
+            <h1 className='margin-t search'>{`${category} for ${sex}`}</h1>
+            <section className='container-list-items'>
+                    {
+                        items.map(item => {
+                            return (
+                                <div className='container-item-list'>
+                                    <ItemList 
+                                        product = {item}
+                                        key = {item.id}
+                                    />
+                                </div>
+                            )
+                        })
+                    }
+            </section>
+        </>
     )
 }
 
