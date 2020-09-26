@@ -1,32 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import './home.scss'
 
 import HomeBanner from '../../components/HomeBanner/HomeBanner'
 import ListItems from '../../components/ListItems/ListItems'
-import Loader from '../../components/Loader/Loader'
-import { useEffect } from 'react'
+// import Loader from '../../components/Loader/Loader'
 
 const Home = () => {
 
-    const [loader, setLoader] = useState(true)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setLoader(false)
-        }, 2000)
-    })
+    //const [loader, setLoader] = useState(true)
 
     return (
-        loader ? <Loader/> :
+        //loader ? <Loader/> :
         <section className='home-container margin-t'>
             <header>
                 <h1>shophender</h1>
             </header>
             
-            <ListItems 
-                filterSex = 'men'
-            />
+            <ListItems filterSex = 'men' />
 
             <HomeBanner  
                 bannerText = 'hombres' 
@@ -35,9 +26,7 @@ const Home = () => {
                 bannerGender = 'men'
             />
 
-            <ListItems 
-                filterSex = 'men'
-            />
+            <ListItems filterSex = 'women' />
 
             <HomeBanner  
                 bannerText = 'mujeres' 
@@ -46,9 +35,7 @@ const Home = () => {
                 bannerGender = 'women'
             />
 
-            <ListItems 
-                filterSex = 'men'
-            />
+            <ListItems filterSex = {null} />
 
             <HomeBanner  
                 bannerText = 'ver.todo' 

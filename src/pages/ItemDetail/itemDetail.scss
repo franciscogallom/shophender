@@ -41,6 +41,19 @@
     }
 }
 
+.p-item-detail {
+    margin-top: 2.5em;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: .5em;
+    color: $secondaryColor;
+    background: $primaryColor;
+    clip-path: polygon(100% 0, 100% 70%, 0 100%, 0 30%);
+}
+
 @media screen and (min-width: 1023px) {
     .container-item-detail {
         flex-direction: row;
@@ -62,5 +75,11 @@
                 font-size: .9em;
             }
         }
+    }
+
+    .p-item-detail {
+        padding: 2em;
+        color: $tertiaryColor;
+        clip-path: polygon(100% 0, 100% 60%, 0 100%, 0 40%);
     }
 }

@@ -13,7 +13,10 @@ const ListItem = (props) => {
     useEffect(() => {
         const db = getFirestore()
         const itemCollection = db.collection("items")
-        const filter = itemCollection.where('sex', '==', `${props.filterSex}`).limit(4)
+        let filter = itemCollection.where('sex', '==', `${props.filterSex}`).limit(4)
+        const notFilter = itemCollection.limit(4)
+
+        if (props.filterSex === null) filter = notFilter
 
         filter.get().then((querySnapshot) => {
             if(querySnapshot.size === 0) {
@@ -24,6 +27,9 @@ const ListItem = (props) => {
         }).catch((error) => {
             console.log('Error to find the item. Error: ', error)
             props.history.push('/404')
+        }).finally(() => {
+            console.log('termino')
+            //props.handleLoader()
         })
         // eslint-disable-next-line 
     }, [])

@@ -13,6 +13,7 @@ import ButtonItemDetail from '../../components/ButtonItemDetail/ButtonItemDetail
 import Loader from '../../components/Loader/Loader'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
+import ListItem from '../../components/ListItems/ListItems'
 
 const ItemDetail = (props) => {
 
@@ -40,7 +41,7 @@ const ItemDetail = (props) => {
             setLoader(false)
         })
         // eslint-disable-next-line 
-    }, [])
+    }, [id])
 
     const contextItems = useContext(ProductsInCartContext)
     const { productsInCart, setProductsInCart } = contextItems
@@ -69,6 +70,7 @@ const ItemDetail = (props) => {
 
     return (
         loader ? <Loader/> :
+        <>
         <section className='container-item-detail margin-t'>
             <img src={'/images/' + item.img1} alt={item.nameProduct} />
             <div>
@@ -91,6 +93,9 @@ const ItemDetail = (props) => {
                 <p>{item.description}</p>
             </div>
         </section>
+        <p className='p-item-detail'>COMPLETA TU OUTFIT</p>
+        <ListItem filterSex = {item.sex} />
+        </>
     )
 }
 
