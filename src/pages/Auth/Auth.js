@@ -39,7 +39,7 @@ const Auth = () => {
 
     return (
         <section className='auth-container margin-t'>
-            {!showForm ? <h1>Hola {email.slice(0, email.indexOf('@'))}, muchas gracias por ser parte de SHOPHENDER!</h1> :
+            {!showForm ? <h1>{email.slice(0, email.indexOf('@'))}, muchas gracias por ser parte de <strong>shophender</strong>.</h1> :
             <form>    
                 <p>Inicia sesión o crea una nueva cuenta en dos pasos!</p>
                 <input placeholder='Email.' type="email" id='email' onChange = { e => setEmail(e.target.value)} />

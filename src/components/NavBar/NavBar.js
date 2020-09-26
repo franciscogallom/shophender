@@ -6,6 +6,7 @@ import "./navbar.scss";
 
 import menuIcon from '../../assets/img/menu.svg'
 import shophenderNav from '../../assets/img/shophender-nav.png'
+import userNav from '../../assets/img/user.svg'
 
 import CartIcon from '../CartIcon/CartIcon'
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
@@ -152,6 +153,18 @@ const NavBar = () => {
                                 closeAllListCategories()}}
                     >
                         <img className='shophender' src={shophenderNav} alt="shophender"/>
+                    </NavLink>
+                </li>
+
+                <li>
+                    <NavLink 
+                        to="/authentication"
+                        // No puede abrir el menu, pero si cerrarlo.
+                        onClick={() => {isMobileOrTablet && 
+                                setOnlyOpenMenuFunction();
+                                closeAllListCategories()}}
+                    >
+                        <img className='user-nav' src={userNav} alt="user"/>
                     </NavLink>
                 </li>
 

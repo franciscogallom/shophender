@@ -27,7 +27,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/products/:sex/:category" component={Products} />
               <Route path="/products/:sex/:category/:id" component={ItemDetail} />
-              <Route path="/cart" component={Auth} />
+              <Route path="/cart" component={Cart} />
               <Route path="/checkout" component={Checkout} />
               <Route path="/authentication" component={Auth} />
               <Route path="/*" component={NoMatch} />

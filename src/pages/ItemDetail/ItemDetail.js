@@ -7,7 +7,7 @@ import { getFirestore } from '../../firebase'
 import './itemDetail.scss'
 
 import addToCart from '../../assets/img/cart-add.svg'
-import payPng from '../../assets/img/pay2.png'
+import payPng from '../../assets/img/pay2.svg'
 
 import ButtonItemDetail from '../../components/ButtonItemDetail/ButtonItemDetail'
 import Loader from '../../components/Loader/Loader'
