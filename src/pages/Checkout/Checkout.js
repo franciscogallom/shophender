@@ -3,17 +3,20 @@ import React, { useContext } from 'react'
 import './checkout.scss'
 
 import checkPay from '../../assets/img/check.svg'
+import signIn from '../../assets/img/sign-in.svg'
 
 import CheckoutForm from '../../components/CheckoutForm/CheckoutForm'
 import ButtonCallToAction from '../../components/ButtonCallToAction/ButtonCallToAction'
 import NoMatch from '../NoMatch/NoMatch'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
+import AuthContext from '../../context/AuthProvider'
 
 const Checkout = () => {
 
-    const contextItems = useContext(ProductsInCartContext)
-    const { productsInCart } = contextItems
+    const { productsInCart } = useContext(ProductsInCartContext)
+
+    const { email } = useContext(AuthContext)
 
     return (
         productsInCart[0]
@@ -29,12 +32,26 @@ const Checkout = () => {
                         })
                     }
                     <p className='checkout-total'>TOTAL A PAGAR: ${productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)}</p>
-                    <CheckoutForm />
-                    <ButtonCallToAction 
-                        link = '/'
-                        text = 'CONFIRMAR COMPRA ' 
-                        imgBtn = {checkPay} 
-                    />
+                    {
+                        !email ?
+                                <div className='not-register'>
+                                    <p>Aún no estas registrado! Hazlo y regresa.</p>
+                                    <ButtonCallToAction 
+                                        link = '/authentication'
+                                        text = 'INGRESAR ' 
+                                        imgBtn = {signIn} 
+                                    />
+                                </div>
+                            :
+                        <>
+                            <CheckoutForm />
+                            <ButtonCallToAction 
+                                link = '/'
+                                text = 'CONFIRMAR COMPRA ' 
+                                imgBtn = {checkPay} 
+                            />
+                        </>
+                    }
                 </section>
             :
                 <NoMatch />

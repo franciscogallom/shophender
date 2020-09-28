@@ -31,12 +31,19 @@
     }
 
     .checkout-total {
-        margin: 2em;
-        padding: .5em;
+        margin: 2em 0;
+        padding: 1em;
         font-weight: 800;
+        font-style: italic;
         color: $tertiaryColor;
         background: $primaryColor;
-        clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
+        clip-path: polygon(100% 0, 100% 70%, 0 100%, 0 30%);
+    }
+
+    .not-register {
+        padding: 1em;
+        margin: 4em 0;
+        font-weight: bold;
     }
 }
 
@@ -60,20 +67,12 @@
 
         .checkout-total {
             clip-path: none;
-            background: none;
-            margin: 0;
-            position: absolute;
-            right: 0;
-            bottom: 2.5em;
-            width: 60%;
-            font-size: 5em;
-            font-style: italic;
-            font-weight: 900;
-            line-height: .75em;
-            text-align: end;
-            background: -webkit-linear-gradient($secondaryColor,$tertiaryColor);
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            font-size: 1.5em;
+            padding: 1.5em;
+            clip-path: polygon(100% 0, 100% 60%, 0 100%, 0 40%);
         }
     }
 }
