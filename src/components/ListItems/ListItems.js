@@ -10,7 +10,11 @@ const ListItem = (props) => {
 
     const [items, setItems] = useState({})
 
+    //const [sizeOfCollection, setSizeOfCollection] = useState(0)
+
     useEffect(() => {
+        //getFirestore().collection("items").get().then(querySnapshot => setSizeOfCollection(querySnapshot.size))
+
         const db = getFirestore()
         const itemCollection = db.collection("items")
         let filter = itemCollection.where('sex', '==', `${props.filterSex}`).limit(4)
@@ -27,9 +31,6 @@ const ListItem = (props) => {
         }).catch((error) => {
             console.log('Error to find the item. Error: ', error)
             props.history.push('/404')
-        }).finally(() => {
-            console.log('termino')
-            //props.handleLoader()
         })
         // eslint-disable-next-line 
     }, [])

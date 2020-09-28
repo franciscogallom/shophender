@@ -94,7 +94,7 @@ const NavBar = () => {
                                     HOMBRE
                                 </li>
                                 {listCategoriesMen && 
-                                    <DropDownMenu onMouseLeave={!isMobileOrTablet && setListCategoriesMenFunction} closeAll={closeChoice} sex='men' />}
+                                    <DropDownMenu onMouseLeave={!isMobileOrTablet ? setListCategoriesMenFunction : undefined} closeAll={closeChoice} sex='men' />}
                                 
                                 <li 
                                     onMouseEnter={() => {
@@ -116,7 +116,7 @@ const NavBar = () => {
                                     MUJER
                                 </li>
                                 {listCategoriesWomen && 
-                                    <DropDownMenu onMouseLeave={!isMobileOrTablet && setListCategoriesWomenFunction} closeAll={closeChoice} sex='women' />}
+                                    <DropDownMenu onMouseLeave={!isMobileOrTablet ? setListCategoriesWomenFunction : undefined} closeAll={closeChoice} sex='women' />}
                                 
                                 <li 
                                     onMouseEnter={() => {
@@ -138,7 +138,7 @@ const NavBar = () => {
                                     VER TODO
                                 </li>
                                 {listCategoriesAll && 
-                                    <DropDownMenu onMouseLeave={!isMobileOrTablet && setListCategoriesAllFunction} closeAll={closeChoice} sex='all' />}
+                                    <DropDownMenu onMouseLeave={!isMobileOrTablet ? setListCategoriesAllFunction : undefined} closeAll={closeChoice} sex='all' />}
 
                             </ul>
                     }   
