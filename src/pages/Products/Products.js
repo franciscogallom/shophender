@@ -22,6 +22,8 @@ const Products = (props) => {
     const [sizeOfCollection, setSizeOfCollection] = useState(0)
     
     useEffect(() => {
+        setLoader(true)
+
         getFirestore().collection("items").get().then(querySnapshot => setSizeOfCollection(querySnapshot.size))
 
         const db = getFirestore()
@@ -38,6 +40,7 @@ const Products = (props) => {
                 props.history.push('/404')
                 return
             }
+            setSizeOfCollection(querySnapshot.size)
             setItems(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
         }).catch((error) => {
             console.log('Error to find the item. Error: ', error)

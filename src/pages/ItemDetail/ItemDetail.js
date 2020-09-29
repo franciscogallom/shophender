@@ -25,6 +25,7 @@ const ItemDetail = (props) => {
     const [item, setItem] = useState({})
 
     useEffect(() => {
+        setLoader(true)
         const db = getFirestore()
         const itemCollection = db.collection("items")
         const item = itemCollection.doc(`${id}`)
