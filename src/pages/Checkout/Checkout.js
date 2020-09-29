@@ -7,11 +7,10 @@ import 'firebase/firestore'
 import './checkout.scss'
 
 import checkPay from '../../assets/img/check.svg'
-import signIn from '../../assets/img/sign-in.svg'
 
-import ButtonCallToAction from '../../components/ButtonCallToAction/ButtonCallToAction'
 import NoMatch from '../NoMatch/NoMatch'
 import Loader from '../../components/Loader/Loader'
+import Auth from '../Auth/Auth'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 import AuthContext from '../../context/AuthProvider'
@@ -24,10 +23,13 @@ const Checkout = () => {
 
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
+    const [address, setAddress] = useState('')
     const [phone, setPhone] = useState('')
+    const [city, setCity] = useState('')
 
     const [orderID, setOrderID] = useState('')
     const [buyCompleted, setBuyCompleted] = useState(false)
+    const [canContinueWithBuy, setCanContinueWithBuy] = useState(email !== '')
 
     const [loader, setLoader] = useState(false)
 
@@ -47,7 +49,13 @@ const Checkout = () => {
 
         const orders = db.collection('orders')
         const newOrder = {
-            buyer: {name: name, surname: surname, phone: phone, email: email},
+            buyer: {name: name, 
+                    surname: surname, 
+                    phone: phone, 
+                    email: email, 
+                    address: address,
+                    city: city
+                },
             items: items,
             date: firebase.firestore.Timestamp.fromDate(new Date()),
             total: totalToPay
@@ -78,7 +86,7 @@ const Checkout = () => {
             productsInCart[0]
             ?
                 <section className='checkout margin-t'>
-                    <h1>CHECKOUT</h1>
+                    <h1 className='checkout-title'>CHECKOUT</h1>
                     {
                         productsInCart.map(item => {
                             return  <article key={item.key}>
@@ -89,24 +97,24 @@ const Checkout = () => {
                     }
                     <p className='checkout-total'>TOTAL A PAGAR: ${productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)}</p>
                     {
-                        !email ?
-                                <div className='not-register'>
-                                    <p>Aún no estas registrado! Hazlo y regresa.</p>
-                                    <ButtonCallToAction 
-                                        link = '/authentication'
-                                        text = 'INGRESAR ' 
-                                        imgBtn = {signIn} 
-                                    />
-                                </div>
-                            :
+                        !canContinueWithBuy ? <Auth changeBackground = 'changeToWhite' handleFlow = {() => setCanContinueWithBuy(true)} /> :
                         <>
-                            <p className='p-checkout-form'>Estas comprando como {email}</p>
+                            <p className='p-checkout'>Datos de facturación.</p>
                             <form className='checkout-form'> 
                                 <input type="text" placeholder='Nombre.' onChange = {(e) => setName(e.target.value)} />
                                 <input type="text" placeholder='Apellido.' onChange = {(e) => setSurname(e.target.value)} />
+                                <input type="text" placeholder='Ciudad.' onChange = {(e) => setCity(e.target.value)} />
+                                <input type="text" placeholder='Direccion.' onChange = {(e) => setAddress(e.target.value)} />
                                 <input type="number" placeholder='Número de celular.' onChange = {(e) => setPhone(e.target.value)} />
                             </form>
-                            {(phone.length > 5 && name.length > 1 && surname.length > 1) && <button onClick={handleBuy} className='confirm-buy-btn'>CONFIRMAR COMPRA <img src={checkPay} alt="$"/></button>}
+                            {
+                            // Minima validacion de datos.
+                            (phone.length > 6 && 
+                                name.length > 2 && 
+                                surname.length > 2 &&
+                                address.length > 2 &&
+                                city.length > 2
+                                ) && <button onClick={handleBuy} className='confirm-buy-btn'>CONFIRMAR COMPRA <img src={checkPay} alt="$"/></button>}
                         </>
                     }
                 </section>

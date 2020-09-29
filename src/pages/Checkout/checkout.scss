@@ -4,7 +4,7 @@
     text-align: center;
     margin-bottom: 3em;
 
-    h1 {
+    .checkout-title {
         border-bottom: 1px solid #eee;
         letter-spacing: 1em;
         font-style: italic;
@@ -40,12 +40,6 @@
         clip-path: polygon(100% 0, 100% 70%, 0 100%, 0 30%);
     }
 
-    .not-register {
-        padding: 1em;
-        margin: 4em 0;
-        font-weight: bold;
-    }
-
     .checkout-form {
         margin-bottom: 1em;
         
@@ -56,11 +50,6 @@
             font-weight: bold;
             border: 1px solid $tertiaryColor;
         }
-    }
-
-    .p-checkout-form {
-        font-weight: bold;
-        padding: 1em;
     }
 
     .confirm-buy-btn {
@@ -77,6 +66,11 @@
         img {
             width: 1.5em;
         }
+    }
+
+    .p-checkout {
+        font-weight: bold;
+        text-transform: uppercase;
     }
 }
 
@@ -95,7 +89,7 @@
     .buy-completed {
         margin: 42.5vh 0;
 
-        h1 {
+        .checkout-title {
             font-size: 4em;
         }
 

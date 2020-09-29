@@ -1,5 +1,22 @@
 @import '../../assets/colors.scss';
 
+.changeToWhite {
+    background: $secondaryColor !important;
+
+    input {
+        background: $secondaryColor !important;
+        color: $primaryColor !important;
+    }
+
+    button {
+        border: none !important;
+    }
+
+    p {
+        color: $primaryColor !important;
+    }
+}
+
 .auth-container {
     height: 80vh;
     display: flex;
@@ -87,11 +104,10 @@
     .auth-container {
         p {
             font-size: 1.5em;
-            font-weight: 900;
         }
 
         form {
-            width: 35%;
+            width: 50%;
             margin-top: 10vh;
         
             button {
