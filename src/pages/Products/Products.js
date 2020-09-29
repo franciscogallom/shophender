@@ -70,9 +70,9 @@ const Products = (props) => {
             </section>
             {
                 (limit <= sizeOfCollection) ?
-                <button className='load-products' onClick = {() => setLimit(prevLimit => prevLimit+= prevLimit)}>Cargar más productos.</button>
+                <button className='load-products' onClick = {() => setLimit(prevLimit => prevLimit+= prevLimit)}>Mostrar más.</button>
                 :
-                <button className='load-products'>No hay más productos.</button>
+                <button className='load-products not-cursor-pointer'>Has llegado al final.</button>
             }
         </>
     )

@@ -18,13 +18,17 @@
 
 .load-products {
     display: flex;
-    margin: 0 auto 2em;
-    padding: .5em 1em;
-    border-radius: 5px;
+    margin: 0 auto 5em;
+    padding: 1em 2em;
     border: none;
-    background-color: $primaryColor;
-    color: $tertiaryColor;
+    background-color: $secondaryColor;
+    border: 1px solid $primaryColor;
+    box-shadow: 5px 5px $tertiaryColor;
     font-weight: bold;
+}
+
+.not-cursor-pointer {
+    box-shadow: 5px 5px $fourthColor;
 }
 
 @media screen and (min-width: 760px) {
@@ -44,13 +48,24 @@
     }
 
     .load-products{
-        transition: .5s background-color, .5s color, .5s scale;
+        transition: .5s background-color, .5s color, .5s scale, .5s box-shadow;
         cursor: pointer;
+        box-shadow: none;
 
         &:hover {
-            background-color: $tertiaryColor;
-            color: $primaryColor;
+            background-color: $primaryColor;
+            color: $secondaryColor;
             scale: 1.1;
+            box-shadow: 5px 5px $tertiaryColor;
+        }
+    }
+
+    .not-cursor-pointer {
+        cursor: default;
+        box-shadow: none;
+
+        &:hover {
+            box-shadow: 5px 5px $fourthColor;
         }
     }
 }
