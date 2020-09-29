@@ -45,6 +45,64 @@
         margin: 4em 0;
         font-weight: bold;
     }
+
+    .checkout-form {
+        margin-bottom: 1em;
+        
+        input {
+            width: 90%;
+            padding: .75em;
+            margin: .6em;
+            font-weight: bold;
+            border: 1px solid $tertiaryColor;
+        }
+    }
+
+    .p-checkout-form {
+        font-weight: bold;
+        padding: 1em;
+    }
+
+    .confirm-buy-btn {
+        width: 90%;
+        padding: 1em .5em;
+        letter-spacing: .5em;
+        border: 1px solid $primaryColor;
+        background-color: $secondaryColor;
+        font-weight: 900;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+
+        img {
+            width: 1.5em;
+        }
+    }
+}
+
+.buy-completed {
+    margin: 40vh 0;
+    padding: 1em;
+    text-align: center;
+    margin-top: 15em;
+
+    p {
+        padding: 1em;
+    }
+}
+
+@media screen and (min-width: 760px){
+    .buy-completed {
+        margin: 42.5vh 0;
+
+        h1 {
+            font-size: 4em;
+        }
+
+        p {
+            font-size: 2em;
+        }
+    }
 }
 
 @media screen and (min-width: 1023px){
@@ -74,5 +132,39 @@
             padding: 1.5em;
             clip-path: polygon(100% 0, 100% 60%, 0 100%, 0 40%);
         }
+
+        .checkout-form {
+            margin: 1em auto 4em;
+            
+            input {
+                width: 50%;
+            }
+        }
+
+        .confirm-buy-btn {
+            width: 50%;
+            cursor: pointer;
+            transition: .5s all;
+
+            img {
+                transition: .5s border-radius, .5s background-color;
+            }
+
+            &:hover {
+                color: $secondaryColor;
+                background-color: $primaryColor;
+                scale: 1.1;
+                letter-spacing: .5em;
+
+                img {
+                    background: $secondaryColor;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    .buy-completed {
+        margin: 35vh 0;
     }
 }
