@@ -1,7 +1,7 @@
 @import '../../assets/colors.scss';
 
 .item-list {
-    padding: 5px;
+    padding-bottom: .5em;
     text-align: center;
     margin: auto;
     font-weight: bold;
@@ -39,6 +39,7 @@
         position: relative;
         overflow: hidden;
         cursor: pointer;
+        padding: 1em;
 
         &::before {
             content: '';

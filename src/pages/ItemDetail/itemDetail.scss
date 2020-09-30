@@ -79,8 +79,21 @@
     }
 
     .p-item-detail {
-        padding: 2em;
-        color: $tertiaryColor;
-        clip-path: polygon(100% 0, 100% 60%, 0 100%, 0 40%);
+        background: none;
+        color: $primaryColor;
+        clip-path: none;
+        position: relative;
+
+        &::before{
+            content: 'COMPLETA TU OUTFIT';
+            position: absolute;
+            top: -.25em;
+            left: 0;
+            right: 0;
+            font-size: 3.5em;
+            color: $secondaryColor;
+            opacity: .25;
+            -webkit-text-stroke: 2px $fourthColor;
+        }
     }
 }

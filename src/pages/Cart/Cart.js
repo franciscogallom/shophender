@@ -24,7 +24,7 @@ const Cart = () => {
         productsInCart[0]
             ?
                 <section className='cart-container margin-t'>
-                    <h1>CARRITO</h1>
+                    <h1 className='cart-title'>CARRITO</h1>
                     {
                         productsInCart.map((item, index) => {
                             return (

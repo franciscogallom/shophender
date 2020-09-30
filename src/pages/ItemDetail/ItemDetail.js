@@ -54,6 +54,7 @@ const ItemDetail = (props) => {
             if (product.id === item.id) {
                 product.quantity++
                 product.pricePerQuantity += product.unitPrice
+                setProductsInCart(prevItems => [...prevItems])
                 isInTheCart = true;
             }
         })

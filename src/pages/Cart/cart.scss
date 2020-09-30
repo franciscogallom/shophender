@@ -1,13 +1,14 @@
 @import '../../assets/colors.scss';
 
 .cart-container {
-    h1 {
-        display: flex;
-        justify-content: center;
-        padding: 2.5vh;
+    text-align: center;
+
+    .cart-title {
         border-bottom: 1px solid #eee;
         letter-spacing: 1em;
         font-style: italic;
+        padding: 2.5vh;
+        text-transform: uppercase;
     }
 
     .total-to-pay {
@@ -30,7 +31,25 @@
 }
 
 @media screen and (min-width: 1024px){
-    .cart-container section h1 {
+    .cart-container {
+        position: relative;
+        overflow: hidden;
+
+        &::before{
+            content: 'CARRITO';
+            position: absolute;
+            top: -125px;
+            left: 0;
+            right: 0;
+            font-size: 15em;
+            font-weight: 900;
+            font-style: italic;
+            opacity: .025;
+            width: 100vw;
+        }
+
+        section h1 {
         font-size: 2vw;
+        }
     }
 }
