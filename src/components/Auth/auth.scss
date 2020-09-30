@@ -1,27 +1,8 @@
 @import '../../assets/colors.scss';
 
-.changeToWhite {
-    background: $secondaryColor !important;
-
-    input {
-        background: $secondaryColor !important;
-        color: $primaryColor !important;
-    }
-
-    button {
-        border: none !important;
-    }
-
-    p {
-        color: $primaryColor !important;
-    }
-}
-
 .auth-container {
-    height: 80vh;
     display: flex;
     justify-content: center;
-    background: $primaryColor;
 
     p {
         color: $tertiaryColor;
@@ -46,8 +27,8 @@
     form {
         display: flex;
         flex-direction: column;
-        margin-top: 15vh;
-        width: 75%;
+        margin-top: 20vh;
+        width: 80%;
         
         & > *{
             margin: .5em;
@@ -87,6 +68,23 @@
     }
 }
 
+.changeToWhite {
+    background: $secondaryColor;
+
+    input {
+        background: $secondaryColor;
+        color: $primaryColor;
+    }
+
+    button {
+        border: none;
+    }
+
+    p {
+        color: $primaryColor;
+    }
+}
+
 @media screen and (min-width: 767px){
     .auth-container {
         h1 {
@@ -95,7 +93,7 @@
         }
 
         form {
-            margin-top: 20vh;
+            margin-top: 25vh;
         }
     }
 }
@@ -107,8 +105,14 @@
         }
 
         form {
-            width: 50%;
-            margin-top: 10vh;
+            width: 60%;
+            margin-top: 15vh;
+
+            input, button {
+                width: 75%;
+                margin-left: auto;
+                margin-right: auto;
+            }
         
             button {
                 cursor: pointer;

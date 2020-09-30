@@ -10,7 +10,7 @@ import checkPay from '../../assets/img/check.svg'
 
 import NoMatch from '../NoMatch/NoMatch'
 import Loader from '../../components/Loader/Loader'
-import Auth from '../Auth/Auth'
+import Auth from '../../components/Auth/Auth'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 import AuthContext from '../../context/AuthProvider'

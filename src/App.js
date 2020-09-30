@@ -8,7 +8,7 @@ import Products from "./pages/Products/Products"
 import ItemDetail from "./pages/ItemDetail/ItemDetail"
 import Cart from "./pages/Cart/Cart"
 import Checkout from "./pages/Checkout/Checkout"
-import Auth from "./pages/Auth/Auth"
+import Authentication from "./pages/Authentication/Authentication"
 import Footer from "./components/Footer/Footer"
 import NoMatch from "./pages/NoMatch/NoMatch"
 
@@ -29,7 +29,7 @@ function App() {
               <Route path="/products/:sex/:category/:id" component={ItemDetail} />
               <Route path="/cart" component={Cart} />
               <Route path="/checkout" component={Checkout} />
-              <Route path="/authentication" component={Auth} />
+              <Route path="/authentication" component={Authentication} />
               <Route path="/*" component={NoMatch} />
             </Switch>
           </Router>

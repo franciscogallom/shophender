@@ -1,0 +1,9 @@
+@import '../../assets/colors.scss';
+
+.authentication-container {
+    height: 90vh;
+    justify-content: center;
+    background: $primaryColor;
+    display: flex;
+    justify-content: center;
+}

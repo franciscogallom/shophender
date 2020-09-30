@@ -1,0 +1,48 @@
+@import '../../assets/colors.scss';
+
+.alert-container {
+    background: $tertiaryColor;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2em 1em;
+    margin: auto;
+
+    
+    button {
+        padding: 1em;
+        color: $primaryColor;
+        border: none;
+        background-color: $secondaryColor;
+        box-shadow: 5px 5px $fourthColor;
+        font-weight: bold;
+        width: 75%;
+        margin: 1em auto 0;
+    }
+}
+
+@media screen and (min-width: 767px){
+    .alert-container {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (min-width: 1023px){
+    .alert-container {
+        font-size: 1em;
+        padding: 2em;
+
+        button {
+            box-shadow: none;
+            cursor: pointer;
+            transition: .5s all;
+
+            &:hover {
+                box-shadow: 5px 5px $fourthColor;
+                color: $secondaryColor;
+                background: $primaryColor;
+            }
+        }
+    }
+}

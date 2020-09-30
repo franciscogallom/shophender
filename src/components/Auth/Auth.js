@@ -9,7 +9,8 @@ import './auth.scss'
 import logIn from '../../assets/img/log-in.svg'
 import signIn from '../../assets/img/sign-in.svg'
 
-import Loader from '../../components/Loader/Loader'
+import Loader from '../Loader/Loader'
+import Alert from '../Alert/Alert'
 
 import AuthContext from '../../context/AuthProvider'
 
@@ -19,6 +20,8 @@ const Auth = (props) => {
 
     const [password, setPassword] = useState('')
     const [showForm, setShowForm] = useState(email === '')
+
+    const [errorAlert, setErrorAlert] = useState('')
 
     const [loader, setLoader] = useState(false)
 
@@ -35,7 +38,7 @@ const Auth = (props) => {
         .then(() => {
             setShowForm(false)
             props.handleFlow !== undefined && props.handleFlow()})
-        .catch((e) => alert(e.message))
+        .catch((e) => setErrorAlert(e.message))
         .finally(() => setLoader(false))
     }
 
@@ -46,16 +49,17 @@ const Auth = (props) => {
             .then(() => {
                 setShowForm(false)
                 props.handleFlow !== undefined && props.handleFlow()})
-            .catch(e =>alert(e.message))
+            .catch(e => setErrorAlert(e.message))
             .finally(() => setLoader(false))
     }
 
     return (
-        loader ? <Loader/> :
-        <section className={`auth-container margin-t ${props.changeBackground}`}>
+        errorAlert !== '' ? <Alert text = {errorAlert} handleAlert = {() => setErrorAlert('')} /> :
+        loader ? <Loader changeColors='change-colors' /> :
+        <section className={`auth-container ${props.changeBackground}`}>
             {!showForm ? <h1>{email.slice(0, email.indexOf('@'))}, muchas gracias por ser parte de <strong>shophender</strong>.</h1> :
             <form>    
-                <p>Inicia sesión o crea una nueva cuenta para poder comprar en nuestra tienda.</p>
+                <p>inicia sesión o crea una nueva cuenta para poder comprar en nuestra tienda.</p>
                 <input placeholder='Email.' type="email" id='email' onChange = { e => setEmail(e.target.value)} />
                 <input placeholder='Contraseña.' type="password" id='password' onChange = { e => setPassword(e.target.value)} />
                 <button className='sign-in' onClick = {handleSubmit}>Crear cuenta <img src={signIn} alt="sign-in"/></button>
