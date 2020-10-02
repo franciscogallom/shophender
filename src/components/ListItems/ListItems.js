@@ -5,15 +5,15 @@ import { getFirestore } from '../../firebase'
 import'./listItems.scss';
 
 import ItemList from '../ItemList/ItemList'
+import Alert from '../Alert/Alert'
 
 const ListItem = (props) => {
 
     const [items, setItems] = useState({})
 
-    //const [sizeOfCollection, setSizeOfCollection] = useState(0)
+    const [errorAlert, setErrorAlert] = useState('')
 
     useEffect(() => {
-        //getFirestore().collection("items").get().then(querySnapshot => setSizeOfCollection(querySnapshot.size))
 
         const db = getFirestore()
         const itemCollection = db.collection("items")
@@ -24,18 +24,16 @@ const ListItem = (props) => {
 
         filter.get().then((querySnapshot) => {
             if(querySnapshot.size === 0) {
-                props.history.push('/404')
+                setErrorAlert('No encontramos el producto.')
                 return
             }
             setItems(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
-        }).catch((error) => {
-            console.log('Error to find the item. Error: ', error)
-            props.history.push('/404')
-        })
+        }).catch((error) => setErrorAlert(error))
         // eslint-disable-next-line 
     }, [])
 
     return (
+        errorAlert !== '' ? <Alert text = {errorAlert} handleAlert = {() => setErrorAlert('')} /> :
         Object.keys(items).length !== 0 &&
         <section className='container-list-items'>
             {
