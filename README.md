@@ -1,4 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# shophender
+
+Este proyecto consiste en un ecommerce desarrollado en React JS (utiizando Create React App) junto con Firebase. El objetivo priniciapl es aprender haciendo.
+
+## User Story
+
+Un usuario puede ingresar a la tienda, registrarse, navegar por los distintos productos, ir a sus detalles, agregar y eliminar productos del carrito y realizar una compra.
+
+## Firebase
+
+### Cloud Firestore
+
+En el proyecto se utiliza Cloud Firestore principalmente para manejar dos colleciones. 
+
+La primera, para almacenar productos que son mostrados a los usuarios en las distintas secciones del ecommerce.
+
+En una segunda coleccion, se alamcenan las compras realizadas por los usuarios.
+
+### Authentication
+
+El sitio cuenta con una implementación de autentificación con email y contraseña brindada por Firebase Authentication.
+
 
 ## Available Scripts
 
