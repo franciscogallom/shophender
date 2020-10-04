@@ -1,24 +1,24 @@
 # shophender
 
-Este proyecto consiste en un ecommerce desarrollado en React JS (utiizando Create React App) junto con Firebase. El objetivo priniciapl es aprender haciendo.
+This project consists of an ecommerce developed in React JS (using Create React App) together with Firebase. The main objective is to learn by doing.
 
 ## User Story
 
-Un usuario puede ingresar a la tienda, registrarse, navegar por los distintos productos, ir a sus detalles, agregar y eliminar productos del carrito y realizar una compra.
+A user can enter the store, register, browse the different products, go to their details, add and remove products from the cart and make a purchase.
 
 ## Firebase
 
 ### Cloud Firestore
 
-En el proyecto se utiliza Cloud Firestore principalmente para manejar dos colleciones. 
+The project uses Cloud Firestore mainly to manage two collections. 
 
-La primera, para almacenar productos que son mostrados a los usuarios en las distintas secciones del ecommerce.
+The first one, to store products that are shown to users in the different sections of the ecommerce.
 
-En una segunda coleccion, se alamcenan las compras realizadas por los usuarios.
+In a second collection, the purchases made by the users are stored.
 
 ### Authentication
 
-El sitio cuenta con una implementación de autentificación con email y contraseña brindada por Firebase Authentication.
+The site has an authentication implementation with email and password provided by Firebase Authentication.
 
 
 ## Available Scripts
