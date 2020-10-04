@@ -1,4 +1,4 @@
-# shophender
+# shophender 🚀
 
 This project consists of an ecommerce developed in React JS (using Create React App) together with Firebase. The main objective is to learn by doing.
 
