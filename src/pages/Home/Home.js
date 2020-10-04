@@ -24,12 +24,12 @@ const Home = () => {
         setLoader(true)
         const db = getFirestore()
         const itemCollection = db.collection("items")
-        let itemsMen = itemCollection.where('sex', '==', 'men').limit(4)
-        let itemsWomen = itemCollection.where('sex', '==', 'women').limit(4)
-        let itemsAll = itemCollection.limit(4)
-        
+        const itemsForMen = itemCollection.where('sex', '==', 'men').limit(4)
+        const itemsForWomen = itemCollection.where('sex', '==', 'women').limit(4)
+        const itemsForAll = itemCollection.limit(4)
+
         // Obtengo cuatro productos de hombre.
-        itemsMen.get().then((querySnapshot) => {
+        itemsForMen.get().then((querySnapshot) => {
             if(querySnapshot.size === 0) {
                 console.log('querySnapshot.size === 0.')
                 setErr(true)
@@ -46,7 +46,7 @@ const Home = () => {
         })
 
         // Obtengo cuatro productos de mujer.
-        itemsWomen.get().then((querySnapshot) => {
+        itemsForWomen.get().then((querySnapshot) => {
             if(querySnapshot.size === 0) {
                 console.log('querySnapshot.size === 0.')
                 setErr(true)
@@ -63,7 +63,7 @@ const Home = () => {
         })
 
         // Obtengo cuatro aleatorios.
-        itemsAll.get().then((querySnapshot) => {
+        itemsForAll.get().then((querySnapshot) => {
             if(querySnapshot.size === 0) {
                 console.log('querySnapshot.size === 0.')
                 setErr(true)

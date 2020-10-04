@@ -18,11 +18,13 @@ import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 const ItemDetail = (props) => {
 
-    const { id } = useParams()
+    const { id, sex } = useParams()
 
     const [loader, setLoader] = useState(true)
 
     const [item, setItem] = useState({})
+
+    const [items, setItems] = useState({})
 
     const [err, setErr] = useState(false)
 
@@ -43,6 +45,25 @@ const ItemDetail = (props) => {
             console.log('Error to find the item. Error: ', error)
             setErr(true)
         }).finally(() => {
+            setLoader(false)
+        })
+
+        // Obtengo cuatro productos del genero del producto que estoy viendo.
+        const itemsForMen = itemCollection.where('sex', '==', sex).limit(4)
+        itemsForMen.get().then((querySnapshot) => {
+            setLoader(true)
+            if(querySnapshot.size === 0) {
+                console.log('querySnapshot.size === 0.')
+                setErr(true)
+                return
+            }
+            setItems(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
+        })
+        .catch((error) => {
+            console.log('Error to find the item. Error: ', error)
+            setErr(true)
+        })
+        .finally(() => {
             setLoader(false)
         })
         // eslint-disable-next-line 
@@ -101,7 +122,7 @@ const ItemDetail = (props) => {
             </div>
         </section>
         <p className='p-item-detail'>COMPLETA TU OUTFIT</p>
-        <ListItem filterSex = {item.sex} />
+        <ListItem items = {items} />
         </>
     )
 }
