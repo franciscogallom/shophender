@@ -6,7 +6,7 @@ import payImg from '../../assets/img/pay.png'
 
 import CartItem from '../../components/CartItem/CartItem'
 import NoMatch from '../NoMatch/NoMatch'
-import ButtonCallToAction from '../../components/ButtonCallToAction/ButtonCallToAction'
+import CartButton from '../../components/CartButton/CartButton'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
@@ -44,7 +44,7 @@ const Cart = () => {
                     }
                     <div className='total-to-pay'>
                         <p>TOTAL A PAGAR: <span>${productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)}</span></p>
-                        <ButtonCallToAction 
+                        <CartButton 
                             link = '/checkout'
                             text='REALIZAR COMPRA ' 
                             imgBtn={payImg} 

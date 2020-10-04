@@ -2,14 +2,14 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
-import './buttonCallToAction.scss'
+import './cartButton.scss'
 
-const ButtonCallToAction = (props) => {
+const CartButton = (props) => {
     return(
-        <button className='btn-cta'>
+        <button className='cart-btn'>
             <Link to={props.link}>{props.text} <img src={props.imgBtn} alt={props.text} /></Link>
         </button>
     )
 }
 
-export default ButtonCallToAction
+export default CartButton

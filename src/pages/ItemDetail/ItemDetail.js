@@ -9,7 +9,7 @@ import './itemDetail.scss'
 import addToCart from '../../assets/img/cart-add.svg'
 import payPng from '../../assets/img/pay2.svg'
 
-import ButtonItemDetail from '../../components/ButtonItemDetail/ButtonItemDetail'
+import ItemDetailButton from '../../components/ItemDetailButton/ItemDetailButton'
 import Loader from '../../components/Loader/Loader'
 import ListItem from '../../components/ListItems/ListItems'
 
@@ -104,14 +104,14 @@ const ItemDetail = (props) => {
             <div>
                 <h1>{item.nameProduct}</h1>
                 <span>${item.unitPrice}</span>
-                <ButtonItemDetail 
+                <ItemDetailButton 
                     handleClick = {setproductsInCartFunction} 
                     text = 'Anadir al carrito'
                     svg = {addToCart}
                     classN = ''
                 />
                 <Link to='/checkout'>
-                    <ButtonItemDetail 
+                    <ItemDetailButton 
                         handleClick = {setproductsInCartFunction} 
                         text = 'Comprar ahora'
                         svg = {payPng}

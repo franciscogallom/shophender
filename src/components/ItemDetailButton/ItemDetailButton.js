@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './buttonItemDetail.scss'
+import './itemDetailButton.scss'
 
 const ButtonItemDetail = (props) => {
     return (
