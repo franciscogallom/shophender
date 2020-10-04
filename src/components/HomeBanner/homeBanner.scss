@@ -24,19 +24,19 @@
     }
 
     section {
-        .banner-all, .banner-men, .banner-women {
+        .all, .men, .women {
             -webkit-text-stroke: 2px $secondaryColor;
         }
 
-        .banner-men {
+        .men {
             background-image: url('../../assets/img/banner-men.jpg');
         }
 
-        .banner-women {
+        .women {
             background-image: url('../../assets/img/banner-women.jpg');
         }
 
-        .banner-all {
+        .all {
             background-image: url('../../assets/img/banner-all.jpg');
         }
     }
@@ -44,7 +44,7 @@
 
 @media screen and (min-width: 1023px){
     .home-container section {
-        .banner-all, .banner-men, .banner-women {
+        .all, .men, .women {
             -webkit-text-stroke: 2.5px $primaryColor;
         }
     }

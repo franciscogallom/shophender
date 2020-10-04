@@ -22,13 +22,12 @@
             font-size: 4vw;
             padding: 0 .5em;
             font-weight: bold;
-            background: $primaryColor;
-            color: $tertiaryColor;
             font-style: italic;
             text-transform: uppercase;
 
             strong {
                 text-transform: lowercase;
+                color: $fourthColor;
             }
         }
 
@@ -58,7 +57,9 @@
             }
 
             p {
-            font-size: 1.5em;
+                font-size: 1.5em;
+                background: $primaryColor;
+                color: $tertiaryColor;
             }
 
             span {

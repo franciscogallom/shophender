@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, Redirect } from 'react-router-dom'
 
 import { getFirestore } from '../../firebase'
 
@@ -24,6 +24,8 @@ const ItemDetail = (props) => {
 
     const [item, setItem] = useState({})
 
+    const [err, setErr] = useState(false)
+
     useEffect(() => {
         setLoader(true)
         const db = getFirestore()
@@ -32,13 +34,14 @@ const ItemDetail = (props) => {
 
         item.get().then((doc) => {
             if(!doc.exists) {
-                props.history.push('/404')
+                console.log('The document does not exist.')
+                setErr(true)
                 return
             }
             setItem({ id: doc.id, ...doc.data() })
         }).catch((error) => {
             console.log('Error to find the item. Error: ', error)
-            props.history.push('/404')
+            setErr(true)
         }).finally(() => {
             setLoader(false)
         })
@@ -72,6 +75,7 @@ const ItemDetail = (props) => {
     }
 
     return (
+        err ? <Redirect to = '/404' /> : 
         loader ? <Loader/> :
         <>
         <section className='container-item-detail margin-t'>

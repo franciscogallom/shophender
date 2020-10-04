@@ -4,14 +4,10 @@ import './home.scss'
 
 import HomeBanner from '../../components/HomeBanner/HomeBanner'
 import ListItems from '../../components/ListItems/ListItems'
-// import Loader from '../../components/Loader/Loader'
 
 const Home = () => {
 
-    //const [loader, setLoader] = useState(true)
-
     return (
-        //loader ? <Loader/> :
         <section className='home-container margin-t'>
             <header>
                 <h1>shophender</h1>
@@ -21,7 +17,6 @@ const Home = () => {
 
             <HomeBanner  
                 bannerText = 'hombres' 
-                bannerClass='banner-men' 
                 bannerPosition='bannerRight'
                 bannerGender = 'men'
             />
@@ -30,7 +25,6 @@ const Home = () => {
 
             <HomeBanner  
                 bannerText = 'mujeres' 
-                bannerClass='banner-women' 
                 bannerPosition='bannerLeft'
                 bannerGender = 'women'
             />
@@ -39,7 +33,6 @@ const Home = () => {
 
             <HomeBanner  
                 bannerText = 'ver.todo' 
-                bannerClass='banner-all' 
                 bannerPosition='bannerRight'
                 bannerGender = 'all'
             />

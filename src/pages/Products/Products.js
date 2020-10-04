@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { useParams } from 'react-router-dom'
+import { useParams, Redirect } from 'react-router-dom'
 
 import { getFirestore } from '../../firebase'
 
@@ -20,6 +20,8 @@ const Products = (props) => {
     const { sex, category } = useParams()
 
     const [sizeOfCollection, setSizeOfCollection] = useState(0)
+
+    const [err, setErr] = useState(false)
     
     useEffect(() => {
         setLoader(true)
@@ -37,14 +39,15 @@ const Products = (props) => {
 
         filter.get().then((querySnapshot) => {
             if(querySnapshot.size === 0) {
-                props.history.push('/404')
+                console.log('querySnapshot.size === 0.')
+                setErr(true)
                 return
             }
             setSizeOfCollection(querySnapshot.size)
             setItems(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
         }).catch((error) => {
             console.log('Error to find the item. Error: ', error)
-            props.history.push('/404')
+            setErr(true)
         }).finally(() => {
             setLoader(false)
         })
@@ -52,6 +55,7 @@ const Products = (props) => {
     }, [sex, category, limit])
 
     return (
+        err ? <Redirect to = '/404' /> :
         loader ? <Loader/> :
         <>
             <h1 className='margin-t search'>{`${category} for ${sex}`}</h1>
