@@ -24,8 +24,8 @@ const Home = () => {
         setLoader(true)
         const db = getFirestore()
         const itemCollection = db.collection("items")
-        const itemsForMen = itemCollection.where('sex', '==', 'men').limit(4)
-        const itemsForWomen = itemCollection.where('sex', '==', 'women').limit(4)
+        const itemsForMen = itemCollection.where('sex', '==', 'men').where('home', '==', true).limit(4)
+        const itemsForWomen = itemCollection.where('sex', '==', 'women').where('home', '==', true).limit(4)
         const itemsForAll = itemCollection.limit(4)
 
         // Obtengo cuatro productos de hombre.

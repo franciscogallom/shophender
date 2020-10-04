@@ -66,7 +66,7 @@ const ItemDetail = (props) => {
         .finally(() => {
             setLoader(false)
         })
-        // eslint-disable-next-line 
+        //eslint-disable-next-line
     }, [id])
 
     const contextItems = useContext(ProductsInCartContext)
@@ -99,30 +99,30 @@ const ItemDetail = (props) => {
         err ? <Redirect to = '/404' /> : 
         loader ? <Loader/> :
         <>
-        <section className='container-item-detail margin-t'>
-            <img src={'/images/' + item.img1} alt={item.nameProduct} />
-            <div>
-                <h1>{item.nameProduct}</h1>
-                <span>${item.unitPrice}</span>
-                <ItemDetailButton 
-                    handleClick = {setproductsInCartFunction} 
-                    text = 'Anadir al carrito'
-                    svg = {addToCart}
-                    classN = ''
-                />
-                <Link to='/checkout'>
+            <section className='container-item-detail margin-t'>
+                <img src={'/images/' + item.img1} alt={item.nameProduct} />
+                <div>
+                    <h1>{item.nameProduct}</h1>
+                    <span>${item.unitPrice}</span>
                     <ItemDetailButton 
                         handleClick = {setproductsInCartFunction} 
-                        text = 'Comprar ahora'
-                        svg = {payPng}
-                        classN = 'buy-now'
+                        text = 'Anadir al carrito'
+                        svg = {addToCart}
+                        classN = ''
                     />
-                </Link>
-                <p>{item.description}</p>
-            </div>
-        </section>
-        <p className='p-item-detail'>COMPLETA TU OUTFIT</p>
-        <ListItem items = {items} />
+                    <Link to='/checkout'>
+                        <ItemDetailButton 
+                            handleClick = {setproductsInCartFunction} 
+                            text = 'Comprar ahora'
+                            svg = {payPng}
+                            classN = 'buy-now'
+                        />
+                    </Link>
+                    <p>{item.description}</p>
+                </div>
+            </section>
+            <p className='p-item-detail'>COMPLETA TU OUTFIT</p>
+            <ListItem items = {items} />
         </>
     )
 }
