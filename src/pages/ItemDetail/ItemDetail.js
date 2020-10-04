@@ -49,8 +49,8 @@ const ItemDetail = (props) => {
         })
 
         // Obtengo cuatro productos del genero del producto que estoy viendo.
-        const itemsForMen = itemCollection.where('sex', '==', sex).limit(4)
-        itemsForMen.get().then((querySnapshot) => {
+        const itemsCollection = itemCollection.where('sex', '==', sex).limit(4)
+        itemsCollection.get().then((querySnapshot) => {
             setLoader(true)
             if(querySnapshot.size === 0) {
                 console.log('querySnapshot.size === 0.')
