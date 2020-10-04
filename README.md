@@ -4,7 +4,7 @@ This project consists of an ecommerce developed in React JS (using Create React 
 
 ## User Story
 
-A user can enter the store, register, browse the different products, go to their details, add and remove products from the cart and make a purchase.
+A user can enter the store, register, browse the different products, go to their details, add and remove products from the cart and make a purchase. When the latter happens, the purchase is stored in the database and feedback is given on the order number.
 
 ## Firebase
 
