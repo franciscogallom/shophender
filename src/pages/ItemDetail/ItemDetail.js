@@ -18,7 +18,7 @@ import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 const ItemDetail = (props) => {
 
-    const { id, sex } = useParams()
+    const { id } = useParams()
 
     const [loader, setLoader] = useState(true)
 
@@ -48,8 +48,8 @@ const ItemDetail = (props) => {
             setLoader(false)
         })
 
-        // Obtengo cuatro productos del genero del producto que estoy viendo.
-        const itemsCollection = itemCollection.where('sex', '==', sex).limit(4)
+        // Obtengo cuatro productos aleatorios.
+        const itemsCollection = itemCollection.orderBy('unitPrice').startAt(Math.floor(Math.random() * 16000)).limit(4)
         itemsCollection.get().then((querySnapshot) => {
             setLoader(true)
             if(querySnapshot.size === 0) {
@@ -121,7 +121,7 @@ const ItemDetail = (props) => {
                     <p>{item.description}</p>
                 </div>
             </section>
-            <p className='p-item-detail'>COMPLETA TU OUTFIT</p>
+            <p className='p-item-detail'>TAMBIEN TE PUEDE INTERESAR</p>
             <ListItem items = {items} />
         </>
     )

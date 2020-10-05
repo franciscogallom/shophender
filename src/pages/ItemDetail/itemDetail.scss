@@ -49,10 +49,9 @@
     font-size: 1.5em;
     font-weight: 900;
     font-style: italic;
-    letter-spacing: .5em;
     color: $secondaryColor;
     background: $primaryColor;
-    clip-path: polygon(100% 0, 100% 70%, 0 100%, 0 30%);
+    clip-path: polygon(100% 0, 100% 90%, 0 100%, 0 10%);
 }
 
 @media screen and (min-width: 1023px) {
