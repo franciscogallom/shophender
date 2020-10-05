@@ -2,15 +2,15 @@
 
 This project consists of an ecommerce developed in React JS (using Create React App) together with Firebase. The main objective is to learn by doing.
 
-## User Story
+## User Story 🙋
 
-A user can enter the store, register, browse the different products, go to their details, add and remove products from the cart and make a purchase. When the latter happens, the purchase is stored in the database and feedback is given on the order number.
+A user can enter the store, register, browse the different products 👕 👖 👞 , go to their details, add and remove products from the cart and make a purchase 💸. When the latter happens, the purchase is stored in the database and feedback is given on the order number 📃.
 
-## Firebase
+## Firebase 🔥 
 
 ### Cloud Firestore
 
-The project uses Cloud Firestore mainly to manage two collections. 
+The project uses Cloud Firestore mainly to manage two collections 📁. 
 
 The first one, to store products that are shown to users in the different sections of the ecommerce.
 
@@ -18,7 +18,11 @@ In a second collection, the purchases made by the users are stored.
 
 ### Authentication
 
-The site has an authentication implementation with email and password provided by Firebase Authentication.
+The site has an authentication implementation with email ✉️ and password 🔒 provided by Firebase Authentication.
+
+## Responsive Design
+
+The project has three dimensions. It was developed first for mobile 📱, then the tablet version 📟 is observed from 760 pixels, and after 1023 pixels the desktop version 💻.
 
 
 ## Available Scripts
@@ -58,32 +62,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Thank you very much for coming! ✌️ 
