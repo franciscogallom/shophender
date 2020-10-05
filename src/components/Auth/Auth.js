@@ -56,7 +56,7 @@ const Auth = (props) => {
     return (
         errorAlert !== '' ? <Alert text = {errorAlert} handleAlert = {() => setErrorAlert('')} /> :
         loader ? <Loader changeColors='change-colors' /> :
-        <section className={`auth-container ${props.changeBackground}`}>
+        <section className={`auth-container ${props.onCheckout}`}>
             {!showForm ? <h1>{email.slice(0, email.indexOf('@'))}, muchas gracias por ser parte de <strong>shophender</strong>.</h1> :
             <form>    
                 <p>inicia sesión o crea una nueva cuenta para poder comprar en nuestra tienda.</p>

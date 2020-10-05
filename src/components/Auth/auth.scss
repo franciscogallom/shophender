@@ -68,12 +68,24 @@
     }
 }
 
-.changeToWhite {
-    background: $secondaryColor;
+.onCheckout {
+    width: 90%;
+    margin: 0 auto;
+    padding: 2em 0;
+
+    form {
+        margin-top: 0;
+    }
+
+    input, button {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     input {
-        background: $secondaryColor;
-        color: $primaryColor;
+        background-color: $secondaryColor !important;
+        color: $primaryColor !important;
     }
 
     button {
@@ -82,6 +94,9 @@
 
     p {
         color: $primaryColor;
+        margin-top: 0;
+        padding-top: 0;
+        font-size: .75em;
     }
 }
 
@@ -94,6 +109,12 @@
 
         form {
             margin-top: 25vh;
+        }
+    }
+
+    .onCheckout {   
+        form {
+            margin-top: 0;
         }
     }
 }
@@ -126,6 +147,12 @@
 
         h1 {
             margin-top: 25vh;
+        }
+    }
+
+    .onCheckout {
+        button {
+            border: none !important;
         }
     }
 }

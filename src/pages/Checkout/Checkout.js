@@ -97,7 +97,7 @@ const Checkout = () => {
                     }
                     <p className='checkout-total'>TOTAL A PAGAR: ${productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)}</p>
                     {
-                        !canContinueWithBuy ? <Auth changeBackground = 'changeToWhite' handleFlow = {() => setCanContinueWithBuy(true)} /> :
+                        !canContinueWithBuy ? <Auth onCheckout = 'onCheckout' handleFlow = {() => setCanContinueWithBuy(true)} /> :
                         <>
                             <p className='p-checkout'>Datos de facturación.</p>
                             <form className='checkout-form'> 
