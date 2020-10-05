@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 
 import { Link, useParams, Redirect } from 'react-router-dom'
 
-import { getFirestore } from '../../firebase'
+import { getItemsForItemDetail } from '../../firebase'
 
 import './itemDetail.scss'
 
@@ -29,44 +29,7 @@ const ItemDetail = (props) => {
     const [err, setErr] = useState(false)
 
     useEffect(() => {
-        setLoader(true)
-        const db = getFirestore()
-        const itemCollection = db.collection("items")
-        const item = itemCollection.doc(`${id}`)
-
-        item.get().then((doc) => {
-            if(!doc.exists) {
-                console.log('The document does not exist.')
-                setErr(true)
-                return
-            }
-            setItem({ id: doc.id, ...doc.data() })
-        }).catch((error) => {
-            console.log('Error to find the item. Error: ', error)
-            setErr(true)
-        }).finally(() => {
-            setLoader(false)
-        })
-
-        // Obtengo cuatro productos aleatorios.
-        const itemsCollection = itemCollection.orderBy('unitPrice').startAt(Math.floor(Math.random() * 16000)).limit(4)
-        itemsCollection.get().then((querySnapshot) => {
-            setLoader(true)
-            if(querySnapshot.size === 0) {
-                console.log('querySnapshot.size === 0.')
-                setErr(true)
-                return
-            }
-            setItems(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
-        })
-        .catch((error) => {
-            console.log('Error to find the item. Error: ', error)
-            setErr(true)
-        })
-        .finally(() => {
-            setLoader(false)
-        })
-        //eslint-disable-next-line
+        getItemsForItemDetail (id, setItem, setItems, setLoader, setErr)
     }, [id])
 
     const contextItems = useContext(ProductsInCartContext)

@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 import './home.scss'
 
-import { getFirestore } from '../../firebase'
+import { getItemsForHome } from '../../firebase'
 
 import HomeBanner from '../../components/HomeBanner/HomeBanner'
 import ListItems from '../../components/ListItems/ListItems'
@@ -21,64 +21,10 @@ const Home = () => {
     const [loader, setLoader] = useState(false)
 
     useEffect(() => {
-        setLoader(true)
-        const db = getFirestore()
-        const itemCollection = db.collection("items")
-        const itemsForMen = itemCollection.where('sex', '==', 'men').where('home', '==', true).limit(4)
-        const itemsForWomen = itemCollection.where('sex', '==', 'women').where('home', '==', true).limit(4)
-        const itemsForAll = itemCollection.limit(4)
-
-        // Obtengo cuatro productos de hombre.
-        itemsForMen.get().then((querySnapshot) => {
-            if(querySnapshot.size === 0) {
-                console.log('querySnapshot.size === 0.')
-                setErr(true)
-                return
-            }
-            setItemsMen(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
-        })
-        .catch((error) => {
-            console.log('Error to find the item. Error: ', error)
-            setErr(true)
-        })
-        .finally(() => {
-            setLoader(false)
-        })
-
-        // Obtengo cuatro productos de mujer.
-        itemsForWomen.get().then((querySnapshot) => {
-            if(querySnapshot.size === 0) {
-                console.log('querySnapshot.size === 0.')
-                setErr(true)
-                return
-            }
-            setItemsWomen(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
-        })
-        .catch((error) => {
-            console.log('Error to find the item. Error: ', error)
-            setErr(true)
-        })
-        .finally(() => {
-            setLoader(false)
-        })
-
-        // Obtengo cuatro aleatorios.
-        itemsForAll.get().then((querySnapshot) => {
-            if(querySnapshot.size === 0) {
-                console.log('querySnapshot.size === 0.')
-                setErr(true)
-                return
-            }
-            setItemsAll(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
-        })
-        .catch((error) => {
-            console.log('Error to find the item. Error: ', error)
-            setErr(true)
-        })
-        .finally(() => {
-            setLoader(false)
-        })
-        // eslint-disable-next-line 
+        // Obtengo cuatro productos de hombre, cuatro de mujer, y cuatro aleatorios.
+        getItemsForHome('men', setItemsMen, setLoader, setErr)
+        getItemsForHome('women', setItemsWomen, setLoader, setErr)
+        getItemsForHome('', setItemsAll, setLoader, setErr)
     }, [])
 
     return (
