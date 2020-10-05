@@ -14,17 +14,18 @@
 
     article {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         font-weight: bold;
         border-bottom: 1px solid #eee;
-        padding: 2em;
+        padding: 2em .5em;
 
         p span {
             text-transform: uppercase;
         }
-
+        
         .price-per-quantity {
+            margin-left: 1em;
             color: $tertiaryColor;
             background: $primaryColor;
         }
@@ -131,6 +132,14 @@
             font-style: italic;
             opacity: .025;
             width: 100vw;
+        }
+
+        article {
+            padding: 2em 10em;
+        }
+
+        .p-checkout {
+            margin-top: 5em;
         }
 
         .checkout-total {

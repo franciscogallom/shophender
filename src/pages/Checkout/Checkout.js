@@ -73,9 +73,9 @@ const Checkout = () => {
     }
 
     return (
-        loader ? <Loader/> :
+        loader ? <Loader /> :
         // Si la compra esta completada, doy feedback del numero de orden y demas. Si no es así, trabajo con el checkout.
-        
+    
         buyCompleted ?                         
             <div className='margin-t buy-completed'>
                 <h1>{name}, gracias por tu compra.</h1>

@@ -5,15 +5,13 @@
     justify-content: center;
 
     p {
-        color: $tertiaryColor;
         text-align: center;
         font-weight: bold;
         font-style: italic;
     }
 
     h1 {
-        color: $tertiaryColor;
-        margin-top: 20vh;
+        margin-top: 32.5vh;
         padding: 1em;
         text-align: center;
         
@@ -37,9 +35,9 @@
 
         input {
             border: 1px solid $tertiaryColor;
-            background: $primaryColor;
-            color: $tertiaryColor;
             font-weight: bold;
+            background-color: $secondaryColor;
+            color: $primaryColor;
         }
 
         button {
@@ -47,6 +45,7 @@
             display: flex;
             justify-content: center;
             align-content: center;
+            border: none;
             
             img {
                 margin-left: .5em;
@@ -57,13 +56,11 @@
         .sign-in {
             background: $tertiaryColor;
             color: $primaryColor;
-            border: none;
         }
 
         .log-in {
             color: $tertiaryColor;
             background: $primaryColor;
-            border: 1px solid $tertiaryColor;
         }
     }
 }
@@ -83,17 +80,7 @@
         margin-right: auto;
     }
 
-    input {
-        background-color: $secondaryColor !important;
-        color: $primaryColor !important;
-    }
-
-    button {
-        border: none;
-    }
-
     p {
-        color: $primaryColor;
         margin-top: 0;
         padding-top: 0;
         font-size: .75em;
@@ -146,13 +133,7 @@
         }
 
         h1 {
-            margin-top: 25vh;
-        }
-    }
-
-    .onCheckout {
-        button {
-            border: none !important;
+            margin-top: 30vh;
         }
     }
 }

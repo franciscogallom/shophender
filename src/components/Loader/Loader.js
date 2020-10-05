@@ -2,10 +2,10 @@ import React from 'react'
 
 import './loader.scss'
 
-const Loader = (props) => {
+const Loader = () => {
     return (
         <div className='margin-t container-gooey'>
-            <div className={`gooey ${props.changeColors}`}>
+            <div className='gooey'>
                 <span className="dot"></span>
                 <div className="dots">
                     <span></span>

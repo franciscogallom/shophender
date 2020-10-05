@@ -46,18 +46,6 @@
     }
 }
 
-.change-colors {
-    background: $primaryColor;
-
-    .dot {
-        background: $secondaryColor;
-    }
-
-    .dots span {
-        background: $secondaryColor;
-    }
-}
-
 @keyframes dot {
     50% {
         transform: translateX(96px);
