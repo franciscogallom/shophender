@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: center;
     margin: 1em auto;
+    box-shadow: 5px 5px $primaryColor;
 
     img {
         height: 2em;
@@ -23,6 +24,7 @@
 .buy-now {
     background: $primaryColor;
     color: $tertiaryColor;
+    box-shadow: 5px 5px $tertiaryColor;
 
     img {
         margin-left: .5em;
@@ -30,6 +32,10 @@
 }
 
 @media screen and (min-width: 1023px){
+    .btn-item-detail, .buy-now {
+        box-shadow: none;
+    }
+
     .btn-item-detail {
         cursor: pointer;
         transition: .5s all;

@@ -32,9 +32,8 @@
     }
 
     p {
-        margin-top: 1em;
+        margin-top: 2em;
         font-weight: bold;
-        position: relative;
     }
 
     a {
@@ -74,13 +73,14 @@
             p {
                 font-weight: 500;
                 font-size: .9em;
-                padding: .5em 1.5em;
+                padding: 0 1.5em;
             }
         }
     }
 
     .p-item-detail {
         background: none;
+        margin-top: 0;
         color: $primaryColor;
         clip-path: none;
         position: relative;
@@ -88,10 +88,10 @@
         &::before{
             content: 'COMPLETA TU OUTFIT';
             position: absolute;
-            top: -.25em;
+            top: -.3em;
             left: 0;
             right: 0;
-            font-size: 3.5em;
+            font-size: 4em;
             color: $secondaryColor;
             opacity: .25;
             -webkit-text-stroke: 2px $fourthColor;

@@ -44,7 +44,8 @@
 
 @media screen and (min-width: 1024px) {
     .container-cart-item {
-        justify-content: space-around;
+        justify-content: space-between;
+        margin: 0 5em;
 
         .imgProduct {
             width: 20vw;
