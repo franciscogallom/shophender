@@ -7,9 +7,8 @@
     justify-content: center;
     flex-direction: column;
     padding: 2em 1em;
-    margin: auto;
+    margin: auto 1em;
 
-    
     button {
         padding: 1em;
         color: $primaryColor;
@@ -31,7 +30,9 @@
 @media screen and (min-width: 1023px){
     .alert-container {
         font-size: 1em;
-        padding: 2em;
+        padding: 3em 1em;
+        width: 25%;
+        margin: 10em auto;
 
         button {
             box-shadow: none;

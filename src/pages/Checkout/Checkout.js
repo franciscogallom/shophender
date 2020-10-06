@@ -20,7 +20,7 @@ const Checkout = () => {
     const { productsInCart, setProductsInCart } = useContext(ProductsInCartContext)
 
     const { email } = useContext(AuthContext)
-
+    // Datos ingresados en el formulario.
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
     const [address, setAddress] = useState('')
@@ -28,7 +28,9 @@ const Checkout = () => {
     const [city, setCity] = useState('')
 
     const [orderID, setOrderID] = useState('')
+    // Manejo si ya finalice la compra.
     const [buyCompleted, setBuyCompleted] = useState(false)
+    // Controlo que el usuario este registrado.
     const [canContinueWithBuy, setCanContinueWithBuy] = useState(email !== '')
 
     const [loader, setLoader] = useState(false)
@@ -68,6 +70,7 @@ const Checkout = () => {
         }).finally(() => {
             setLoader(false)
             setBuyCompleted(true)
+            // Vacio el carrito.
             setProductsInCart([])
         })
     }
@@ -75,46 +78,48 @@ const Checkout = () => {
     return (
         loader ? <Loader /> :
         // Si la compra esta completada, doy feedback del numero de orden y demas. Si no es así, trabajo con el checkout.
-    
         buyCompleted ?                         
-            <div className='margin-t buy-completed'>
+            <div className = 'margin-t buy-completed'>
                 <h1>{name}, gracias por tu compra.</h1>
                 <p>Código de la orden: <strong>{orderID}</strong></p>
             </div> 
             :
-        
+        // Si hay productos agregados, los muestro. De no ser así, muestro NoMatch.
             productsInCart[0]
             ?
-                <section className='checkout margin-t'>
-                    <h1 className='checkout-title'>CHECKOUT</h1>
+                <section className = 'checkout margin-t'>
+                    <h1 className = 'checkout-title'>CHECKOUT</h1>
                     {
                         productsInCart.map(item => {
-                            return  <article key={item.key}>
+                            return  <article key = {item.key}>
                                         <p><span>{item.nameProduct}</span> x {item.quantity}</p>
                                         <span className='price-per-quantity'>${item.pricePerQuantity}</span>
                                     </article>
                         })
                     }
-                    <p className='checkout-total'>TOTAL A PAGAR: ${productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)}</p>
+                    <p className = 'checkout-total'>TOTAL A PAGAR: ${productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)}</p>
                     {
+                        // Si no estoy registrado, le digo al usuario que se registre para poder comprar.
                         !canContinueWithBuy ? <Auth onCheckout = 'onCheckout' handleFlow = {() => setCanContinueWithBuy(true)} /> :
                         <>
-                            <p className='p-checkout'>Datos de facturación.</p>
-                            <form className='checkout-form'> 
-                                <input type="text" placeholder='Nombre.' onChange = {(e) => setName(e.target.value)} />
-                                <input type="text" placeholder='Apellido.' onChange = {(e) => setSurname(e.target.value)} />
-                                <input type="text" placeholder='Ciudad.' onChange = {(e) => setCity(e.target.value)} />
-                                <input type="text" placeholder='Direccion.' onChange = {(e) => setAddress(e.target.value)} />
-                                <input type="number" placeholder='Número de celular.' onChange = {(e) => setPhone(e.target.value)} />
+                            <p className = 'p-checkout'>Datos de facturación.</p>
+                            <form className = 'checkout-form'> 
+                                <input type = "text" placeholder = 'Nombre.' onChange = {(e) => setName(e.target.value)} />
+                                <input type = "text" placeholder = 'Apellido.' onChange = {(e) => setSurname(e.target.value)} />
+                                <input type = "text" placeholder = 'Ciudad.' onChange = {(e) => setCity(e.target.value)} />
+                                <input type = "text" placeholder = 'Direccion.' onChange = {(e) => setAddress(e.target.value)} />
+                                <input type = "number" placeholder = 'Número de celular.' onChange = {(e) => setPhone(e.target.value)} />
                             </form>
                             {
                             // Minima validacion de datos.
-                            (phone.length > 6 && 
+                            (   
+                                phone.length > 6 && 
                                 name.length > 2 && 
                                 surname.length > 2 &&
                                 address.length > 2 &&
                                 city.length > 2
-                                ) && <button onClick={handleBuy} className='confirm-buy-btn'>CONFIRMAR COMPRA <img src={checkPay} alt="$"/></button>}
+                            ) 
+                                && <button onClick = {handleBuy} className = 'confirm-buy-btn'>CONFIRMAR COMPRA <img src = {checkPay} alt = "$"/></button>}
                         </>
                     }
                 </section>

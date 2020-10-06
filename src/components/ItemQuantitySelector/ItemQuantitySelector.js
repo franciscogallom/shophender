@@ -6,8 +6,7 @@ import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 const ItemQuantitySelector = ({ index, quantity}) => {
     
-        const contextItems = useContext(ProductsInCartContext)
-        const {productsInCart, setProductsInCart} = contextItems
+        const {productsInCart, setProductsInCart} = useContext(ProductsInCartContext)
     
         const addQuantity = () => {
             const temporal = [...productsInCart]
@@ -25,18 +24,20 @@ const ItemQuantitySelector = ({ index, quantity}) => {
 
 
     return (
-        <div className='item-quantity-selector'>
+        <div className = 'item-quantity-selector'>
             <span>Cantidad</span>
             <div>
                 <button 
-                    className='btn-minus' 
+                    className = 'btn-minus' 
                     onClick = {quantity > 1 ? subtractQuantity : undefined} 
-                >-
+                >
+                    -
                 </button>
                 <button 
-                    className='btn-plus' 
+                    className = 'btn-plus' 
                     onClick = {quantity < 25 ? addQuantity : undefined} 
-                >+
+                >
+                    +
                 </button>
             </div>
         </div>

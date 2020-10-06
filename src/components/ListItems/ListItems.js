@@ -8,7 +8,7 @@ const ListItem = ({ items }) => {
 
     return (
         Object.keys(items).length !== 0 &&
-        <section className='container-list-items'>
+        <section className = 'container-list-items'>
             {
                 items.map(item => {
                     return (

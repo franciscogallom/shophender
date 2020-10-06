@@ -12,8 +12,7 @@ import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 const Cart = () => {
 
-    const contextItems = useContext(ProductsInCartContext)
-    const { productsInCart, setProductsInCart } = contextItems
+    const { productsInCart, setProductsInCart } = useContext(ProductsInCartContext)
 
     // Recibe un ID  de CartItem y elimina el producto correspondiente.
     const deleteItem = (id) => {
@@ -23,31 +22,25 @@ const Cart = () => {
     return (
         productsInCart[0]
             ?
-                <section className='cart-container margin-t'>
-                    <h1 className='cart-title'>CARRITO</h1>
+                <section className = 'cart-container margin-t'>
+                    <h1 className = 'cart-title'>CARRITO</h1>
                     {
                         productsInCart.map((item, index) => {
                             return (
                                 <CartItem
-                                    nameProduct = {item.nameProduct} 
-                                    imgProduct = {item.imgProduct} 
-                                    pricePerQuantity = {item.pricePerQuantity} 
-                                    unitPrice = {item.unitPrice}
-                                    key = {item.key}
-                                    id = {item.key}
-                                    quantity = {item.quantity}
+                                    item = {item}
                                     index = {index}
                                     deleteItem = {deleteItem}
                                 />
                                 )
                             })
                     }
-                    <div className='total-to-pay'>
+                    <div className = 'total-to-pay'>
                         <p>TOTAL A PAGAR: <span>${productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)}</span></p>
                         <CartButton 
                             link = '/checkout'
-                            text='REALIZAR COMPRA ' 
-                            imgBtn={payImg} 
+                            text = 'REALIZAR COMPRA ' 
+                            imgBtn = {payImg} 
                         />
                     </div>
                 </section>

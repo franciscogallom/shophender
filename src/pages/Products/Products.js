@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { useParams, Redirect } from 'react-router-dom'
 
-import { getFirestore } from '../../firebase'
+import { getProducts } from '../../firebase'
 
 import './products.scss'
 
@@ -12,7 +12,7 @@ import Loader from '../../components/Loader/Loader'
 const Products = (props) => {
 
     const [loader, setLoader] = useState(true)
-
+    // Limite para los productos que quiero mostrar.
     const [limit, setLimit] = useState(12)
 
     const [items, setItems] = useState({})
@@ -24,46 +24,20 @@ const Products = (props) => {
     const [err, setErr] = useState(false)
     
     useEffect(() => {
-        setLoader(true)
-
-        getFirestore().collection("items").get().then(querySnapshot => setSizeOfCollection(querySnapshot.size))
-
-        const db = getFirestore()
-        const itemCollection = db.collection("items")
-        let filter
-
-        if ( sex !== 'all' && category !== 'all') filter = itemCollection.where('sex', '==', sex).where('category', '==', category).limit(limit)
-        else if ( category !== 'all' ) filter = itemCollection.where('category', '==', category).limit(limit)
-        else if ( sex !== 'all' ) filter = itemCollection.where('sex', '==', sex).limit(limit)
-        else filter = itemCollection.limit(limit)
-
-        filter.get().then((querySnapshot) => {
-            if(querySnapshot.size === 0) {
-                console.log('querySnapshot.size === 0.')
-                setErr(true)
-                return
-            }
-            setSizeOfCollection(querySnapshot.size)
-            setItems(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
-        }).catch((error) => {
-            console.log('Error to find the item. Error: ', error)
-            setErr(true)
-        }).finally(() => {
-            setLoader(false)
-        })
-        // eslint-disable-next-line 
+        getProducts (sex, category, limit, setLoader, setSizeOfCollection, setErr, setItems) 
+        // console.log(sizeOfCollection)
     }, [sex, category, limit])
 
     return (
         err ? <Redirect to = '/404' /> :
         loader ? <Loader/> :
         <>
-            <h1 className='margin-t search'>{`${category} for ${sex}`}</h1>
-            <section className='container-list-items'>
+            <h1 className = 'margin-t search'>{`${category} for ${sex}`}</h1>
+            <section className = 'container-list-items'>
                     {
                         items.map(item => {
                             return (
-                                <div key={item.id} className='container-item-list'>
+                                <div key = {item.id} className = 'container-item-list'>
                                     <ItemList 
                                         product = {item}
                                     />
@@ -73,10 +47,11 @@ const Products = (props) => {
                     }
             </section>
             {
-                (limit <= sizeOfCollection) ?
-                <button className='load-products' onClick = {() => setLimit(prevLimit => prevLimit+= prevLimit)}>Mostrar más.</button>
-                :
-                <button className='load-products not-cursor-pointer'>Has llegado al final.</button>
+                (limit <= sizeOfCollection) 
+                    ?
+                        <button className = 'load-products' onClick = {() => setLimit(prevLimit => prevLimit+= prevLimit)}>Mostrar más.</button>
+                    :
+                        <button className = 'load-products not-cursor-pointer'>Has llegado al final.</button>
             }
         </>
     )

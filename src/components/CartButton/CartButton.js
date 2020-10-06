@@ -7,7 +7,7 @@ import './cartButton.scss'
 const CartButton = (props) => {
     return(
         <button className='cart-btn'>
-            <Link to={props.link}>{props.text} <img src={props.imgBtn} alt={props.text} /></Link>
+            <Link to = {props.link}>{props.text} <img src = {props.imgBtn} alt = {props.text} /></Link>
         </button>
     )
 }

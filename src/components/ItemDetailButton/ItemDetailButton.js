@@ -5,11 +5,11 @@ import './itemDetailButton.scss'
 const ButtonItemDetail = (props) => {
     return (
             <button
-                className={`btn-item-detail ${props.classN}`} 
-                onClick={props.handleClick}
+                className = {`btn-item-detail ${props.classN}`} 
+                onClick = {props.handleClick}
             >
                 {props.text}
-                <img src={props.svg} alt={props.text} />
+                <img src = {props.svg} alt = {props.text} />
             </button>
     )
 }

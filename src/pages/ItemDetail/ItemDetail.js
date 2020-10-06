@@ -21,9 +21,9 @@ const ItemDetail = (props) => {
     const { id } = useParams()
 
     const [loader, setLoader] = useState(true)
-
+    // El producto que estoy viendo.
     const [item, setItem] = useState({})
-
+    // Cuatro productos mas para mostar deabjo.
     const [items, setItems] = useState({})
 
     const [err, setErr] = useState(false)
@@ -32,8 +32,7 @@ const ItemDetail = (props) => {
         getItemsForItemDetail (id, setItem, setItems, setLoader, setErr)
     }, [id])
 
-    const contextItems = useContext(ProductsInCartContext)
-    const { productsInCart, setProductsInCart } = contextItems
+    const { productsInCart, setProductsInCart } = useContext(ProductsInCartContext)
 
     const setproductsInCartFunction = () => {
         let isInTheCart = false;
@@ -62,8 +61,8 @@ const ItemDetail = (props) => {
         err ? <Redirect to = '/404' /> : 
         loader ? <Loader/> :
         <>
-            <section className='container-item-detail margin-t'>
-                <img src={'/images/' + item.img1} alt={item.nameProduct} />
+            <section className = 'container-item-detail margin-t'>
+                <img src = {'/images/' + item.img1} alt = {item.nameProduct} />
                 <div>
                     <h1>{item.nameProduct}</h1>
                     <span>${item.unitPrice}</span>
@@ -73,7 +72,7 @@ const ItemDetail = (props) => {
                         svg = {addToCart}
                         classN = ''
                     />
-                    <Link to='/checkout'>
+                    <Link to = '/checkout'>
                         <ItemDetailButton 
                             handleClick = {setproductsInCartFunction} 
                             text = 'Comprar ahora'
@@ -84,7 +83,7 @@ const ItemDetail = (props) => {
                     <p>{item.description}</p>
                 </div>
             </section>
-            <p className='p-item-detail'>TAMBIEN TE PUEDE INTERESAR</p>
+            <p className = 'p-item-detail'>TAMBIEN TE PUEDE INTERESAR</p>
             <ListItem items = {items} />
         </>
     )

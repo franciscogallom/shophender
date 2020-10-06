@@ -55,90 +55,90 @@ const NavBar = () => {
 
     return (
         // En los onClick, setOpenMenu() solo se tiene que ejecutar en version mobile y tablet.
-        // Para que no me queden abiertos dos o mas <TypeProduct /> a la vez, al hacer click en uno, cierro los otros dos, poniendo el state en false.
+        // Para que no me queden abiertos dos o mas <TypeProduct /> a la vez, al hacer click en uno, cierro los otros dos.
 
-        <nav className='navbar'>
+        <nav className = 'navbar'>
             <ul>
                 
                 <li>
                     <img 
-                        className='menu-icon-img'
-                        onClick={() => {isMobileOrTablet && 
+                        className = 'menu-icon-img'
+                        onClick = {() => {isMobileOrTablet && 
                                 setOpenMenuFunction()
                                 closeAllListCategories()}} 
-                        src={menuIcon} 
-                        alt="Menu"
+                        src = {menuIcon} 
+                        alt = "Menu"
                     />
                     {   
                         // Si openMenu es true, muestro las cateogiras de productos. (Funcionalidad para mobile y tablet).
                         openMenu &&
-                            <ul className='products-gender'>
+                            <ul className = 'products-gender'>
 
                                 <li 
-                                    onMouseEnter={() => {
+                                    onMouseEnter = {() => {
                                         if (!isMobileOrTablet){
                                             setListCategoriesMenFunction()
                                             setListCategoriesWomen(false)
                                             setListCategoriesAll(false)}
                                         }
                                     }
-                                    onClick={() => {
+                                    onClick = {() => {
                                         if (isMobileOrTablet){
                                             setListCategoriesMenFunction()
                                             setListCategoriesWomen(false)
                                             setListCategoriesAll(false)}
                                         }
                                     }
-                                    className={`${listCategoriesMen}`}
+                                    className = {`${listCategoriesMen}`}
                                 >
                                     HOMBRE
                                 </li>
                                 {listCategoriesMen && 
-                                    <DropDownMenu onMouseLeave={!isMobileOrTablet ? setListCategoriesMenFunction : undefined} closeAll={closeChoice} sex='men' />}
+                                    <DropDownMenu onMouseLeave = {!isMobileOrTablet ? setListCategoriesMenFunction : undefined} closeAll = {closeChoice} sex = 'men' />}
                                 
                                 <li 
-                                    onMouseEnter={() => {
+                                    onMouseEnter = {() => {
                                         if (!isMobileOrTablet){
                                         setListCategoriesWomenFunction()
                                         setListCategoriesMen(false)
                                         setListCategoriesAll(false)}
                                         }
                                     }
-                                    onClick={() => {
+                                    onClick = {() => {
                                         if (isMobileOrTablet){
                                         setListCategoriesWomenFunction()
                                         setListCategoriesMen(false)
                                         setListCategoriesAll(false)}
                                         }
                                     }
-                                    className={`${listCategoriesWomen}`}
+                                    className = {`${listCategoriesWomen}`}
                                 >
                                     MUJER
                                 </li>
                                 {listCategoriesWomen && 
-                                    <DropDownMenu onMouseLeave={!isMobileOrTablet ? setListCategoriesWomenFunction : undefined} closeAll={closeChoice} sex='women' />}
+                                    <DropDownMenu onMouseLeave = {!isMobileOrTablet ? setListCategoriesWomenFunction : undefined} closeAll = {closeChoice} sex = 'women' />}
                                 
                                 <li 
-                                    onMouseEnter={() => {
+                                    onMouseEnter = {() => {
                                         if (!isMobileOrTablet){
                                             setListCategoriesAllFunction()
                                             setListCategoriesMen(false)
                                             setListCategoriesWomen(false)} 
                                         }
                                     }
-                                    onClick={() => {
+                                    onClick = {() => {
                                         if (isMobileOrTablet){
                                             setListCategoriesAllFunction()
                                             setListCategoriesMen(false)
                                             setListCategoriesWomen(false)} 
                                         }
                                     }
-                                    className={`${listCategoriesAll}`}
+                                    className = {`${listCategoriesAll}`}
                                 >
                                     VER TODO
                                 </li>
                                 {listCategoriesAll && 
-                                    <DropDownMenu onMouseLeave={!isMobileOrTablet ? setListCategoriesAllFunction : undefined} closeAll={closeChoice} sex='all' />}
+                                    <DropDownMenu onMouseLeave = {!isMobileOrTablet ? setListCategoriesAllFunction : undefined} closeAll = {closeChoice} sex = 'all' />}
 
                             </ul>
                     }   
@@ -146,34 +146,34 @@ const NavBar = () => {
                 
                 <li>
                     <NavLink 
-                        to="/" 
+                        to= "/" 
                         // No puede abrir el menu, pero si cerrarlo.
-                        onClick={() => {isMobileOrTablet && 
-                                setOnlyOpenMenuFunction();
+                        onClick = {() => {isMobileOrTablet && 
+                                setOnlyOpenMenuFunction()
                                 closeAllListCategories()}}
                     >
-                        <img className='shophender' src={shophenderNav} alt="shophender"/>
+                        <img className = 'shophender' src = {shophenderNav} alt = "shophender"/>
                     </NavLink>
                 </li>
 
                 <li>
                     <NavLink 
-                        to="/authentication"
+                        to = "/authentication"
                         // No puede abrir el menu, pero si cerrarlo.
-                        onClick={() => {isMobileOrTablet && 
-                                setOnlyOpenMenuFunction();
+                        onClick = {() => {isMobileOrTablet && 
+                                setOnlyOpenMenuFunction()
                                 closeAllListCategories()}}
                     >
-                        <img className='user-nav' src={userNav} alt="user"/>
+                        <img className = 'user-nav' src = {userNav} alt = "user"/>
                     </NavLink>
                 </li>
 
                 <li>
                     <NavLink 
-                        to="/cart"
+                        to = "/cart"
                         // No puede abrir el menu, pero si cerrarlo.
-                        onClick={() => {isMobileOrTablet && 
-                                setOnlyOpenMenuFunction();
+                        onClick = {() => {isMobileOrTablet && 
+                                setOnlyOpenMenuFunction()
                                 closeAllListCategories()}}
                     >
                         <CartIcon />

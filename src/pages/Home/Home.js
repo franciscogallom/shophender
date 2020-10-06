@@ -30,32 +30,26 @@ const Home = () => {
     return (
         err ? <Redirect to = '/404' /> :
         loader ? <Loader /> :
-        <section className='home-container margin-t'>
+        <section className = 'home-container margin-t'>
             <header>
                 <h1>shophender</h1>
             </header>
-            
             <ListItems items = {itemsMen} />
-
             <HomeBanner  
                 bannerText = 'hombres' 
-                bannerPosition='bannerRight'
+                bannerPosition = 'bannerRight'
                 bannerGender = 'men'
             />
-
             <ListItems items = {itemsWomen} />
-
             <HomeBanner  
                 bannerText = 'mujeres' 
-                bannerPosition='bannerLeft'
+                bannerPosition = 'bannerLeft'
                 bannerGender = 'women'
             />
-
             <ListItems items = {itemsAll} />
-
             <HomeBanner  
                 bannerText = 'ver.todo' 
-                bannerPosition='bannerRight'
+                bannerPosition = 'bannerRight'
                 bannerGender = 'all'
             />
         </section>
