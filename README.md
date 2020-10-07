@@ -2,6 +2,8 @@
 
 This project consists of an ecommerce developed in React JS (using Create React App) together with Firebase. The main objective is to learn by doing.
 
+![](flow.gif)
+
 ## User Story 🙋
 
 A user can enter the store, register, browse the different products 👕 👖 👞 , go to their details, add and remove products from the cart and make a purchase 💸. When the latter happens, the purchase is stored in the database and feedback is given on the order number 📃.
@@ -24,6 +26,9 @@ The site has an authentication implementation with email ✉️ and password �
 
 The project has three dimensions. It was developed first for mobile 📱, then the tablet version 📟 is observed from 760 pixels, and after 1023 pixels the desktop version 💻.
 
+## Environment Variables ⚠️ 
+
+If you want to run this project on your computer, you can ask me privately for environment variables for Firebase configuration. I will send you the .env file.
 
 ## Available Scripts
 
@@ -62,4 +67,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-# THANK YOU VERY MUCH FOR COMING! ✌️ 
+## THANK YOU VERY MUCH FOR COMING! ✌️ 
