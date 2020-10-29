@@ -24,14 +24,14 @@ export function getItemsForHome(sex, setItems, setLoader, setErr){
     itemsCollection.get()
         .then((querySnapshot) => {
             if(querySnapshot.size === 0) {
-                console.log('querySnapshot.size === 0.')
+                console.error('querySnapshot.size === 0.')
                 setErr(true)
                 return
             }
             setItems(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
         })
         .catch((error) => {
-            console.log('Error to find the item. Error: ', error)
+            console.error('Error to find the item. Error: ', error)
             setErr(true)
         })
         .finally(() => {
@@ -46,13 +46,13 @@ export function getItemsForItemDetail (id, setItem, setItems, setLoader, setErr)
     item.get()
         .then((doc) => {
             if(!doc.exists) {
-                console.log('The document does not exist.')
+                console.error('The document does not exist.')
                 setErr(true)
                 return
             }
             setItem({ id: doc.id, ...doc.data() })
         }).catch((error) => {
-            console.log('Error to find the item. Error: ', error)
+            console.error('Error to find the item. Error: ', error)
             setErr(true)
         }).finally(() => {
             setLoader(false)
@@ -64,14 +64,14 @@ export function getItemsForItemDetail (id, setItem, setItems, setLoader, setErr)
     .then((querySnapshot) => {
         setLoader(true)
         if(querySnapshot.size === 0) {
-            console.log('querySnapshot.size === 0.')
+            console.error('querySnapshot.size === 0.')
             setErr(true)
             return
         }
         setItems(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
     })
     .catch((error) => {
-        console.log('Error to find the item. Error: ', error)
+        console.error('Error to find the item. Error: ', error)
         setErr(true)
     })
     .finally(() => {
@@ -90,14 +90,14 @@ export function getProducts (sex, category, limit, setLoader, setSizeOfCollectio
 
     filter.get().then((querySnapshot) => {
         if(querySnapshot.size === 0) {
-            console.log('querySnapshot.size === 0.')
+            console.error('querySnapshot.size === 0.')
             setErr(true)
             return
         }
         setSizeOfCollection(querySnapshot.size)
         setItems(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
     }).catch((error) => {
-        console.log('Error to find the item. Error: ', error)
+        console.error('Error to find the item. Error: ', error)
         setErr(true)
     }).finally(() => {
         setLoader(false)
