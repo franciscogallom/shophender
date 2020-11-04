@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Redirect } from 'react-router-dom'
 
-import { useItemsForHome } from '../../hooks/useItemsForHome'
+import { useItemsForHome } from './useItemsForHome'
 
 import './home.scss'
 

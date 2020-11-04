@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 
-import { getItemsForHome } from '../firebase'
+import { getItemsForHome } from '../../firebase'
 
 export function useItemsForHome(){
     const [itemsMen, setItemsMen] = useState({})

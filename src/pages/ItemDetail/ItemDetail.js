@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React from 'react'
 
-import { Link, useParams, Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
-import { getItemsForItemDetail } from '../../firebase'
+import { useItemsForItemDetail } from './useItemsForItemDetail'
 
 import './itemDetail.scss'
 
@@ -13,49 +13,9 @@ import ItemDetailButton from '../../components/ItemDetailButton/ItemDetailButton
 import Loader from '../../components/Loader/Loader'
 import ListItem from '../../components/ListItems/ListItems'
 
-import ProductsInCartContext from '../../context/ProductsInCartProvider'
-
-
 const ItemDetail = (props) => {
 
-    const { id } = useParams()
-
-    const [loader, setLoader] = useState(true)
-    // El producto que estoy viendo.
-    const [item, setItem] = useState({})
-    // Cuatro productos mas para mostar deabjo.
-    const [items, setItems] = useState({})
-
-    const [err, setErr] = useState(false)
-
-    useEffect(() => {
-        getItemsForItemDetail (id, setItem, setItems, setLoader, setErr)
-    }, [id])
-
-    const { productsInCart, setProductsInCart } = useContext(ProductsInCartContext)
-
-    const setproductsInCartFunction = () => {
-        let isInTheCart = false;
-        productsInCart.forEach(product => {
-            if (product.id === item.id) {
-                product.quantity++
-                product.pricePerQuantity += product.unitPrice
-                setProductsInCart(prevItems => [...prevItems])
-                isInTheCart = true;
-            }
-        })
-        !isInTheCart && 
-            setProductsInCart((prevItems) => [...prevItems, {
-                nameProduct: item.nameProduct, 
-                imgProduct: item.img1,
-                imgProduct2: item.img2, 
-                pricePerQuantity: item.unitPrice,
-                unitPrice: item.unitPrice,
-                key: item.id,
-                id: item.id,
-                quantity: 1
-            }])
-    }
+    const {err, loader, item, items, setProductsInCartFunction} = useItemsForItemDetail()
 
     return (
         err ? <Redirect to = '/404' /> : 
@@ -67,14 +27,14 @@ const ItemDetail = (props) => {
                     <h1>{item.nameProduct}</h1>
                     <span>${item.unitPrice}</span>
                     <ItemDetailButton 
-                        handleClick = {setproductsInCartFunction} 
+                        handleClick = {setProductsInCartFunction} 
                         text = 'Anadir al carrito'
                         svg = {addToCart}
                         classN = ''
                     />
                     <Link to = '/checkout'>
                         <ItemDetailButton 
-                            handleClick = {setproductsInCartFunction} 
+                            handleClick = {setProductsInCartFunction} 
                             text = 'Comprar ahora'
                             svg = {payPng}
                             classN = 'buy-now'
