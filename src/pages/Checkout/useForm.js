@@ -42,16 +42,20 @@ const reducer = (state, action) => {
 
 export function useForm(){
     const [state, dispatch] = useReducer(reducer, {
-        name: '',
-        surname: '',
-        adress: '',
-        phone: '',
-        city: '',
-        updateName: name => dispatch({type: ACTIONS.UPDATE_NAME, payload: name}),
-        updateSurname: surname => dispatch({type: ACTIONS.UPDATE_SURNAME, payload: surname}),
-        updateAddress: address => dispatch({type: ACTIONS.UPDATE_ADDRESS, payload: address}),
-        updatePhone: phone => dispatch({type: ACTIONS.UPDATE_PHONE, payload: phone}),
-        updateCity: city => dispatch({type: ACTIONS.UPDATE_CITY, payload: city}),
+        data: {
+            name: '',
+            surname: '',
+            adress: '',
+            phone: '',
+            city: '',
+        },
+        updates: {
+            name: name => dispatch({type: ACTIONS.UPDATE_NAME, payload: name}),
+            surname: surname => dispatch({type: ACTIONS.UPDATE_SURNAME, payload: surname}),
+            address: address => dispatch({type: ACTIONS.UPDATE_ADDRESS, payload: address}),
+            phone: phone => dispatch({type: ACTIONS.UPDATE_PHONE, payload: phone}),
+            city: city => dispatch({type: ACTIONS.UPDATE_CITY, payload: city}),
+        }
     })
 
     return state
