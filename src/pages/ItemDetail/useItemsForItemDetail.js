@@ -22,7 +22,7 @@ export function useItemsForItemDetail(){
         getItemsForItemDetail (id, setItem, setItems, setLoader, setErr)
     }, [id])
 
-    const setproductsInCartFunction = () => {
+    const setProductsInCartFunction = () => {
         let isInTheCart = false;
         productsInCart.forEach(product => {
             if (product.id === item.id) {
@@ -45,5 +45,5 @@ export function useItemsForItemDetail(){
             }])
     }
 
-    return { err, loader, item, items, setproductsInCartFunction }
+    return { err, loader, item, items, setProductsInCartFunction }
 }
