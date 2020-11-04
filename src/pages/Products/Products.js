@@ -25,7 +25,6 @@ const Products = (props) => {
     
     useEffect(() => {
         getProducts (sex, category, limit, setLoader, setSizeOfCollection, setErr, setItems) 
-        // console.log(sizeOfCollection)
     }, [sex, category, limit])
 
     return (

@@ -1,10 +1,11 @@
-import React, { useContext, useState, useReducer } from 'react'
+import React, { useContext, useState } from 'react'
 
-import { getFirestore } from '../../firebase'
-import * as firebase from 'firebase/app'
 import 'firebase/firestore'
+import { addBuy } from '../../firebase'
 
 import './checkout.scss'
+
+import { useForm } from '../../hooks/useForm'
 
 import checkPay from '../../assets/img/check.svg'
 
@@ -20,56 +21,10 @@ const Checkout = () => {
     const { productsInCart, setProductsInCart } = useContext(ProductsInCartContext)
 
     const { email } = useContext(AuthContext)
-    
-    const ACTIONS = {
-        UPDATE_NAME: 'update_name',
-        UPDATE_SURNAME: 'update_surname',
-        UPDATE_ADDRESS: 'update_address',
-        UPDATE_PHONE: 'update_phone',
-        UPDATE_CITY: 'update_city'
-    }
 
-    const reducer = (state, action) => {
-        switch (action.type) {
-            case ACTIONS.UPDATE_NAME:
-                return {
-                    ...state,
-                    name: action.payload
-                }
-            case ACTIONS.UPDATE_SURNAME:
-                return {
-                    ...state,
-                    surname: action.payload
-                }
-            case ACTIONS.UPDATE_ADDRESS:
-                return {
-                    ...state,
-                    address: action.payload
-                }
-            case ACTIONS.UPDATE_PHONE:
-                return {
-                    ...state,
-                    phone: action.payload
-                }
-            case ACTIONS.UPDATE_CITY:
-                return {
-                    ...state,
-                    city: action.payload
-                }
-            default:
-                return state;
-        }
-    }
+    const {name, surname, address, phone, city, updateName, updateSurname, updateAddress, updatePhone, updateCity} = useForm()
 
-    const [state, dispatch] = useReducer(reducer, {
-        name: '',
-        surname: '',
-        adress: '',
-        phone: '',
-        city: ''
-    })
-
-    const {name, surname, address, phone, city} = state
+    const state = {name: name, surname: surname, address: address, phone: phone, city: city}
 
     const [orderID, setOrderID] = useState('')
     // Manejo si ya finalice la compra.
@@ -80,43 +35,7 @@ const Checkout = () => {
     const [loader, setLoader] = useState(false)
 
     const handleBuy = () => {
-        setLoader(true)
-        const db = getFirestore()
-        const totalToPay = productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)
-
-        const items = productsInCart.map(item => {
-            return({
-                title: item.nameProduct,
-                id: item.id,
-                totalPrice: item.pricePerQuantity,
-                quantity: item.quantity
-            })
-        })
-
-        const orders = db.collection('orders')
-        const newOrder = {
-            buyer: {name: name, 
-                    surname: surname, 
-                    phone: phone, 
-                    email: email, 
-                    address: address,
-                    city: city
-                },
-            items: items,
-            date: firebase.firestore.Timestamp.fromDate(new Date()),
-            total: totalToPay
-        }
-
-        orders.add(newOrder).then(({ id }) => {
-            setOrderID(id)
-        }).catch(err => {
-            console.error('Error: ' + err)
-        }).finally(() => {
-            setLoader(false)
-            setBuyCompleted(true)
-            // Vacio el carrito.
-            setProductsInCart([])
-        })
+        addBuy(setLoader, productsInCart, setBuyCompleted, setProductsInCart, state, setOrderID, email)
     }
 
     return (
@@ -148,16 +67,11 @@ const Checkout = () => {
                         <>
                             <p className = 'p-checkout'>Datos de facturación.</p>
                             <form className = 'checkout-form'> 
-                                <input type = "text" placeholder = 'Nombre.' onChange = {(e) =>
-                                    dispatch({type: ACTIONS.UPDATE_NAME, payload: e.target.value})} />
-                                <input type = "text" placeholder = 'Apellido.' onChange = {(e) => 
-                                    dispatch({type: ACTIONS.UPDATE_SURNAME, payload: e.target.value})} />
-                                <input type = "text" placeholder = 'Ciudad.' onChange = {(e) => 
-                                    dispatch({type: ACTIONS.UPDATE_CITY, payload: e.target.value})} />
-                                <input type = "text" placeholder = 'Direccion.' onChange = {(e) => 
-                                    dispatch({type: ACTIONS.UPDATE_ADDRESS, payload: e.target.value})} />
-                                <input type = "text" placeholder = 'Número de celular.' onChange = {(e) => 
-                                    dispatch({type: ACTIONS.UPDATE_PHONE, payload: e.target.value})} />
+                                <input type = "text" placeholder = 'Nombre.' onChange = {(e) => updateName(e.target.value)}/>
+                                <input type = "text" placeholder = 'Apellido.' onChange = {(e) => updateSurname(e.target.value)}/>
+                                <input type = "text" placeholder = 'Ciudad.' onChange = {(e) => updateCity(e.target.value)}/>
+                                <input type = "text" placeholder = 'Direccion.' onChange = {(e) => updateAddress(e.target.value)}/>
+                                <input type = "text" placeholder = 'Número de celular.' onChange = {(e) => updatePhone(e.target.value)}/>
                             </form>
                             {
                             // Minima validacion de datos.

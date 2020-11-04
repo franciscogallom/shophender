@@ -28,6 +28,7 @@ const Cart = () => {
                         productsInCart.map((item, index) => {
                             return (
                                 <CartItem
+                                    key = {item.id}
                                     item = {item}
                                     index = {index}
                                     deleteItem = {deleteItem}
