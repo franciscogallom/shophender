@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import { Redirect } from 'react-router-dom'
 
-import './home.scss'
+import { useItemsForHome } from '../../hooks/useItemsForHome'
 
-import { getItemsForHome } from '../../firebase'
+import './home.scss'
 
 import HomeBanner from '../../components/HomeBanner/HomeBanner'
 import ListItems from '../../components/ListItems/ListItems'
@@ -12,20 +12,7 @@ import Loader from '../../components/Loader/Loader'
 
 const Home = () => {
 
-    const [itemsMen, setItemsMen] = useState({})
-    const [itemsWomen, setItemsWomen] = useState({})
-    const [itemsAll, setItemsAll] = useState({})
-
-    const [err, setErr] = useState(false)
-
-    const [loader, setLoader] = useState(false)
-
-    useEffect(() => {
-        // Obtengo cuatro productos de hombre, cuatro de mujer, y cuatro aleatorios.
-        getItemsForHome('men', setItemsMen, setLoader, setErr)
-        getItemsForHome('women', setItemsWomen, setLoader, setErr)
-        getItemsForHome('', setItemsAll, setLoader, setErr)
-    }, [])
+    const { err, loader, data } = useItemsForHome()
 
     return (
         err ? <Redirect to = '/404' /> :
@@ -34,24 +21,20 @@ const Home = () => {
             <header>
                 <h1>shophender</h1>
             </header>
-            <ListItems items = {itemsMen} />
-            <HomeBanner  
-                bannerText = 'hombres' 
-                bannerPosition = 'bannerRight'
-                bannerGender = 'men'
-            />
-            <ListItems items = {itemsWomen} />
-            <HomeBanner  
-                bannerText = 'mujeres' 
-                bannerPosition = 'bannerLeft'
-                bannerGender = 'women'
-            />
-            <ListItems items = {itemsAll} />
-            <HomeBanner  
-                bannerText = 'ver.todo' 
-                bannerPosition = 'bannerRight'
-                bannerGender = 'all'
-            />
+            {
+                data.map(data => {
+                    return(
+                        <>
+                            <ListItems items = {data.items} />
+                            <HomeBanner  
+                                bannerText = {data.sex}
+                                bannerPosition = {data.position}
+                                bannerGender = {data.link}
+                            />
+                        </>
+                    )
+                })
+            }
         </section>
     )
 }
