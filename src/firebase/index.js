@@ -103,3 +103,45 @@ export function getProducts (sex, category, limit, setLoader, setSizeOfCollectio
         setLoader(false)
     })
 }
+
+// Manejo una nueva orden
+export function addBuy (setLoader, productsInCart, setBuyCompleted, setProductsInCart, state, setOrderID, email) {
+    setLoader(true)
+
+    const totalToPay = productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)
+
+    const items = productsInCart.map(item => {
+        return({
+            title: item.nameProduct,
+            id: item.id,
+            totalPrice: item.pricePerQuantity,
+            quantity: item.quantity
+        })
+    })
+
+    const orders = db.collection('orders')
+    const newOrder = {
+        buyer: {
+                name: state.name, 
+                surname: state.surname, 
+                phone: state.phone, 
+                email: email, 
+                address: state.address,
+                city: state.city
+            },
+        items: items,
+        date: firebase.firestore.Timestamp.fromDate(new Date()),
+        total: totalToPay
+    }
+    
+    orders.add(newOrder).then(({ id }) => {
+        setOrderID(id)
+    }).catch(err => {
+        console.error('Error: ' + err)
+    }).finally(() => {
+        setLoader(false)
+        setBuyCompleted(true)
+        // Vacio el carrito.
+        setProductsInCart([])
+    })
+}
