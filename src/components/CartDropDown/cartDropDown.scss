@@ -1,0 +1,85 @@
+@import '../../assets/colors.scss';
+
+.cart-drop-down {
+    max-height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-width: 40vw;
+    background: $secondaryColor;
+    position: absolute;
+    top: 4em;
+    right: -1.5em;
+    box-shadow:  7.5px 7.5px 5px #ddd;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    h1 {
+        font-style: italic;
+        color: $tertiaryColor;
+        background-color: $primaryColor;
+        position: relative;
+        letter-spacing: .5em;
+        font-weight: 900;
+        padding: 1.5em 1em;
+        position: fixed;
+        width: 40vw;
+        z-index: 5;
+
+        &::before {
+            content: 'CARRITO';
+            position: absolute;
+            top: 1.5em;
+            left: 0;
+            right: 0;
+            letter-spacing: 1em;
+            font-style: italic;
+            font-weight: bolder;
+            opacity: .25;
+            scale: 1.5;
+        }
+    }
+
+    div {
+        margin-top: 6.5em;
+    }
+
+    .article-drop-down {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        padding: 1em;
+        background-image: linear-gradient(110deg, black 50%, white 50%);
+
+        &:hover img{
+            scale: 1.05;
+        }
+
+        &:first-child {
+            margin-top: 5em;
+        }
+        
+        p {
+            color: $primaryColor;
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: $tertiaryColor;
+            font-weight: 900;
+            padding: 0 .2em;
+            font-size: .9em;
+
+            span {
+                text-transform: lowercase;
+                color: $fourthColor;
+            }
+        }
+    
+        img {
+            width: 30%;
+            transition: .5s scale;
+        }
+    }
+}
+

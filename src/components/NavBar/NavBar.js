@@ -1,17 +1,23 @@
-import React, { useState} from "react";
+import React, { useState, useContext} from "react"
 
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 
-import "./navbar.scss";
+import "./navbar.scss"
 
 import menuIcon from '../../assets/img/menu.svg'
 import shophenderNav from '../../assets/img/shophender-nav.png'
 import userNav from '../../assets/img/user.svg'
 
+import CartDropDown from '../CartDropDown/CartDropDown'
+
 import CartIcon from '../CartIcon/CartIcon'
-import DropDownMenu from "../DropDownMenu/DropDownMenu";
+import DropDownMenu from "../DropDownMenu/DropDownMenu"
+
+import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 const NavBar = () => {
+
+    const { productsInCart } = useContext(ProductsInCartContext)
 
     const isMobileOrTablet = window.screen.width < 1024;
 
@@ -52,6 +58,8 @@ const NavBar = () => {
     const closeChoice = () => {
         return isMobileOrTablet ? closeAllListCategoriesAndMenu() : closeAllListCategories()
     }
+
+    const [showCart, setShowCart] = useState(false);
 
     return (
         // En los onClick, setOpenMenu() solo se tiene que ejecutar en version mobile y tablet.
@@ -170,16 +178,18 @@ const NavBar = () => {
 
                 <li>
                     <NavLink 
-                        to = "/cart"
+                        onMouseEnter = {() => !isMobileOrTablet && productsInCart[0] && setShowCart(true)}
+                        onMouseLeave = {() => setShowCart(false)}
+                        to = "/cart" 
                         // No puede abrir el menu, pero si cerrarlo.
                         onClick = {() => {isMobileOrTablet && 
                                 setOnlyOpenMenuFunction()
                                 closeAllListCategories()}}
                     >
                         <CartIcon />
+                        {showCart && productsInCart[0] && <CartDropDown />}
                     </NavLink>
                 </li>
-
             </ul>
         </nav>
     );
