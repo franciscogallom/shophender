@@ -9,7 +9,7 @@
     position: absolute;
     top: 4em;
     right: -1.5em;
-    box-shadow:  7.5px 7.5px 5px #ddd;
+    border-bottom: 1px solid $primaryColor;
 
     &::-webkit-scrollbar {
         display: none;
