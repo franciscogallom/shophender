@@ -8,7 +8,6 @@ import { addBuy } from '../../firebase'
 
 export function useCheckout (data) {
     const { productsInCart, setProductsInCart } = useContext(ProductsInCartContext)
-
     const { email } = useContext(AuthContext)
 
     const [orderID, setOrderID] = useState('')

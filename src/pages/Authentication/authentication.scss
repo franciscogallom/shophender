@@ -1,8 +1,16 @@
 @import '../../assets/colors.scss';
 
+
+
 .authentication-container {
     height: 90vh;
-    justify-content: center;
-    display: flex;
-    justify-content: center;
+    background-image:
+        linear-gradient($primaryColor, $primaryColor),
+        url(../../assets/img/banner.gif);    
+    background-size: cover;
+    background-blend-mode: saturation;
+}
+
+.is-mobile-or-tablet {
+    background-position: center;
 }
