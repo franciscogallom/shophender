@@ -56,7 +56,7 @@ const Checkout = () => {
                                     if (!values.address) errors.address = 'Campo requerido.'
                                     if (!values.phone) { 
                                         errors.phone = 'Campo requerido.'
-                                    } else if (!/[0-9]{6,20}/.test(values.phone)){
+                                    } else if (!/^\d{6,20}$/.test(values.phone)){
                                         errors.phone = 'Numero inválido.';
                                     }
                                     return errors
@@ -77,7 +77,9 @@ const Checkout = () => {
                                             <Field name = "phone" placeholder = 'Número de celular.' />
                                             <ErrorMessage name = 'phone' component = 'p' className = 'p-error' />
                                             <button 
-                                                className = 'confirm-buy-btn'>
+                                                className = 'confirm-buy-btn'
+                                                type = 'submit'
+                                            >
                                                     CONFIRMAR COMPRA 
                                                     <img src = {checkPay} alt = "$"/>
                                             </button>
