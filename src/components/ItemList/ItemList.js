@@ -5,6 +5,7 @@ import './itemList.scss'
 import { Link } from 'react-router-dom'
 
 const ItemList = ({ product }) => {
+
     return (
         <article className = 'item-list'>
             <Link to = {`/products/${product.sex}/${product.category}/${product.id}`}>

@@ -2,7 +2,7 @@ import React from 'react'
 
 import './itemDetailButton.scss'
 
-const ButtonItemDetail = (props) => {
+const ItemDetailButton = (props) => {
     return (
             <button
                 className = {`btn-item-detail ${props.classN}`} 
@@ -14,4 +14,4 @@ const ButtonItemDetail = (props) => {
     )
 }
 
-export default ButtonItemDetail
+export default ItemDetailButton
