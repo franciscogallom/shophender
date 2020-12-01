@@ -2,8 +2,8 @@ import React from 'react'
 
 import './checkout.scss'
 
-import { useForm } from './useForm'
 import { useCheckout } from './useCheckout'
+import { Formik, Form, Field } from 'formik'
 
 import checkPay from '../../assets/img/check.svg'
 
@@ -12,11 +12,8 @@ import Loader from '../../components/Loader/Loader'
 import Auth from '../../components/Auth/Auth'
 
 const Checkout = () => {
-
-    const { data, updates } = useForm()
-    const { name, surname, address,  phone, city } = data
     
-    const { loader, buyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy } = useCheckout(data)
+    const { loader, buyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy } = useCheckout()
 
     return (
         loader ? <Loader /> :
@@ -24,7 +21,7 @@ const Checkout = () => {
         buyCompleted 
             ?                         
             <div className = 'margin-t buy-completed'>
-                <h1>{name}, gracias por tu compra.</h1>
+                <h1>Gracias por tu compra.</h1>
                 <p>Código de la orden: <strong>{orderID}</strong></p>
             </div> 
             :
@@ -47,23 +44,27 @@ const Checkout = () => {
                         !canContinueWithBuy ? <Auth onCheckout = 'onCheckout' handleFlow = {() => setCanContinueWithBuy(true)} /> :
                         <>
                             <p className = 'p-checkout'>Datos de facturación.</p>
-                            <form className = 'checkout-form'> 
-                                <input type = "text" placeholder = 'Nombre.' onChange = {(e) => updates.name(e.target.value)}/>
-                                <input type = "text" placeholder = 'Apellido.' onChange = {(e) => updates.surname(e.target.value)}/>
-                                <input type = "text" placeholder = 'Ciudad.' onChange = {(e) => updates.city(e.target.value)}/>
-                                <input type = "text" placeholder = 'Direccion.' onChange = {(e) => updates.address(e.target.value)}/>
-                                <input type = "text" placeholder = 'Número de celular.' onChange = {(e) => updates.phone(e.target.value)}/>
-                            </form>
-                            {
-                            // Minima validacion de datos.
-                            (   
-                                phone.length > 6 && 
-                                name.length > 2 && 
-                                surname.length > 2 &&
-                                address.length > 2 &&
-                                city.length > 2
-                            ) 
-                                && <button onClick = {handleBuy} className = 'confirm-buy-btn'>CONFIRMAR COMPRA <img src = {checkPay} alt = "$"/></button>}
+                            
+                            <Formik
+                                initialValues = {{name: '', surname: '', address: '', phone: '', city: ''}}
+                                onSubmit = {(values) => handleBuy(values)}
+                            >
+                                {
+                                    () =>   
+                                        <Form className = 'checkout-form' > 
+                                            <Field name = "name" placeholder = 'Nombre.' />
+                                            <Field name = "surname" placeholder = 'Apellido.' />
+                                            <Field name = "city" placeholder = 'Ciudad.' />
+                                            <Field name = "address" placeholder = 'Direccion.' />
+                                            <Field name = "phone" placeholder = 'Número de celular.' />
+                                            <button 
+                                                className = 'confirm-buy-btn'>
+                                                    CONFIRMAR COMPRA 
+                                                    <img src = {checkPay} alt = "$"/>
+                                            </button>
+                                        </Form>
+                                }
+                            </Formik>
                         </>
                     }
                 </section>

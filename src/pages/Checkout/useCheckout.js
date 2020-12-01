@@ -6,7 +6,7 @@ import AuthContext from '../../context/AuthProvider'
 import 'firebase/firestore'
 import { addBuy } from '../../firebase'
 
-export function useCheckout (data) {
+export function useCheckout () {
     const { productsInCart, setProductsInCart } = useContext(ProductsInCartContext)
     const { email } = useContext(AuthContext)
 
@@ -18,7 +18,7 @@ export function useCheckout (data) {
 
     const [loader, setLoader] = useState(false)
 
-    const handleBuy = () => {
+    const handleBuy = (data) => {
         addBuy(setLoader, productsInCart, setBuyCompleted, setProductsInCart, data, setOrderID, email)
     }
 

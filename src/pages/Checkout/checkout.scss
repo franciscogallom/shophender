@@ -165,6 +165,10 @@
             cursor: pointer;
             transition: .5s all;
 
+            &[disabled]{
+                display: none;
+            }
+
             img {
                 transition: .5s border-radius, .5s background-color;
             }
