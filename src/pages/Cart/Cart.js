@@ -10,13 +10,19 @@ import CartButton from '../../components/CartButton/CartButton'
 
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
+import { useLocalStorage } from '../../hooks/useLocalStorage'
+
 const Cart = () => {
 
     const { productsInCart, setProductsInCart } = useContext(ProductsInCartContext)
 
+    const [ , setProductsInLocalStorage ] = useLocalStorage('products', [])
+    
     // Recibe un ID  de CartItem y elimina el producto correspondiente.
     const deleteItem = (id) => {
-        setProductsInCart((prevItems) => prevItems.filter(item => item.id !== id))
+        const result = productsInCart.filter(item => item.id !== id)
+        setProductsInCart(result)
+        setProductsInLocalStorage(result)
     }
 
     return (
