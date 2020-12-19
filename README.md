@@ -26,6 +26,10 @@ The site has an authentication implementation with email ✉️ and password �
 
 The project has three dimensions. It was developed first for mobile 📱, then the tablet version 📟 is observed from 760 pixels, and after 1023 pixels the desktop version 💻.
 
+## Stripe and Formik 💪 
+
+I use Formik to handle the shipping data 🚚 and Stripe for the payment method 💳.
+
 ## Environment Variables ⚠️ 
 
 If you want to run this project on your computer, you can ask me privately for environment variables for Firebase configuration. I will send you the .env file.

@@ -3,10 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.11.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.21.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "firebase": "^7.21.1",
     "formik": "^2.2.5",
     "node-sass": "^4.14.1",
@@ -16,7 +21,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "reactfire": "^2.0.3",
-    "sass": "^1.26.10"
+    "sass": "^1.26.10",
+    "stripe": "^8.129.0"
   },
   "scripts": {
     "start": "react-scripts start",

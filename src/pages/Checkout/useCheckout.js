@@ -4,12 +4,11 @@ import ProductsInCartContext from '../../context/ProductsInCartProvider'
 import AuthContext from '../../context/AuthProvider'
 
 import 'firebase/firestore'
-import { addBuy } from '../../firebase'
-
-import { useLocalStorage } from '../../hooks/useLocalStorage'
+import { addOrder } from '../../firebase'
 
 export function useCheckout () {
-    const { productsInCart, setProductsInCart } = useContext(ProductsInCartContext)
+    const { productsInCart } = useContext(ProductsInCartContext)
+
     const { email } = useContext(AuthContext)
 
     const [orderID, setOrderID] = useState('')
@@ -20,11 +19,11 @@ export function useCheckout () {
 
     const [loader, setLoader] = useState(false)
 
-    const [ , setProductsInLocalStorage] = useLocalStorage('products', [])
+    const [ showPayment, setShowPayment] = useState(false)
 
     const handleBuy = (data) => {
-        addBuy(setLoader, productsInCart, setBuyCompleted, setProductsInCart, data, setOrderID, email, setProductsInLocalStorage)
+        addOrder(setLoader, productsInCart, data, setOrderID, email, setShowPayment)
     }
 
-    return { loader, buyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy }
+    return { loader, buyCompleted, setBuyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy, showPayment, setShowPayment }
 }

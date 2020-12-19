@@ -116,9 +116,12 @@
         }
     }
 
-    .checkout .checkout-total {
-        margin: 5em 0;
-        font-size: 2em;
+    .checkout {
+
+        .checkout-total {
+            margin: 5em 0;
+            font-size: 2em;
+        }
     }
 }
 
@@ -161,7 +164,7 @@
         .checkout-form {
             margin: 1em auto 4em;
             
-            input {
+            input, .card-element {
                 width: 50%;
             }
         }

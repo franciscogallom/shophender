@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 import checkPay from '../../assets/img/check.svg'
 
-const CheckoutForm = ({ handleBuy }) => {
+const CheckoutForm = ({ handleBuy, totalToPay }) => {
 
     const validateFields = values => {
         const errors = {}
@@ -27,7 +27,7 @@ const CheckoutForm = ({ handleBuy }) => {
             validate = {validateFields}
         >
         {
-            (errors) =>   
+            (errors) =>
                 <Form className = 'checkout-form' > 
                     <Field name = "name" placeholder = 'Nombre.' />
                     <ErrorMessage name = 'name' component = 'p' className = 'p-error' />
@@ -39,11 +39,12 @@ const CheckoutForm = ({ handleBuy }) => {
                     <ErrorMessage name = 'address' component = 'p' className = 'p-error' />
                     <Field name = "phone" placeholder = 'Número de celular.' />
                     <ErrorMessage name = 'phone' component = 'p' className = 'p-error' />
+
                     <button 
                         className = 'confirm-buy-btn'
                         type = 'submit'
                     >
-                            CONFIRMAR COMPRA 
+                            CONFIRMAR DATOS DE ENVÍO 
                             <img src = {checkPay} alt = "$"/>
                     </button>
                 </Form>

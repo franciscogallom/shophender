@@ -8,10 +8,18 @@ import NoMatch from '../NoMatch/NoMatch'
 import Loader from '../../components/Loader/Loader'
 import Auth from '../../components/Auth/Auth'
 import CheckoutForm from './CheckoutForm'
+import PaymentMethod from './PaymentMethod'
+
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
+
+const stripePromise = loadStripe('pk_test_51Hz6TaAsHqZ5YjtY9NPm8SFeThObJkzJ0vX9LQf5PE1ccZ4FagZzHs5oeqz8g6WvVZxg8ZjsIpy1Nk6NabBZVthd00UOSUA8Cr')
 
 const Checkout = () => {
     
-    const { loader, buyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy } = useCheckout()
+    const { loader, buyCompleted, setBuyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy, showPayment, setShowPayment } = useCheckout()
+
+    const totalToPay = productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)
 
     return (
         loader ? <Loader /> :
@@ -36,14 +44,32 @@ const Checkout = () => {
                                     </article>
                         })
                     }
-                    <p className = 'checkout-total'>TOTAL A PAGAR: ${productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)}</p>
+                    <p className = 'checkout-total'>TOTAL A PAGAR: ${ totalToPay }</p>
                     {
                         // Si el usuario no esta registrado, le digo que lo haga para poder comprar.
                         !canContinueWithBuy ? <Auth onCheckout = 'onCheckout' handleFlow = {() => setCanContinueWithBuy(true)} /> :
-                        <>
-                            <p className = 'p-checkout'>Datos de facturación.</p>
-                            <CheckoutForm handleBuy = {handleBuy} />
-                        </>
+                        // Una vez tregistrado, primero leo los datos de envio, y luego el metodo de pago.
+                        !showPayment 
+                            ?
+                                <>
+                                    <p className = 'p-checkout'>Datos de envío.</p>
+                                    <CheckoutForm 
+                                            handleBuy = { handleBuy }
+                                            totalToPay = { totalToPay }
+                                    />
+                                </>
+                            :
+                                <>
+                                    <p className = 'p-checkout'>Datos de facturación.</p>
+                                    <Elements stripe = { stripePromise } >
+                                        <PaymentMethod 
+                                            totalToPay = { totalToPay } 
+                                            setBuyCompleted = { setBuyCompleted }
+                                            orderID = { orderID }
+                                            setShowPayment = { setShowPayment }
+                                        />
+                                    </Elements>
+                                </>
                     }
                 </section>
                 :

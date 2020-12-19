@@ -104,8 +104,8 @@ export function getProducts (sex, category, limit, setLoader, setSizeOfCollectio
     })
 }
 
-// Manejo una nueva orden
-export function addBuy (setLoader, productsInCart, setBuyCompleted, setProductsInCart, state, setOrderID, email, setProductsInLocalStorage) {
+// Manejo una nueva orden. Precisamente, los datos de envío.
+export function addOrder (setLoader, productsInCart, state, setOrderID, email, setShowPayment) {
     setLoader(true)
 
     const totalToPay = productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)
@@ -136,13 +136,10 @@ export function addBuy (setLoader, productsInCart, setBuyCompleted, setProductsI
     
     orders.add(newOrder).then(({ id }) => {
         setOrderID(id)
+        setShowPayment(true)
     }).catch(err => {
         console.error('Error: ' + err)
     }).finally(() => {
         setLoader(false)
-        setBuyCompleted(true)
-        // Vacio el carrito.
-        setProductsInCart([])
-        setProductsInLocalStorage([])
     })
 }
