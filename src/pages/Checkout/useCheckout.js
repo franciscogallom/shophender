@@ -25,5 +25,5 @@ export function useCheckout () {
         addOrder(setLoader, productsInCart, data, setOrderID, email, setShowPayment)
     }
 
-    return { loader, buyCompleted, setBuyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy, showPayment, setShowPayment }
+    return { loader, buyCompleted, setBuyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy, showPayment }
 }

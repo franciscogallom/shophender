@@ -10,7 +10,9 @@ import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 
-const PaymentMethod = ({ totalToPay, setBuyCompleted, orderID, setShowPayment }) => {
+import { updateDoc } from '../../firebase'
+
+const PaymentMethod = ({ totalToPay, setBuyCompleted, orderID }) => {
 
     const { setProductsInCart } = useContext(ProductsInCartContext)
 
@@ -44,6 +46,7 @@ const PaymentMethod = ({ totalToPay, setBuyCompleted, orderID, setShowPayment })
                     // Vacio el carrito y limpio el Local Storage.
                     setProductsInCart([])
                     setProductsInLocalStorage([])
+                    updateDoc(orderID)
                 } else {
                     setStripeError(data.message)
                 }

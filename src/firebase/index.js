@@ -131,7 +131,8 @@ export function addOrder (setLoader, productsInCart, state, setOrderID, email, s
             },
         items: items,
         date: firebase.firestore.Timestamp.fromDate(new Date()),
-        total: totalToPay
+        total: totalToPay,
+        completed: false
     }
     
     orders.add(newOrder).then(({ id }) => {
@@ -141,5 +142,12 @@ export function addOrder (setLoader, productsInCart, state, setOrderID, email, s
         console.error('Error: ' + err)
     }).finally(() => {
         setLoader(false)
+    })
+}
+
+export function updateDoc (id) {
+    const docRef = db.collection('orders').doc(id)
+    docRef.update({
+        completed: true
     })
 }

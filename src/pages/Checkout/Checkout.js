@@ -17,7 +17,7 @@ const stripePromise = loadStripe('pk_test_51Hz6TaAsHqZ5YjtY9NPm8SFeThObJkzJ0vX9L
 
 const Checkout = () => {
     
-    const { loader, buyCompleted, setBuyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy, showPayment, setShowPayment } = useCheckout()
+    const { loader, buyCompleted, setBuyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy, showPayment } = useCheckout()
 
     const totalToPay = productsInCart.reduce((accumulator, currentValue) => accumulator + currentValue.pricePerQuantity, 0)
 
@@ -66,7 +66,6 @@ const Checkout = () => {
                                             totalToPay = { totalToPay } 
                                             setBuyCompleted = { setBuyCompleted }
                                             orderID = { orderID }
-                                            setShowPayment = { setShowPayment }
                                         />
                                     </Elements>
                                 </>
