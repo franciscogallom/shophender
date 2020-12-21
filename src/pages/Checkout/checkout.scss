@@ -79,7 +79,7 @@
         font-weight: 900;
         display: flex;
         justify-content: center;
-        margin: 5em auto 0;
+        margin: 5em auto 8em;
 
         img {
             width: 1.5em;
@@ -101,6 +101,19 @@
     p {
         padding: 1em;
     }
+}
+
+.payment-card {
+    margin: 4em 1em 2em;
+    padding: 2em;
+    border-radius: .5em;
+    background: $tertiaryColor;
+    box-shadow: 5px 5px 5px #eee;
+    border: none;
+}
+
+.stripe-error {
+    color: $fourthColor;
 }
 
 @media screen and (min-width: 760px){
@@ -194,5 +207,15 @@
 
     .buy-completed {
         margin: 35vh 0;
+    }
+
+    .payment-card {
+        margin: 4em auto 2em;
+        padding: 2.5em 2.5em;
+        width: 40%;
+    }
+    
+    .stripe-error {
+        color: $fourthColor;
     }
 }

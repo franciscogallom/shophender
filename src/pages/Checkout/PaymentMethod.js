@@ -60,11 +60,24 @@ const PaymentMethod = ({ totalToPay, setBuyCompleted, orderID }) => {
 
     return(
         <form onSubmit = { handleSubmit }>
-            <CardElement />
-            {stripeError !== '' && <p>{stripeError}</p>}
+            <CardElement
+            options={{
+                style: {
+                    base: {
+                        fontSize: '1em',
+                        fontWeight: 'bold',
+                        color: '#424770',
+                        '::placeholder': {
+                        },
+                    },
+                },
+            }}
+            className = 'payment-card'
+            />
+            {stripeError !== '' && <p className = 'stripe-error'>{stripeError}</p>}
             <button className = 'confirm-buy-btn'>
-                {!loading ? 'CONFIRMAR COMPRA' : 'CARGANDO...'}  
-                <img src = {checkPay} alt = "$"/>
+                {!loading ? 'CONFIRMAR COMPRA' : 'ESTAMOS PROCESANDO EL PAGO 💳'}  
+                {!loading && <img src = {checkPay} alt = "$"/>}
             </button>
         </form>
     )
