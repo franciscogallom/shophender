@@ -38,7 +38,8 @@ const PaymentMethod = ({ totalToPay, setBuyCompleted, orderID }) => {
                 // Envio de datos al server.
                 const { data } = await axios.post('http://localhost:3001/api/checkout', {
                     id,
-                    amount: totalToPay // Esta en centavos. USD. Si tuviera los precios en dolares, tendría que multiplicar por 100.
+                    amount: totalToPay, // Esta en centavos. USD. Si tuviera los precios en dolares, tendría que multiplicar por 100.
+                    description: orderID
                 })
                 console.log(data)
                 if (data === 'Succesfull payment.'){
