@@ -1,0 +1,72 @@
+@import '../../assets/colors.scss';
+
+@keyframes load {
+    from { 
+        transform: translateX(-5em);
+    }
+    to { 
+        transform: translateX(12em);
+    }
+}  
+
+.item-list-loader {
+    position: relative;
+    overflow: hidden;
+
+    &::before{
+        content: '';
+        height: 350px;
+        width: 100px;
+        rotate: 10deg;
+        position: absolute;
+        top: -1em;
+        left: -1em;
+        background-color: $secondaryColor;
+        filter: blur(5px);
+        opacity: .5;
+        animation: load 1.75s infinite
+    }
+}
+
+.img-item-loader {
+    height: 10rem;
+    width: 10rem;
+    background-color: rgb(243, 243, 243);
+    margin: 0em auto;
+    border-radius: 50%;
+}
+
+.name-item-loader {
+    width: 75%;
+    height: 1.5em;
+    margin: .5em auto;
+    background-color: $tertiaryColor;
+}
+
+.price-item-loader {
+    width: 50%;
+    height: 1.5em;
+    margin: 0 auto;
+    background-color: $primaryColor;
+}
+
+@media screen and (min-width: 760px) {
+    @keyframes load {
+        from { 
+            transform: translateX(-5em);
+        }
+        to { 
+            transform: translateX(25em);
+        }
+    }  
+
+    .img-item-loader {
+        height: 15rem;
+        width: 15rem;
+    }
+
+    .item-list-loader::before{
+            top: -5em;
+            height: 500px;
+    }
+}
