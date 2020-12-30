@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import './itemList.scss'
 
 import { Link } from 'react-router-dom'
 
-const ItemList = ({ product }) => {
+function ItemList ({ product }) {
 
     return (
         <article className = 'item-list'>
@@ -20,4 +20,31 @@ const ItemList = ({ product }) => {
     )
 }
 
-export default ItemList
+export default function LazyItem ({ product }) {
+    const [show, setShow] = useState(false)
+
+    const elementRef = useRef()
+
+    useEffect(() => {
+        const onChange = (entries) => {
+            const element = entries[0]
+            if (element.isIntersecting) {
+                setShow(true)
+                observer.disconnect()
+            }
+        }
+        const observer = new IntersectionObserver(onChange, {
+            rootMargin: '100px'
+        })
+
+        observer.observe(elementRef.current)
+
+        return () => observer.disconnect()
+
+    })
+
+    return <div ref = { elementRef }>
+        {show ? <ItemList product = { product } /> : 'CARGANDO'}
+    </div>
+
+}
