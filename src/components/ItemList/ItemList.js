@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 
 import './itemList.scss'
+
+import { useNearScreen } from '../../hooks/useNearScreen'
 
 import { Link } from 'react-router-dom'
 
@@ -21,43 +23,11 @@ function ItemList ({ product }) {
 }
 
 export default function LazyItem ({ product }) {
-    const [show, setShow] = useState(false)
 
-    const elementRef = useRef()
+    const { isNearScreen, fromRef } = useNearScreen()
 
-    useEffect(() => {
-
-        let observer
-        
-        const onChange = (entries) => {
-            const element = entries[0]
-            if (element.isIntersecting) {
-                setShow(true)
-                observer.disconnect()
-            }
-        }
-
-        Promise.resolve(
-            typeof IntersectionObserver != 'undefined' 
-            ? IntersectionObserver
-            : import('intersection-observer')
-        )
-        .then(() => {
-            observer = new IntersectionObserver(onChange, {
-                rootMargin: '100px'
-            })
-            
-            observer.observe(elementRef.current)
-            
-        })
-
-
-        return () => observer && observer.disconnect()
-
-    })
-
-    return <div ref = { elementRef }>
-        {show ? <ItemList product = { product } /> : 'CARGANDO'}
-    </div>
+    return  <div ref = { fromRef }>
+                {isNearScreen ? <ItemList product = { product } /> : 'CARGANDO'}
+            </div>
 
 }
