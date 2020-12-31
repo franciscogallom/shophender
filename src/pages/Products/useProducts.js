@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom'
 
 import { getProducts } from '../../firebase'
 
+import useSEO from '../../hooks/useSEO'
+
 export function useProducts(){
     const [loader, setLoader] = useState(true)
     // Limite para los productos que quiero mostrar.
@@ -16,6 +18,8 @@ export function useProducts(){
     useEffect(() => {
         getProducts (sex, category, limit, setLoader, setSizeOfCollection, setErr, setItems) 
     }, [sex, category, limit])
+
+    useSEO(`${category} for ${sex}`, `${category} for ${sex}`)
 
     return { err, loader, limit, setLimit, items, sex, category, sizeOfCollection }
 }

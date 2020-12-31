@@ -6,6 +6,8 @@ import { getItemsForItemDetail } from '../../firebase'
 
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 
+import useSEO from '../../hooks/useSEO'
+
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 export function useItemsForItemDetail(){
@@ -53,6 +55,8 @@ export function useItemsForItemDetail(){
             setProductsInLocalStorage(productsInCart)
         }
     }
+
+    useSEO(`Details of ${item.nameProduct}` , item.nameProduct)
 
     return { err, loader, item, items, setProductsInCartFunction }
 }

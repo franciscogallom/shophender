@@ -11,6 +11,7 @@ import CartButton from '../../components/CartButton/CartButton'
 import ProductsInCartContext from '../../context/ProductsInCartProvider'
 
 import { useLocalStorage } from '../../hooks/useLocalStorage'
+import useSEO from '../../hooks/useSEO'
 
 const Cart = () => {
 
@@ -24,6 +25,8 @@ const Cart = () => {
         setProductsInCart(result)
         setProductsInLocalStorage(result)
     }
+
+    useSEO('Cart', 'cart')
 
     return (
         productsInCart[0]

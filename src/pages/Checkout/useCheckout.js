@@ -6,6 +6,8 @@ import AuthContext from '../../context/AuthProvider'
 import 'firebase/firestore'
 import { addOrder } from '../../firebase'
 
+import useSEO from '../../hooks/useSEO'
+
 export function useCheckout () {
     const { productsInCart } = useContext(ProductsInCartContext)
 
@@ -24,6 +26,8 @@ export function useCheckout () {
     const handleBuy = (data) => {
         addOrder(setLoader, productsInCart, data, setOrderID, email, setShowPayment)
     }
+
+    useSEO('Checkout', 'checkout')
 
     return { loader, buyCompleted, setBuyCompleted, orderID, productsInCart, canContinueWithBuy, setCanContinueWithBuy, handleBuy, showPayment }
 }
