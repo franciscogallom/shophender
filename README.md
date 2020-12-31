@@ -1,8 +1,6 @@
-# shophender 🚀
+# [shophender 🚀](https://shophender.vercel.app)
 
-This project consists of an ecommerce developed in React JS (using Create React App) together with Firebase and Stripe. Deployed in production with Vercel ▲.
-
-## shophender.vercel.app
+This project consists of an ecommerce developed in React JS (using Create React App) together with Firebase and Stripe. Deployed in production with Vercel ▲. Click on the title to go to the website ❗
 
 ![](flow.gif)
 
