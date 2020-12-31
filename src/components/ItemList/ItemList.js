@@ -10,7 +10,7 @@ const ItemList = React.lazy(
     () => import('./ItemListFunction')
 )
 
-export default function LazyItem ({ product }) {
+function LazyItem ({ product }) {
 
     const { isNearScreen, fromRef } = useNearScreen()
 
@@ -21,3 +21,5 @@ export default function LazyItem ({ product }) {
             </div>
 
 }
+
+export default React.memo(LazyItem)
