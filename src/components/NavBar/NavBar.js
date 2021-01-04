@@ -1,5 +1,7 @@
 import React, { useState, useContext} from "react"
 
+import { useMedia } from 'use-media'
+
 import { NavLink } from "react-router-dom"
 
 import "./navbar.scss"
@@ -19,7 +21,7 @@ const NavBar = () => {
 
     const { productsInCart } = useContext(ProductsInCartContext)
 
-    const isMobileOrTablet = window.screen.width < 1024;
+    const isMobileOrTablet = useMedia({maxWidth: '1024px'});
 
     // En version mobile y tablet, el valor inicial de openMenu es false. Por lo tanto el menu iniciara cerrado.
     // En version desktop, openMenu es true, y esto me permite mostrar los items del menu en el NavBar.
