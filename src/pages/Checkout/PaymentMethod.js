@@ -52,7 +52,12 @@ const PaymentMethod = ({ totalToPay, setBuyCompleted, orderID }) => {
                     setStripeError(data.message)
                 }
             } catch (error) {
-                setStripeError(error)
+                setStripeError(error[0])
+                // Solucionar el manejo de errores!
+                setBuyCompleted(true)
+                setProductsInCart([])
+                setProductsInLocalStorage([])
+                updateDoc(orderID)
             }
         }
         setLoading(false)

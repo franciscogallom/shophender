@@ -10,7 +10,7 @@ const stripe = new Stripe (process.env.REACT_APP_STRIPE)
 
 // app.use(cors({ origin: 'http://localhost:3000' }))
 
-app.use(cors({ origin: 'https://shophender.vercel.app' }))
+app.use(cors({ origin: 'https://shophender.vercel.app/api/checkout' }))
 
 app.use(express.json())
 
