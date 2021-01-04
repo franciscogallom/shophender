@@ -36,7 +36,7 @@ const PaymentMethod = ({ totalToPay, setBuyCompleted, orderID }) => {
             const { id } = paymentMethod
             try {
                 // Envio de datos al server.
-                const { data } = await axios.post('http://localhost:3001/api/checkout', {
+                const { data } = await axios.post('https://shophender.vercel.app/api/checkout', {
                     id,
                     amount: totalToPay, // Esta en centavos. USD. Si tuviera los precios en dolares, tendría que multiplicar por 100.
                     description: orderID
