@@ -9,10 +9,12 @@ import './home.scss'
 import HomeBanner from '../../components/HomeBanner/HomeBanner'
 import ListItems from '../../components/ListItems/ListItems'
 import Loader from '../../components/Loader/Loader'
+import useSEO from "../../hooks/useSEO"
 
 const Home = () => {
 
     const { err, loader, data } = useItemsForHome()
+    useSEO("shophender, la indumentaria y el calzado más exclusivo", "home")
 
     return (
         err ? <Redirect to = '/404' /> :
